@@ -102,7 +102,7 @@
           "name": "meta.brace.square.graphql"
         },
         "3": {
-          "name": "entity.name.type.graphql"
+          "name": "storage.type.graphql"
         },
         "4": {
           "name": "meta.brace.square.graphql"
@@ -189,7 +189,7 @@
           "name": "meta.brace.square.graphql"
         },
         "2": {
-          "name": "entity.name.type.graphql"
+          "name": "storage.type.graphql"
         },
         "3": {
           "name": "meta.brace.square.graphql"
@@ -245,7 +245,7 @@
       "match": "(type|interface|union|scalar|enum|input|directive|extend|schema)\\s+([_A-Za-z][_0-9A-Za-z]*)?",
       "captures": {
         "1": {
-          "name": "storage.type.graphql"
+          "name": "keyword.graphql"
         },
         "2": {
           "name": "entity.name.type.graphql"
@@ -264,7 +264,7 @@
       }
     },
     "unionOptions": {
-      "match": "(=|\\||on)\\s+([_A-Za-z][_0-9A-Za-z]*)",
+      "match": "(=|\\||\\bon)\\s+([_A-Za-z][_0-9A-Za-z]*)",
       "captures": {
         "1": {
           "name": "keyword.operator.graphql"
