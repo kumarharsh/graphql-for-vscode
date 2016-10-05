@@ -1,0 +1,21 @@
+{
+	"name": "graphql-for-vscode-server",
+	"description": "The graphql language server for vscode.",
+	"version": "0.1.0",
+	"author": "Kumar Harsh <khs@playlyfe.com>",
+	"license": "MIT",
+	"engines": {
+		"node": "*"
+	},
+	"dependencies": {
+		"vscode-languageserver": "^2.5.1",
+		"graphql": "^0.7.1"
+	},
+	"devDependencies": {
+		"typescript": "^1.8.10"
+	},
+	"scripts": {
+		"compile": "installServerIntoExtension ../client ./package.json ./tsconfig.json && tsc -p .",
+		"watch": "installServerIntoExtension ../client ./package.json ./tsconfig.json && tsc --watch -p ."
+	}
+}

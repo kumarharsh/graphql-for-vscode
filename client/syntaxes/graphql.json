@@ -1,0 +1,278 @@
+{
+  "name": "GraphQL",
+  "scopeName": "source.graphql",
+  "fileTypes": [
+    "gql",
+    "graphql"
+  ],
+  "patterns": [
+    {"include" : "#comment"},
+    {"include" : "#typeDef"},
+    {"include" : "#typeDefImplements"},
+    {"include" : "#unionOptions"},
+    {"include" : "#directive"},
+    {"include" : "#arguments"},
+    {"include" : "#selections"},
+    {
+      "name": "meta.fragment.graphql",
+      "comment": "a fragment definintion",
+      "match": "(fragment)\\s*([_A-Za-z][_0-9A-Za-z]*)\\s*(on)\\s*([_A-Za-z][_0-9A-Za-z]*)",
+      "captures": {
+        "1": {
+          "name": "storage.type.graphql"
+        },
+        "2": {
+          "name": "variable.other.graphql"
+        },
+        "3": {
+          "name": "keyword.operator.graphql"
+        },
+        "4": {
+          "name": "entity.name.type.graphql"
+        }
+      }
+    },
+    {
+      "match": "(query|mutation|subscription)\\s*([_A-Za-z][_0-9A-Za-z]*)",
+      "comment": "an operation definition",
+      "name": "meta.operation.graphql",
+      "captures": {
+        "1": {
+          "name": "storage.type.graphql"
+        },
+        "2": {
+          "name": "variable.other.graphql"
+        }
+      }
+    }
+  ],
+  "repository": {
+    "string": {
+      "name": "string.quoted.double.graphql",
+      "begin": "\"",
+      "beginCaptures": {
+        "0": {
+          "name": "punctuation.definition.string.begin.graphql"
+        }
+      },
+      "end": "\"",
+      "endCaptures": {
+        "0": {
+          "name": "punctuation.definition.string.end.graphql"
+        }
+      },
+      "patterns": [
+        {"include": "#escapedChar"}
+      ]
+    },
+    "variableDefinition": {
+      "match": "(\\$[_A-Za-z][_0-9A-Za-z]*)\\:\\s*([_A-Za-z][_0-9A-Za-z]*)",
+      "captures": {
+        "1": {
+          "name": "constant.other.symbol.graphql"
+        },
+        "2": {
+          "name": "support.class.graphql"
+        }
+      }
+    },
+    "variableUsage": {
+      "match": "\\$[_A-Za-z][_0-9A-Za-z]*",
+      "name": "constant.other.symbol"
+    },
+    "boolean": {
+      "match": "true|false",
+      "name": "constant.language.boolean.graphql"
+    },
+    "number": {
+      "match": "\\d+\\.?\\d*[eE]?[\\+\\-]?\\d*",
+      "name": "constant.numeric.graphql"
+    },
+    "directive": {
+      "match": "@[_A-Za-z][_0-9A-Za-z]+",
+      "name": "storage.modifier.graphql"
+    },
+    "argument": {
+      "match": "([_A-Za-z][_0-9A-Za-z]*):\\s*(\\[*)?([_A-Za-z][_0-9A-Za-z]*)(\\]*)?(!)?",
+      "captures": {
+        "1": {
+          "name": "variable.parameter.graphql"
+        },
+        "2": {
+          "name": "meta.brace.square.graphql"
+        },
+        "3": {
+          "name": "entity.name.type.graphql"
+        },
+        "4": {
+          "name": "meta.brace.square.graphql"
+        },
+        "5": {
+          "name": "keyword.operator.graphql"
+        },
+        "6": {
+          "name": "keyword.operator.graphql"
+        }
+      }
+    },
+    "enum": {
+      "match": "([A-Z][A-Z_]+)",
+      "name": "support.constant.enum.graphql"
+    },
+    "fragmentSpread" : {
+      "match": "(\\.\\.\\.)\\s*([_A-Za-z][_0-9A-Za-z]*)\\s*(on\\s*)?([_A-Za-z][_0-9A-Za-z]*)?",
+      "captures": {
+        "1": {
+          "name": "keyword.operator.graphql"
+        },
+        "2": {
+          "name": "variable.other.graphql"
+        },
+        "3": {
+          "name": "keyword.operator.graphql"
+        },
+        "4": {
+          "name": "entity.name.type.graphql"
+        }
+      }
+    },
+    "inlineFragment" : {
+      "match": "(\\.\\.\\.)\\s*(on)\\s*([_A-Za-z][_0-9A-Za-z]*)",
+      "captures": {
+        "1": {
+          "name": "keyword.operator.graphql"
+        },
+        "2": {
+          "name": "keyword.operator.graphql"
+        },
+        "3": {
+          "name": "entity.name.type.graphql"
+        }
+      }
+    },
+    "arguments": {
+      "name": "meta.arguments.graphql",
+      "begin": "\\(",
+      "beginCaptures": {
+        "0": {
+          "name": "meta.brace.round.graphql"
+        }
+      },
+      "end": "\\)",
+      "endCaptures": {
+        "0": {
+          "name": "meta.brace.round.graphql"
+        }
+      },
+      "patterns": [
+        {"include": "#argument"},
+        {"include": "#string"},
+        {"include": "#boolean"},
+        {"include": "#variableDefinition"},
+        {"include": "#variableUsage"},
+        {"include": "#number"},
+        {"include": "#enum"},
+        {"include": "#directive"},
+        {"include": "#comment"}
+      ]
+    },
+    "objectField": {
+      "begin": "\\b(?:([_A-Za-z][_0-9A-Za-z]*)\\s*)\\b",
+      "beginCaptures": {
+        "1": {
+          "name": "variable.other.member.graphql"
+        }
+      },
+      "end": ":\\s*(\\[*)?([_A-Za-z][_0-9A-Za-z]*)(\\]*)?(!)?",
+      "endCaptures": {
+        "1": {
+          "name": "meta.brace.square.graphql"
+        },
+        "2": {
+          "name": "entity.name.type.graphql"
+        },
+        "3": {
+          "name": "meta.brace.square.graphql"
+        },
+        "4": {
+          "name": "keyword.operator.graphql"
+        }
+      },
+      "name": "meta.field.declaration.graphql",
+      "patterns": [
+        {"include": "#arguments"}
+      ]
+    },
+    "selections": {
+      "name": "meta.selections.graphql",
+      "begin": "\\{",
+      "beginCaptures": {
+        "0": {
+          "name": "meta.brace.curly.graphql"
+        }
+      },
+      "end": "\\}",
+      "endCaptures": {
+        "0": {
+          "name": "meta.brace.curly.graphql"
+        }
+      },
+      "patterns" : [
+        {"include": "#selections"},
+        {"include": "#objectField"},
+        {"include": "#inlineFragment"},
+        {"include": "#fragmentSpread"},
+        {"include": "#directive"},
+        {"include": "#arguments"},
+        {"include": "#comment"},
+        {"include": "#builtInField"},
+        {"include": "#enum"}
+      ]
+    },
+    "comment": {
+      "name": "comment.line.number-sign.graphql",
+      "match": "#.*$"
+    },
+    "builtInField": {
+      "match": "__schema|__typename|__type",
+      "name": "keyword.other.graphql"
+    },
+    "escapedChar": {
+      "match": "\\\\(?:u[\\da-fA-f]{4}|.)",
+      "name": "constant.character.escape.graphql"
+    },
+    "typeDef": {
+      "match": "(type|interface|union|scalar|enum|input|directive|extend|schema)\\s+([_A-Za-z][_0-9A-Za-z]*)?",
+      "captures": {
+        "1": {
+          "name": "storage.type.graphql"
+        },
+        "2": {
+          "name": "entity.name.type.graphql"
+        }
+      }
+    },
+    "typeDefImplements": {
+      "match": "(implements)\\s+([_A-Za-z][_0-9A-Za-z,\\s]*)",
+      "captures": {
+        "1": {
+          "name": "keyword.operator.graphql"
+        },
+        "2": {
+          "name": "entity.name.type.graphql"
+        }
+      }
+    },
+    "unionOptions": {
+      "match": "(=|\\||on)\\s+([_A-Za-z][_0-9A-Za-z]*)",
+      "captures": {
+        "1": {
+          "name": "keyword.operator.graphql"
+        },
+        "2": {
+          "name": "variable.other.constant.graphql"
+        }
+      }
+    }
+  }
+}

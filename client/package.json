@@ -1,0 +1,98 @@
+{
+  "name": "graphql-for-vscode",
+  "displayName": "GraphQL for VSCode",
+  "version": "0.1.0",
+  "description": "GraphQL syntax highlighting, linting, auto-complete, and more!",
+  "author": {
+    "name": "Kumar Harsh",
+    "email": "khs@playlyfe.com",
+    "url": "https://github.com/kumarharsh"
+  },
+  "keywords": [
+    "vscode",
+    "visual studio code",
+    "graphql",
+    "linter"
+  ],
+  "publisher": "kumar-harsh",
+  "engines": {
+		"vscode": "^1.4.0"
+	},
+  "license": "MIT",
+  "categories": [
+    "Languages",
+    "Linters",
+    "Snippets"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kumarharsh/graphql-for-vscode.git"
+  },
+  "bugs": {
+    "url": "https://github.com/kumarharsh/graphql-for-vscode/issues"
+  },
+  "homepage": "https://github.com/kumarharsh/graphql-for-vscode/blob/master/README.md",
+  "icon": "images/graphql-logo.svg",
+	"activationEvents": [
+		"onLanguage:graphql"
+	],
+	"main": "./out/src/extension",
+  "contributes": {
+		"configuration": {
+			"type": "object",
+			"title": "Graphql Configuration",
+			"properties": {
+				"graphql.schemaPath": {
+					"type": "string",
+					"default": "schemas",
+					"description": "(inactive) The path to the schemas directory from the workspace root."
+				}
+			}
+		},
+    "languages": [
+      {
+        "id": "graphql",
+        "extensions": [
+          ".gql",
+          ".graphql"
+        ],
+        "aliases": [
+          "GraphQL",
+          "graphql"
+        ],
+        "configuration": "./graphql.configuration.json"
+      }
+    ],
+    "grammars": [
+      {
+        "language": "graphql",
+        "path": "./syntaxes/graphql.json",
+        "scopeName": "source.graphql"
+      }
+    ],
+    "snippets": [
+      {
+        "language": "graphql",
+        "path": "./snippets/graphql.json"
+      }
+    ]
+  },
+	"scripts": {
+    "vscode:prepublish": "npm run update-vscode && cd ../server && npm run compile && cd ../client && npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "update-vscode": "node ./node_modules/vscode/bin/install",
+		"postinstall": "node ./node_modules/vscode/bin/install"
+	},
+	"devDependencies": {
+		"vscode": "^0.11.10",
+    "typescript": "^1.8.10"
+	},
+	"dependencies": {
+		"vscode-languageclient": "^2.5.0"
+	},
+  "galleryBanner": {
+    "color": "#383838",
+    "theme": "dark"
+  }
+}
