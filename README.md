@@ -1,3 +1,5 @@
+!["Graphql For VSCode"](./client/images/logo.png)
+
 # Graphql For VSCode
 
 ![A preview of the extension](./client/images/preview.png)

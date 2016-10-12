@@ -9,7 +9,7 @@
     {"include" : "#comment"},
     {"include" : "#typeDef"},
     {"include" : "#typeDefImplements"},
-    {"include" : "#unionOptions"},
+    {"include" : "#unionTypes"},
     {"include" : "#directive"},
     {"include" : "#arguments"},
     {"include" : "#selections"},
@@ -219,19 +219,19 @@
       },
       "patterns" : [
         {"include": "#selections"},
-        {"include": "#objectField"},
         {"include": "#inlineFragment"},
         {"include": "#fragmentSpread"},
         {"include": "#directive"},
-        {"include": "#arguments"},
-        {"include": "#comment"},
+        {"include": "#objectField"},
         {"include": "#builtInField"},
-        {"include": "#enum"}
+        {"include": "#arguments"},
+        {"include": "#enum"},
+        {"include": "#comment"}
       ]
     },
     "comment": {
-      "name": "comment.line.number-sign.graphql",
-      "match": "#.*$"
+      "match": "#.*$",
+      "name": "comment.line.graphql"
     },
     "builtInField": {
       "match": "__schema|__typename|__type",
@@ -263,8 +263,8 @@
         }
       }
     },
-    "unionOptions": {
-      "match": "(=|\\||\\bon)\\s+([_A-Za-z][_0-9A-Za-z]*)",
+    "unionTypes": {
+      "match": "(=|\\|)\\s*([_A-Za-z][_0-9A-Za-z]*)",
       "captures": {
         "1": {
           "name": "keyword.operator.graphql"

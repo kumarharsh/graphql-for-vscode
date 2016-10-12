@@ -1,4 +1,4 @@
-<img alt="Graphql For VSCode" src="../client/images/graphql-logo.svg" height="100"/>
+!["Graphql For VSCode"](../client/images/logo.png)
 
 # Graphql For VSCode: Server
 
