@@ -1,7 +1,7 @@
 {
   "name": "graphql-for-vscode",
   "displayName": "GraphQL for VSCode",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "GraphQL syntax highlighting, linting, auto-complete, and more!",
   "author": {
     "name": "Kumar Harsh",

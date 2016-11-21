@@ -8,6 +8,7 @@
   "patterns": [
     {"include" : "#comment"},
     {"include" : "#typeDef"},
+    {"include" : "#typeDefEnum"},
     {"include" : "#typeDefImplements"},
     {"include" : "#unionTypes"},
     {"include" : "#directive"},
@@ -242,7 +243,7 @@
       "name": "constant.character.escape.graphql"
     },
     "typeDef": {
-      "match": "(type|interface|union|scalar|enum|input|directive|extend|schema)\\s+([_A-Za-z][_0-9A-Za-z]*)?",
+      "match": "(type|interface|union|scalar|input|directive|extend|schema)\\s+([_A-Za-z][_0-9A-Za-z]*)?",
       "captures": {
         "1": {
           "name": "keyword.graphql"
@@ -251,6 +252,29 @@
           "name": "entity.name.type.graphql"
         }
       }
+    },
+    "typeDefEnum": {
+      "begin": "(enum)\\s+([_A-Za-z][_0-9A-Za-z]*)\\s*(\\{)",
+      "beginCaptures": {
+        "1": {
+          "name": "keyword.graphql"
+        },
+        "2": {
+          "name": "entity.name.type.graphql"
+        },
+        "3": {
+          "name": "meta.brace.curly.graphql"
+        }
+      },
+      "end": "\\}",
+      "endCaptures": {
+        "0": {
+          "name": "meta.brace.curly.graphql"
+        }
+      },
+      "patterns": [
+        {"include": "#enum"}
+      ]
     },
     "typeDefImplements": {
       "match": "(implements)\\s+([_A-Za-z][_0-9A-Za-z,\\s]*)",
