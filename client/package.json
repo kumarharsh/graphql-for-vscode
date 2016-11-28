@@ -57,8 +57,7 @@
           ".graphql"
         ],
         "aliases": [
-          "GraphQL",
-          "graphql"
+          "GraphQL"
         ],
         "configuration": "./graphql.configuration.json"
       }
@@ -66,8 +65,13 @@
     "grammars": [
       {
         "language": "graphql",
-        "path": "./syntaxes/graphql.json",
-        "scopeName": "source.graphql"
+        "scopeName": "source.graphql",
+        "path": "./syntaxes/graphql.json"
+      },
+      {
+        "injectTo": ["source.js", "source.ts", "source.jsx", "source.tsx"],
+        "scopeName": "relayQL.graphql",
+        "path": "./syntaxes/graphql.js.json"
       }
     ],
     "snippets": [
