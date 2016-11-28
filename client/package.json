@@ -16,8 +16,8 @@
   ],
   "publisher": "kumar-harsh",
   "engines": {
-		"vscode": "^1.4.0"
-	},
+    "vscode": "^1.4.0"
+  },
   "license": "MIT",
   "categories": [
     "Languages",
@@ -33,22 +33,22 @@
   },
   "homepage": "https://github.com/kumarharsh/graphql-for-vscode/blob/master/README.md",
   "icon": "images/logo.svg",
-	"activationEvents": [
-		"onLanguage:graphql"
-	],
-	"main": "./out/src/extension",
+  "activationEvents": [
+    "onLanguage:graphql"
+  ],
+  "main": "./out/src/extension",
   "contributes": {
-		"configuration": {
-			"type": "object",
-			"title": "Graphql Configuration",
-			"properties": {
-				"graphql.schemaPath": {
-					"type": "string",
-					"default": "schemas",
-					"description": "(inactive) The path to the schemas directory from the workspace root."
-				}
-			}
-		},
+    "configuration": {
+      "type": "object",
+      "title": "Graphql Configuration",
+      "properties": {
+        "graphql.schemaPath": {
+          "type": "string",
+          "default": "schemas",
+          "description": "(inactive) The path to the schemas directory from the workspace root."
+        }
+      }
+    },
     "languages": [
       {
         "id": "graphql",
@@ -77,20 +77,20 @@
       }
     ]
   },
-	"scripts": {
+  "scripts": {
     "vscode:prepublish": "npm run update-vscode && cd ../server && npm run compile && cd ../client && npm run compile",
     "compile": "tsc -p ./",
     "watch": "tsc -watch -p ./",
     "update-vscode": "node ./node_modules/vscode/bin/install",
-		"postinstall": "node ./node_modules/vscode/bin/install"
-	},
-	"devDependencies": {
-		"vscode": "^0.11.10",
+    "postinstall": "node ./node_modules/vscode/bin/install"
+  },
+  "devDependencies": {
+    "vscode": "^0.11.10",
     "typescript": "^1.8.10"
-	},
-	"dependencies": {
-		"vscode-languageclient": "^2.5.0"
-	},
+  },
+  "dependencies": {
+    "vscode-languageclient": "^2.5.0"
+  },
   "galleryBanner": {
     "color": "#383838",
     "theme": "dark"
