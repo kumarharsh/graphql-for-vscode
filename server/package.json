@@ -8,11 +8,11 @@
 		"node": "*"
 	},
 	"dependencies": {
-		"vscode-languageserver": "^2.5.1",
-		"graphql": "^0.7.1"
+		"vscode-languageserver": "^2.6.2",
+		"vscode-uri": "^1.0.0"
 	},
 	"devDependencies": {
-		"typescript": "^1.8.10"
+		"typescript": "^2.0.10"
 	},
 	"scripts": {
 		"compile": "installServerIntoExtension ../client ./package.json ./tsconfig.json && tsc -p .",
