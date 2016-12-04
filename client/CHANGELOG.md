@@ -1,7 +1,11 @@
 # Notable Releases
 
+## 0.4.0
+### Presenting: Go to Definition, Autocomplete & Schema Validation!
+To use the syntax highlighting in your JS projects, you'll need to change your file's syntax to Javascript React, because this [doesn't work with Javascript Babel right now](https://github.com/dzannotti/vscode-babel/issues/6).
+
 ## 0.3.0
-### Presenting: Graphql syntax highlighting within JS/JSX/TS/TSX!
+### Graphql syntax highlighting within JS/JSX/TS/TSX
 To use the syntax highlighting in your JS projects, you'll need to change your file's syntax to Javascript React, because this [doesn't work with Javascript Babel right now](https://github.com/dzannotti/vscode-babel/issues/6).
 
 ### Improved syntax highlighting

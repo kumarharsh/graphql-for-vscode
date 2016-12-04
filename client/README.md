@@ -1,23 +1,41 @@
-# Graphql For VSCode
+<h1 align="center"><img src="https://cdn.rawgit.com/kumarharsh/graphql-for-vscode/master/client/images/logo.svg" alt="Logo" height="100" /></h1>
+<h2 align="center">Graphql For VSCode</h2>
+<div align="center"><a href="https://github.com/kumarharsh/graphql-for-vscode/releases"><img src="https://img.shields.io/github/release/kumarharsh/graphql-for-vscode.svg" alt="Latest Release"></a></div>
 
-![A preview of the extension](./images/preview.png)
+<hr>
 
-A better extension for GraphQL schema authoring in VSCode. It provides:
-* Better syntax highlighting: As far as I've tested, this extension provides a more complete syntax highlighting than other plugins on VSCode, Atom and SublimeText. This plugin uses [more common scope names](https://www.sublimetext.com/docs/3/scope_naming.html#meta) so that many themes would be covered by default. Although, in some places, vscode's Dark+/Light+ supported scope classes have also been used due to a lack of better alternatives.
-* Linting: This plugin uses a similar method as used by the [Codemirror graphql](https://github.com/graphql/codemirror-graphql) project for linting. Some work is needed to get more functionality into this plugin.
-* Snippets: Some commonly used snippets are provided which help while writing mutations and queries, such as definiting types, interfaces and input types.
-* Autocomplete: Nothing special right now. Refer to Future Plans.
+VSCode extension for GraphQL schema authoring & consumption.
+
+![A preview of the extension](https://cdn.rawgit.com/kumarharsh/graphql-for-vscode/master/client/images/preview.png)
+
+
+## What's in the Box?
+* **Go to Definition**: Just <kbd>F12</kbd> or <kbd>Ctrl</kbd>+Click on any graphql type, and you'll jump right to it's definition.
+![Go to Definition](https://cdn.rawgit.com/kumarharsh/graphql-for-vscode/master/client/images/goto-definition.gif)
+* **Schema Validation**: The plugin also validates your schema, so that you catch errors early.
+* **Autocomplete**: You also get full cross-file autocomplete support.
+![Autocomplete](https://cdn.rawgit.com/kumarharsh/graphql-for-vscode/master/client/images/autocomplete.gif)
+* **Great Syntax Highlighting**: Now, your gql files will look as beautiful as your other code with an awesome syntax highlighter which works not just with your schema files, but also within your Javascript/Typescript files.
+* **Linting**: This plugin uses a similar method as used by the [Codemirror graphql](https://github.com/graphql/codemirror-graphql) project for linting.
+* **Snippets**: Some commonly used snippets are provided which help while writing mutations and queries, such as definiting types, interfaces and input types.
+* Autocomplete: Uses the [@playlyfe/gql](npmjs.org/package/@playlyfe/gql) library to read your whole graphql schema definitions and provide you with autocomplete support while writing & editing your `.gql` files.
+
+## Setting it Up
+1. Ensure that you have the [@playlyfe/gql](npmjs.org/package/@playlyfe/gql) library installed and available to this plugin. If you've installed the library in a folder other than the workspace root, then add the path to the node_modules directory as a setting:
+```json
+{
+  "graphqlForVSCode.nodePath": "ui/node_modules"
+}
+```
+
+2. Ensure you have [watchman](https://facebook.github.io/watchman/docs/install.html) installed and available in your path. Watchman watches your gql files and provides up-to-date suggestions. For users on Windows, get the latest build mentioned in [this issue](https://github.com/facebook/watchman/issues/19) and add the location of `watchman.exe` to your environment path.
 
 ## Future Plans
-
 * Improved Linting: Since graphql schemas can be written in multiple .gql files, so cross-file linting should be available. I'm not sure of the implementation as of now though.
-* Add proper autocomplete support: Related to the first point, since graphql schemas can be spread over multiple files, I need to find a good way to provide type autocompletion without decreasing performance. Also, the vscode languageserver docs lack any information around how to approach this issue. Need to look into implementations by other extensions.
-* Improve Syntax Grammar: Some fields feel like they are not very optimized, such as *objectField* and *argument*.
 * Tests: Figure out tests.
 
 
 ## Contributing
-
 * If you have a suggestion or a problem, please open an issue.
 * If you'd like to improve the extension:
   + If you've made any improvements to the extension, send a Pull Request!
@@ -25,9 +43,11 @@ A better extension for GraphQL schema authoring in VSCode. It provides:
   + The instructions to run and debug the client are [here](#hacking)
 
 ## Hacking
-
 If you're making changes to the client, then run `npm run watch` inside this directory,
 then just press <kbd>F5</kbd> to launch the *Extension Development Host* instance of vscode. Whenever you make a change, press *Reload* to reload the EDH instance.
+
+## Major Contributors
+* [Mayank Agarwal](github.com/Mayank1791989) - added autocomplete, goto definition, schema validation support
 
 ---
 

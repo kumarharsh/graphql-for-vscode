@@ -1,7 +1,7 @@
 {
   "name": "graphql-for-vscode",
   "displayName": "GraphQL for VSCode",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "description": "GraphQL syntax highlighting, linting, auto-complete, and more!",
   "author": {
     "name": "Kumar Harsh",
@@ -19,6 +19,13 @@
     "vscode": "^1.4.0"
   },
   "license": "MIT",
+  "contributors": [
+    {
+      "name": "Mayank Agarwal (@Mayank1791989)",
+      "url": "github.com/Mayank1791989",
+      "email": "mayank@playlyfe.com"
+    }
+  ],
   "categories": [
     "Languages",
     "Linters",
@@ -42,10 +49,10 @@
       "type": "object",
       "title": "Graphql Configuration",
       "properties": {
-        "graphql.schemaPath": {
-          "type": "string",
-          "default": "schemas",
-          "description": "(inactive) The path to the schemas directory from the workspace root."
+        "graphqlForVSCode.nodePath": {
+          "type": ["string", "null"],
+          "default": null,
+          "description": "A path added to NODE_PATH when resolving the @playlyfe/gql module."
         }
       }
     },

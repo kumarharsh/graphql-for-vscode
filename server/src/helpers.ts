@@ -11,7 +11,7 @@ export function resolveModule(moduleName, nodePath, tracer) {
     return _module;
   }, (error) => {
     return Promise.reject(new Error(
-      `Couldn't find module '${moduleName}' in path '${nodePath}'.`,
+      `Couldn't find module '${moduleName}' in path '${nodePath}'.`
     ))
   });
 }
