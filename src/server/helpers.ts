@@ -1,5 +1,13 @@
 import Uri from 'vscode-uri';
-import { Files, DiagnosticSeverity, Diagnostic } from 'vscode-languageserver';
+import {
+  Files,
+  DiagnosticSeverity,
+  Diagnostic,
+  Location,
+  Range,
+  Position,
+} from 'vscode-languageserver';
+
 import * as path from 'path';
 
 export function resolveModule(moduleName, nodePath, tracer) {
@@ -16,11 +24,8 @@ export function resolveModule(moduleName, nodePath, tracer) {
   });
 }
 
-export function makeDiagnostic(error, location): Diagnostic {
-  let startLine = location.line - 1;
-  let startChar = location.column - 1;
-  let endLine = startLine;
-  let endChar = startChar;
+export function makeDiagnostic(error, position): Diagnostic {
+  const startPosition = mapPosition(position);
   let severity;
 
   return {
@@ -28,13 +33,40 @@ export function makeDiagnostic(error, location): Diagnostic {
     message: error.message,
     source: 'graphql',
     range: {
-      start: { line: startLine, character: startChar },
-      end: { line: endLine, character: endChar }
+      start: startPosition,
+      end: startPosition,
     },
     code: 'syntax'
   };
 }
 
+// map gql location to vscode location
+export function mapPosition(gqlPosition): Position {
+  return Position.create(
+    gqlPosition.line - 1,
+    gqlPosition.column - 1,
+  );
+}
+
+export function mapLocation(gqlLocation): Location {
+  return Location.create(
+    filePathToURI(gqlLocation.path),
+    Range.create(
+      mapPosition(gqlLocation.start),
+      mapPosition(gqlLocation.end),
+    ),
+  );
+}
+
+// gql (one-based) while vscode (zero-based)
+export function toGQLPosition(position: Position) {
+  return {
+    line: position.line + 1,
+    column: position.character + 1,
+  };
+}
+
+// map gql severity to vscode severity
 export function mapSeverity(severity): DiagnosticSeverity {
   switch (severity) {
     case 'error' : return DiagnosticSeverity.Error;
@@ -45,4 +77,8 @@ export function mapSeverity(severity): DiagnosticSeverity {
 
 export function filePathToURI(path: string): string {
   return Uri.file(path).toString();
+}
+
+export function uriToFilePath(uri: string): string {
+  return Files.uriToFilePath(uri);
 }

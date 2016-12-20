@@ -1,22 +1,29 @@
 'use strict';
 
+import * as semver from 'semver';
+
 import {
   IPCMessageReader, IPCMessageWriter,
-  createConnection, IConnection, TextDocumentSyncKind,
-  TextDocuments, TextDocument, Diagnostic, DiagnosticSeverity,
-  CompletionItem, CompletionItemKind,
-  Definition, Location, Range, Position,
-  Hover, MarkedString, Files,
-  TextDocumentPositionParams,
-  InitializeParams, InitializeResult, InitializeError,
-  ResponseError
+  createConnection, IConnection,
+  TextDocuments, Diagnostic,
+  InitializeParams, InitializeResult, InitializeError, ResponseError,
+
+  Location, TextDocumentPositionParams,
+  BulkRegistration, TextDocumentRegistrationOptions,
+  CompletionRequest, CompletionItem, CompletionItemKind,
+  Definition, DefinitionRequest,
+  HoverRequest, Hover, MarkedString, 
+  ReferencesRequest,
 } from 'vscode-languageserver';
 
 import {
   resolveModule,
   makeDiagnostic,
   mapSeverity,
+  mapLocation,
   filePathToURI,
+  uriToFilePath,
+  toGQLPosition,
 } from './helpers';
 
 import * as path from 'path';
@@ -40,28 +47,52 @@ connection.onInitialize((params): Thenable<InitializeResult | ResponseError<Init
   let initOptions: { nodePath: string } = params.initializationOptions;
   let workspaceRoot = params.rootPath;
   const nodePath = toAbsolutePath(initOptions.nodePath || '', workspaceRoot);
+  
   return (
     resolveModule(moduleName, nodePath, trace) // loading gql from project
-    .then((gqlModule): InitializeResult | ResponseError<InitializeError> => {
-        gqlService = createGQLService(gqlModule, workspaceRoot);
+    .then((gqlModule) => {
+      if (!semver.satisfies(gqlModule.version, '2.x')) {
+        return Promise.reject(
+          new ResponseError(
+            0, 
+            'Plugin requires `@playlyfe/gql v2.x`. Please upgrade the `@playlyfe/gql` package and restart vscode.',
+          ),
+        );
+      }
 
-        let result: InitializeResult = {
-          capabilities: {
-            // Tell the client that the server works in FULL text document sync mode
-            textDocumentSync: documents.syncKind,
-            // Tell the client that the server support code complete
-            completionProvider: {
-              resolveProvider: true
-            },
+      gqlService = createGQLService(gqlModule, workspaceRoot);
 
-            definitionProvider: true,
-          }
-        };
+      let result: InitializeResult = {
+        capabilities: {}, // see registerLanguages
+      };
 
-        return result;
+      return result;
     })
   );
 });
+
+connection.onInitialized(() => {
+  registerLanguages(gqlService.getFileExtensions());
+});
+
+function registerLanguages(extensions: Array<string>) {
+  console.log('[vscode] File extensions registered: ', extensions);
+
+  let registration = BulkRegistration.create();
+  let documentOptions: TextDocumentRegistrationOptions = {
+    documentSelector: [{
+      scheme: 'file',
+      pattern: `**/*.{${extensions.join(',')}}`,
+    }],
+  };
+
+  registration.add(CompletionRequest.type, documentOptions);
+  registration.add(HoverRequest.type, documentOptions);
+  registration.add(DefinitionRequest.type, documentOptions);
+  registration.add(ReferencesRequest.type, documentOptions);
+
+  connection.client.register(registration);
+}
 
 function toAbsolutePath(nodePath, workspaceRoot) {
   if (!path.isAbsolute(nodePath)) {
@@ -77,7 +108,7 @@ function trace(message: string): void {
 function createGQLService(gqlModule, workspaceRoot) {
   let lastSendDiagnostics = [];
 
-  return new gqlModule.GQL({
+  return new gqlModule.GQLService({
     cwd: workspaceRoot,
     onChange() {
       const errors = gqlService.status();
@@ -129,22 +160,32 @@ function createGQLService(gqlModule, workspaceRoot) {
 connection.onDefinition((textDocumentPosition: TextDocumentPositionParams, token): Definition => {
   if (token.isCancellationRequested) { return; }
 
-  const defPosition = gqlService.getDef(
-    documents.get(textDocumentPosition.textDocument.uri).getText(),
-    {
-      line: textDocumentPosition.position.line + 1,
-      column: textDocumentPosition.position.character + 1,
-    }
-  );
+  const defLocation = gqlService.getDef({
+    sourceText: documents.get(textDocumentPosition.textDocument.uri).getText(),
+    sourcePath: uriToFilePath(textDocumentPosition.textDocument.uri),
+    position: toGQLPosition(textDocumentPosition.position),
+  });
 
-  if (defPosition) {
-    return Location.create(
-      filePathToURI(defPosition.path),
-      Range.create(
-        Position.create(defPosition.start.line - 1, defPosition.start.column - 1),
-        Position.create(defPosition.end.line - 1, defPosition.end.column - 1)
-      )
-    );
+  if (defLocation) { return mapLocation(defLocation); }
+});
+
+// show symbol info onHover
+connection.onHover((textDocumentPosition: TextDocumentPositionParams, token): Hover => {
+  if (token.isCancellationRequested) { return; }
+
+  const info = gqlService.getInfo({
+    sourceText: documents.get(textDocumentPosition.textDocument.uri).getText(),
+    sourcePath: uriToFilePath(textDocumentPosition.textDocument.uri),
+    position: toGQLPosition(textDocumentPosition.position),
+  });
+
+  if (info) {
+    return {
+      contents: info.contents.map((content) => ({
+        language: 'graphql',
+        value: content,
+      })),
+    };
   }
 });
 
@@ -152,16 +193,11 @@ connection.onDefinition((textDocumentPosition: TextDocumentPositionParams, token
 connection.onCompletion((textDocumentPosition: TextDocumentPositionParams, token): CompletionItem[] => {
   if (token.isCancellationRequested) { return; }
 
-  // The pass parameter contains the position of the text document in
-  // which code complete got requested. For the example we ignore this
-  // info and always provide the same completion items.
-  const results = gqlService.autocomplete(
-    documents.get(textDocumentPosition.textDocument.uri).getText(),
-    {
-      line: textDocumentPosition.position.line + 1,
-      column: textDocumentPosition.position.character + 1,
-    }
-  );
+  const results = gqlService.autocomplete({
+    sourceText: documents.get(textDocumentPosition.textDocument.uri).getText(),
+    sourcePath: uriToFilePath(textDocumentPosition.textDocument.uri),
+    position: toGQLPosition(textDocumentPosition.position),
+  });
 
   return results.map(({ text, type, description }) => ({
     label: text,
@@ -174,6 +210,19 @@ connection.onCompletion((textDocumentPosition: TextDocumentPositionParams, token
 // the completion list.
 connection.onCompletionResolve((item: CompletionItem): CompletionItem => {
   return item;
+});
+
+// Find all references
+connection.onReferences((textDocumentPosition: TextDocumentPositionParams, token): Location[] => {
+  if (token.isCancellationRequested) { return; }
+
+  const refLocations = gqlService.findRefs({
+    sourceText: documents.get(textDocumentPosition.textDocument.uri).getText(),
+    sourcePath: uriToFilePath(textDocumentPosition.textDocument.uri),
+    position: toGQLPosition(textDocumentPosition.position),
+  });
+
+  return refLocations.map(mapLocation);
 });
 
 // Listen on the connection

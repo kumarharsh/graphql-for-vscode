@@ -34,7 +34,7 @@ export function activate(context: ExtensionContext) {
   let defaultErrorHandler: ErrorHandler;
   let clientOptions: LanguageClientOptions = {
     // Register the server for plain text documents
-    documentSelector: ['graphql'],
+    documentSelector: [],
     synchronize: {
       // Synchronize the setting section 'languageServerExample' to the server
       configurationSection: extName,
@@ -47,7 +47,7 @@ export function activate(context: ExtensionContext) {
       };
     },
     initializationFailedHandler: (error) => {
-      client.error('Server initialization failed.', error);
+      client.error('Server initialization failed.', error.message);
       client.outputChannel.show(true);
       return false;
     },
