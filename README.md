@@ -22,13 +22,27 @@ VSCode extension for GraphQL schema authoring & consumption.
 
 ## Setting it Up
 1. Ensure that you have the [@playlyfe/gql](npmjs.org/package/@playlyfe/gql) library installed and available to this plugin. If you've installed the library in a folder other than the workspace root, then add the path to the node_modules directory as a setting:
-```json
-{
-  "graphqlForVSCode.nodePath": "ui/node_modules"
-}
-```
+    
+    ```json
+    {
+      "graphqlForVSCode.nodePath": "ui/node_modules"
+    }
+    ```
 
 2. Ensure you have [watchman](https://facebook.github.io/watchman/docs/install.html) installed and available in your path. Watchman watches your gql files and provides up-to-date suggestions. For users on Windows, get the latest build mentioned in [this issue](https://github.com/facebook/watchman/issues/19) and add the location of `watchman.exe` to your environment path.
+
+3. Create a .gqlconfig file (required by the `@playlyfe/gql` package). Example:
+The .gqlconfig is a JSON file with only one required key: schema.files which is the path to your *.gql files relative to your workspace root.
+    
+    ```json
+    /* .gqlconfig */
+    {
+      "schema": {
+        "files": "schemas/**/*.gql"
+      }
+    }
+    ```
+You can use the string `files: "*/**/*.gql"` instead if you want to find any `.gql` file recursively in the workspace dir.
 
 ## Future Plans
 * Improved Linting: Since graphql schemas can be written in multiple .gql files, so cross-file linting should be available. I'm not sure of the implementation as of now though.
