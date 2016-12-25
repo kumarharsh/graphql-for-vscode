@@ -1,7 +1,7 @@
 {
   "name": "graphql-for-vscode",
   "displayName": "GraphQL for VSCode",
-  "version": "0.4.0",
+  "version": "1.0.0",
   "description": "GraphQL syntax highlighting, linting, auto-complete, and more!",
   "author": {
     "name": "Kumar Harsh",
@@ -50,7 +50,10 @@
       "title": "Graphql Configuration",
       "properties": {
         "graphqlForVSCode.nodePath": {
-          "type": ["string", "null"],
+          "type": [
+            "string",
+            "null"
+          ],
           "default": null,
           "description": "A path added to NODE_PATH when resolving the @playlyfe/gql module."
         }
@@ -98,10 +101,13 @@
     "compile": "tsc -p ./",
     "watch": "tsc -watch -p ./",
     "update-vscode": "node ./node_modules/vscode/bin/install",
-    "postinstall": "node ./node_modules/vscode/bin/install"
+    "postinstall": "node ./node_modules/vscode/bin/install",
+    "semantic-release": "semantic-release pre && npm publish && vsce publish && semantic-release post"
   },
   "devDependencies": {
+    "semantic-release": "^6.3.2",
     "typescript": "^2.0.10",
+    "vsce": "^1.18.0",
     "vscode": "^1.0.3"
   },
   "dependencies": {
