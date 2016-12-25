@@ -19,7 +19,7 @@
     "Input Field definition": {
       "prefix": "input",
       "body": [
-        "input ${1:SomeTypeInput} {",
+        "input ${1:TypeInput} {",
         "\t$2",
         "}"
       ]

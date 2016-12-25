@@ -43,7 +43,7 @@
   "activationEvents": [
     "onLanguage:graphql"
   ],
-  "main": "./out/src/extension",
+  "main": "./out/extension",
   "contributes": {
     "configuration": {
       "type": "object",
@@ -97,10 +97,11 @@
     ]
   },
   "scripts": {
-    "vscode:prepublish": "npm run update-vscode && cd ../server && npm run compile && cd ../client && npm run compile",
-    "compile": "tsc -p ./",
-    "watch": "tsc -watch -p ./",
-    "update-vscode": "node ./node_modules/vscode/bin/install",
+    "vscode:prepublish": "npm run compile-server && npm run compile",
+    "compile-server": "tsc -p src/server",
+		"watch-server": "tsc --watch -p src/server",
+    "compile": "tsc -p src/client",
+    "watch": "tsc -watch -p src/client",
     "postinstall": "node ./node_modules/vscode/bin/install",
     "semantic-release": "semantic-release pre && npm publish && vsce publish && semantic-release post"
   },
@@ -108,10 +109,13 @@
     "semantic-release": "^6.3.2",
     "typescript": "^2.0.10",
     "vsce": "^1.18.0",
-    "vscode": "^1.0.3"
+    "vscode": "^1.0.3",
+    "@types/node": "^6.0.40"
   },
   "dependencies": {
-    "vscode-languageclient": "^2.5.0"
+    "vscode-languageclient": "^2.5.0",
+    "vscode-languageserver": "^2.6.2",
+		"vscode-uri": "^1.0.0"
   },
   "galleryBanner": {
     "color": "#383838",

@@ -1,10 +1,12 @@
 {
   "compilerOptions": {
-    "target": "ES5",
+    "target": "es6",
     "module": "commonjs",
     "moduleResolution": "node",
-    "outDir": "out",
-    "noLib": true,
+    "outDir": "../../out",
+    "lib": [
+      "es6"
+    ],
     "sourceMap": true
   },
   "exclude": [
