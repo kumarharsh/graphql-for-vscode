@@ -103,7 +103,7 @@
     "compile": "tsc -p src/client",
     "watch": "tsc -watch -p src/client",
     "postinstall": "node ./node_modules/vscode/bin/install",
-    "semantic-release": "semantic-release pre && npm publish && vsce publish && semantic-release post"
+    "semantic-release": "semantic-release pre && vsce publish && semantic-release post"
   },
   "devDependencies": {
     "@types/node": "^6.0.40",
