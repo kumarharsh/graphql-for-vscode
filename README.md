@@ -39,7 +39,7 @@ VSCode extension for GraphQL schema authoring & consumption.
 * If you have a suggestion or a problem, please open an issue.
 * If you'd like to improve the extension:
   + If you've made any improvements to the extension, send a Pull Request!
-  + The instructions to run the server are [here](./server/README.md)
+  + The instructions to run the server are [here](#server)
   + The instructions to run and debug the client are [here](#hacking)
 
 ## Hacking
