@@ -30,6 +30,15 @@ VSCode extension for GraphQL schema authoring & consumption.
 
 2. Ensure you have [watchman](https://facebook.github.io/watchman/docs/install.html) installed and available in your path. Watchman watches your gql files and provides up-to-date suggestions. For users on Windows, get the latest build mentioned in [this issue](https://github.com/facebook/watchman/issues/19) and add the location of `watchman.exe` to your environment path.
 
+3. Create a `.gqlconfig` file in your project's root directory that specifies where your .gql files are located:
+```js
+{
+  schema: {
+    files: "src/**/*.gql"
+  }
+}
+```
+
 ## Future Plans
 * Improved Linting: Since graphql schemas can be written in multiple .gql files, so cross-file linting should be available. I'm not sure of the implementation as of now though.
 * Tests: Figure out tests.
