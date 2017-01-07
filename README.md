@@ -11,24 +11,39 @@ VSCode extension for GraphQL schema authoring & consumption.
 
 ## What's in the Box?
 * **Go to Definition**: Just <kbd>F12</kbd> or <kbd>Ctrl</kbd>+Click on any graphql type, and you'll jump right to it's definition.
-![Go to Definition](https://cdn.rawgit.com/kumarharsh/graphql-for-vscode/master/images/goto-definition.gif)
+
+    ![Go to Definition](https://cdn.rawgit.com/kumarharsh/graphql-for-vscode/master/images/goto-definition.gif)
 * **Schema Validation**: The plugin also validates your schema, so that you catch errors early.
 * **Autocomplete**: You also get full cross-file autocomplete support.
-![Autocomplete](https://cdn.rawgit.com/kumarharsh/graphql-for-vscode/master/images/autocomplete.gif)
+
+    ![Autocomplete](https://cdn.rawgit.com/kumarharsh/graphql-for-vscode/master/images/autocomplete.gif)
 * **Great Syntax Highlighting**: Now, your gql files will look as beautiful as your other code with an awesome syntax highlighter which works not just with your schema files, but also within your Javascript/Typescript files.
 * **Linting**: This plugin uses a similar method as used by the [Codemirror graphql](https://github.com/graphql/codemirror-graphql) project for linting.
 * **Snippets**: Some commonly used snippets are provided which help while writing mutations and queries, such as definiting types, interfaces and input types.
-* Autocomplete: Uses the [@playlyfe/gql](npmjs.org/package/@playlyfe/gql) library to read your whole graphql schema definitions and provide you with autocomplete support while writing & editing your `.gql` files.
+* **Autocomplete**: Uses the [@playlyfe/gql](npmjs.org/package/@playlyfe/gql) library to read your whole graphql schema definitions and provide you with autocomplete support while writing & editing your `.gql` files.
 
 ## Setting it Up
 1. Ensure that you have the [@playlyfe/gql](npmjs.org/package/@playlyfe/gql) library installed and available to this plugin. If you've installed the library in a folder other than the workspace root, then add the path to the node_modules directory as a setting:
-```json
-{
-  "graphqlForVSCode.nodePath": "ui/node_modules"
-}
-```
+    ```json
+    {
+      "graphqlForVSCode.nodePath": "ui/node_modules"
+    }
+    ```
 
 2. Ensure you have [watchman](https://facebook.github.io/watchman/docs/install.html) installed and available in your path. Watchman watches your gql files and provides up-to-date suggestions. For users on Windows, get the latest build mentioned in [this issue](https://github.com/facebook/watchman/issues/19) and add the location of `watchman.exe` to your environment path.
+
+3. Create a .gqlconfig file (required by the `@playlyfe/gql` package). Example:
+The .gqlconfig is a JSON file with only one required key: schema.files which is the path to your *.gql files relative to your workspace root.
+    ```json
+    /* .gqlconfig */
+    {
+      "schema": {
+        "files": "schemas/**/*.gql"
+      }
+    }
+    ```
+    You can use the string `files: "**/*.gql"` instead if you want to find any `.gql` file recursively in the workspace dir.
+
 
 ## Future Plans
 * Improved Linting: Since graphql schemas can be written in multiple .gql files, so cross-file linting should be available. I'm not sure of the implementation as of now though.
