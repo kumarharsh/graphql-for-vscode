@@ -1,14 +1,21 @@
-# Notable Releases
+# Notice
+Due to some changes in the build process, the changelogs are not automatically generated using [semantic-release](https://www.npmjs.com/package/semantic-release), and are now accessible here: [https://github.com/kumarharsh/ci-test/releases](https://github.com/kumarharsh/ci-test/releases).
 
-## 1.0.0
+---
+
+The following is a list of older releases:
+
+## Older Releases
+
+### 1.0.0
 ### Improved syntax highlighting in injected grammars
 Also, refactored code and bumped the version to 1.0.0
 
-## 0.4.0
+### 0.4.0
 ### Go to Definition, Autocomplete & Schema Validation!
 To use the syntax highlighting in your JS projects, you'll need to change your file's syntax to Javascript React, because this [doesn't work with Javascript Babel right now](https://github.com/dzannotti/vscode-babel/issues/6).
 
-## 0.3.0
+### 0.3.0
 ### Graphql syntax highlighting within JS/JSX/TS/TSX
 To use the syntax highlighting in your JS projects, you'll need to change your file's syntax to Javascript React, because this [doesn't work with Javascript Babel right now](https://github.com/dzannotti/vscode-babel/issues/6).
 
@@ -24,5 +31,5 @@ Fixed some syntax highlights
 ### 0.1.1
 Released as 0.2.0 due to excitement. Will be careful.
 
-## 0.1.0
+### 0.1.0
 Extension released.
