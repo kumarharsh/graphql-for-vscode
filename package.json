@@ -107,6 +107,7 @@
   },
   "devDependencies": {
     "@types/node": "^6.0.40",
+    "conventional-recommended-bump": "^0.3.0",
     "lodash.get": "^4.4.2",
     "request": "^2.79.0",
     "semantic-release": "^6.3.2",
@@ -123,6 +124,7 @@
     "theme": "dark"
   },
   "release": {
-    "getLastRelease": "./scripts/getLastRelease"
+    "getLastRelease": "./scripts/getLastRelease",
+    "analyzeCommits": "./scripts/analyzeCommits"
   }
 }
