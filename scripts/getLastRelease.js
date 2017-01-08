@@ -1,4 +1,5 @@
 var SemanticReleaseError = require('@semantic-release/error');
+var exec = require('child_process').exec;
 var request = require('request');
 var npmlog = require('npmlog');
 var _get = require('lodash.get');
@@ -30,7 +31,7 @@ module.exports = function(pluginConfig, {pkg, npm, plugins, options}, cb) {
 
     const list = _get(body, 'results[0].extensions')
     if (!list) {
-      return;
+      return cb(new Error("Couldn't find extension on marketplace"));
     }
     const ext = list.find((extension) => extension.extensionName === pkg.name);
     let version = ext.versions[0].version;
@@ -47,13 +48,31 @@ module.exports = function(pluginConfig, {pkg, npm, plugins, options}, cb) {
 Tag a version manually or define "fallbackTags".`, 'ENODISTTAG'))
     }
 
-    cb(null, {
-      version,
-      // gitHead: data.versions[version].gitHead,
-      get tag () {
-        npmlog.warn('deprecated', 'tag will be removed with the next major release')
-        return npm.tag
+    /*
+     * Now, we fetch the latest git tags,
+     * This is necessary because the VS Marketplace doesn't store the `gitHead` of releases a la npm.
+     * To get the list of commits between last release on marketplace and the current HEAD
+     * the best way I've determined is fetching the tags, and prefixing `v` to current version to get
+     * the nearest tag, and passing that as the ref in gitHead.
+     *
+     * Another (more stricter) way is to get the actual tag using 'git describe --tags --abbrev=0,
+     * but since the version number and tag name are in-sync (thanks to semantic-release)
+     * so, I'll just use the version number.
+     */
+    exec('git fetch', {}, function(err2, stdout2, stderr2) {
+      if (err) {
+        console.log('error while fetching git tags', err);
+        return cb(err);
       }
-    });
+
+      cb(null, {
+        version,
+        gitHead: `v${version}`,
+        get tag () {
+          npmlog.warn('deprecated', 'tag will be removed with the next major release')
+          return npm.tag
+        }
+      });
+    })
   });
 }

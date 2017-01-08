@@ -6,10 +6,12 @@ notifications:
   email: false
 node_js:
   - '6'
+before_install:
+  npm install -g vsce
 before_script:
-  - npm prune
+  npm prune
 after_success:
-  - npm run semantic-release
+  npm run semantic-release
 branches:
-  except:
-    - /^v\d+\.\d+\.\d+$/
+  only:
+    - master
