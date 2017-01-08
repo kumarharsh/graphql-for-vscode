@@ -46,9 +46,8 @@ The .gqlconfig is a JSON file with only one required key: schema.files which is 
 
 
 ## Future Plans
-* Improved Linting: Since graphql schemas can be written in multiple .gql files, so cross-file linting should be available. I'm not sure of the implementation as of now though.
+* Enable autcomplete of graphql queries in JS/TS files.
 * Tests: Figure out tests.
-
 
 ## Contributing
 * If you have a suggestion or a problem, please open an issue.
