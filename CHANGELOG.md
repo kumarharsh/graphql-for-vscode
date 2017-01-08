@@ -1,11 +1,9 @@
 # Notice
-Due to some changes in the build process, the changelogs are not automatically generated using [semantic-release](https://www.npmjs.com/package/semantic-release), and are now accessible here: [https://github.com/kumarharsh/ci-test/releases](https://github.com/kumarharsh/ci-test/releases).
+Due to some changes in the build process, the changelogs are now automatically generated using [semantic-release](https://www.npmjs.com/package/semantic-release), and are now accessible here: [https://github.com/kumarharsh/ci-test/releases](https://github.com/kumarharsh/ci-test/releases).
 
 ---
 
 The following is a list of older releases:
-
-## Older Releases
 
 ### 1.0.0
 ### Improved syntax highlighting in injected grammars

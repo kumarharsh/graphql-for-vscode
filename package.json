@@ -119,7 +119,7 @@
     "vscode-uri": "^1.0.0"
   },
   "galleryBanner": {
-    "color": "hotpink",
+    "color": "#2e2348",
     "theme": "dark"
   },
   "release": {

@@ -1,6 +1,13 @@
 <h1 align="center"><img src="https://cdn.rawgit.com/kumarharsh/graphql-for-vscode/master/images/logo.svg" alt="Logo" height="100" /></h1>
 <h2 align="center">Graphql For VSCode</h2>
-<div align="center"><a href="https://github.com/kumarharsh/graphql-for-vscode/releases"><img src="https://img.shields.io/github/release/kumarharsh/graphql-for-vscode.svg" alt="Latest Release"></a></div>
+<div align="center">
+  <a href="https://github.com/kumarharsh/graphql-for-vscode/releases">
+    <img src="https://img.shields.io/github/release/kumarharsh/graphql-for-vscode.svg" alt="Latest Release">
+  </a>
+  <a href="https://github.com/semantic-release/semantic-release">
+    <img src="https://img.shields.io/badge/%20%20%F0%9F%9A%80-semantic--release-e10079.svg" alt="semantic-release">
+  </a>
+</div>
 
 <hr>
 
