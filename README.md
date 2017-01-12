@@ -84,6 +84,9 @@ If you're making changes to the server, then run `npm run watch-server` from the
 ## Major Contributors
 * [Mayank Agarwal](github.com/Mayank1791989) - added autocomplete, goto definition, schema validation support
 
+## Changelog
+* Latest changes are available on the [releases](https://github.com/kumarharsh/graphql-for-vscode/releases) page.
+
 ---
 
 *Happy Querying!*
