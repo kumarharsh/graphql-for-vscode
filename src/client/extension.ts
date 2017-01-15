@@ -4,16 +4,21 @@
  * ------------------------------------------------------------------------------------------ */
 'use strict';
 
-import { workspace, Disposable, ExtensionContext } from 'vscode';
+import { window, workspace, commands, Disposable, ExtensionContext, StatusBarAlignment, StatusBarItem, TextEditor } from 'vscode';
 import {
   LanguageClient, LanguageClientOptions,
   SettingMonitor, ServerOptions, TransportKind,
-  ErrorHandler, ErrorAction, CloseAction,
+  ErrorHandler, ErrorAction, CloseAction, NotificationType,
   State as ClientState,
 } from 'vscode-languageclient';
 import * as path from 'path';
 
 const extName = 'graphqlForVSCode';
+enum Status {
+  ok = 1,
+  warn = 2,
+  error = 3,
+}
 
 export function activate(context: ExtensionContext) {
 
@@ -51,12 +56,91 @@ export function activate(context: ExtensionContext) {
       client.outputChannel.show(true);
       return false;
     },
+    errorHandler: {
+			error: (error, message, count): ErrorAction => {
+				return defaultErrorHandler.error(error, message, count);
+			},
+			closed: (): CloseAction => {
+				if (serverCalledProcessExit) {
+					return CloseAction.DoNotRestart;
+				}
+				return defaultErrorHandler.closed();
+			}
+		}
   }
 
   // Create the language client and start the client.
   let client = new LanguageClient('Graphql For VSCode', serverOptions, clientOptions);
+  // Instantiate the error handler
+  defaultErrorHandler = client.createDefaultErrorHandler();
 
   // Push the disposable to the context's subscriptions so that the
   // client can be deactivated on extension deactivation
+  context.subscriptions.push(
+    client.start(),
+    commands.registerCommand('graphqlForVSCode.showOutputChannel', () => { client.outputChannel.show(); }),
+  );
+  client.onReady().then(function() {
+    graphqlActivate(context, client);
+  });
+}
+
+function graphqlActivate(context: ExtensionContext, client: LanguageClient) {
+  // Instantiate status bar item on the right most side on status bar
+  let statusBarItem = window.createStatusBarItem(StatusBarAlignment.Right, 0);
+  let graphqlStatus: Status = Status.ok;
+  let serverRunning: boolean = false;
+  // the text to display on status bar item
+  const text = 'GQL';
+  // The icon of the status bar item
+  const icons = {
+    [Status.ok]: '$(zap) ',
+    [Status.warn]: '$(alert) ',
+    [Status.error]: '$(stop) ',
+  }
+  statusBarItem.text = text;
+  statusBarItem.command = 'graphqlForVSCode.showOutputChannel';
+  context.subscriptions.push(statusBarItem);
+
+  function showStatusBarItem(show: boolean): void {
+    if (show) {
+      statusBarItem.show();
+    } else {
+      statusBarItem.hide();
+    }
+  }
+
+  function updateStatus(status: Status) {
+		switch (status) {
+			case Status.ok:
+				statusBarItem.color = undefined;
+				break;
+			case Status.warn:
+				statusBarItem.color = 'yellow';
+				break;
+			case Status.error:
+				statusBarItem.color = 'red';
+				break;
+		}
+		graphqlStatus = status;
+	}
+
+  function updateStatusBarVisibility(editor: TextEditor): void {
+		statusBarItem.text = icons[graphqlStatus] + text;
+    updateStatus(graphqlStatus);
+		showStatusBarItem(
+			// serverRunning &&
+			(
+				graphqlStatus !== Status.ok ||
+				(editor && editor.document.languageId === 'graphql')
+			)
+		);
+	}
+
+	// TODO unsure how client's state change
   context.subscriptions.push(client.start());
+
+  window.onDidChangeActiveTextEditor(updateStatusBarVisibility);
+  updateStatusBarVisibility(window.activeTextEditor)
+
 }
