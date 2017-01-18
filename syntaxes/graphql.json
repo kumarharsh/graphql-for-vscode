@@ -33,7 +33,7 @@
     },
     "graphql-fragment-definition": {
       "name": "meta.fragment.graphql",
-      "begin": "\\s*(?:(\\bfragment\\b)\\s*(?!\\bon\\b)([_A-Za-z][_0-9A-Za-z]*)\\s*(?:(\\bon\\b)\\s*([_A-Za-z][_0-9A-Za-z]*)))",
+      "begin": "\\s*(?:(\\bfragment\\b)\\s*([_A-Za-z][_0-9A-Za-z]*)?\\s*(?:(\\bon\\b)\\s*([_A-Za-z][_0-9A-Za-z]*)))",
       "end": "(?<=})",
       "captures": {
         "1": { "name": "keyword.fragment.graphql" },
