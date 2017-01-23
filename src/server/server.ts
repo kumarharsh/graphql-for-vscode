@@ -44,9 +44,10 @@ documents.listen(connection);
 // in the passed params the rootPath of the workspace plus the client capabilites.
 let gqlService;
 connection.onInitialize((params): Thenable<InitializeResult | ResponseError<InitializeError>> => {
-  let initOptions: { nodePath: string } = params.initializationOptions;
+  let initOptions: { nodePath: string, debug: boolean } = params.initializationOptions;
   let workspaceRoot = params.rootPath;
   const nodePath = toAbsolutePath(initOptions.nodePath || '', workspaceRoot);
+  const debug = initOptions.debug;
   
   return (
     resolveModule(moduleName, nodePath, trace) // loading gql from project
@@ -60,7 +61,7 @@ connection.onInitialize((params): Thenable<InitializeResult | ResponseError<Init
         );
       }
 
-      gqlService = createGQLService(gqlModule, workspaceRoot);
+      gqlService = createGQLService(gqlModule, workspaceRoot, debug);
 
       let result: InitializeResult = {
         capabilities: {}, // see registerLanguages
@@ -105,11 +106,12 @@ function trace(message: string): void {
   connection.console.info(message);
 }
 
-function createGQLService(gqlModule, workspaceRoot) {
+function createGQLService(gqlModule, workspaceRoot, debug) {
   let lastSendDiagnostics = [];
 
   return new gqlModule.GQLService({
     cwd: workspaceRoot,
+    debug,
     onChange() {
       const errors = gqlService.status();
       const SCHEMA_FILE = '__schema__';

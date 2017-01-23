@@ -43,7 +43,8 @@ export function activate(context: ExtensionContext) {
     initializationOptions: () => {
       const configuration = workspace.getConfiguration(extName);
       return {
-        nodePath: configuration ? configuration.get('nodePath', undefined) : undefined
+        nodePath: configuration ? configuration.get('nodePath', undefined) : undefined,
+        debug: configuration ? configuration.get('debug', false) : false,
       };
     },
     initializationFailedHandler: (error) => {
