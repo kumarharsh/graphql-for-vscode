@@ -16,7 +16,7 @@
   ],
   "publisher": "kumar-harsh",
   "engines": {
-    "vscode": "^1.4.0"
+    "vscode": "^1.6.0"
   },
   "license": "MIT",
   "contributors": [
