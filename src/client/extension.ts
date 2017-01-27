@@ -33,8 +33,8 @@ export function activate(context: ExtensionContext) {
   let serverCalledProcessExit: boolean = false;
   let defaultErrorHandler: ErrorHandler;
   let clientOptions: LanguageClientOptions = {
-    // Register the server for plain text documents
-    documentSelector: [],
+    // Register the server for supported documents
+    documentSelector: ['graphql', 'javascript', 'javascriptreact', 'typescript', 'typescriptreact', 'feature'],
     synchronize: {
       // Synchronize the setting section 'languageServerExample' to the server
       configurationSection: extName,

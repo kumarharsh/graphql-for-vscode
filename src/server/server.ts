@@ -12,7 +12,7 @@ import {
   BulkRegistration, TextDocumentRegistrationOptions,
   CompletionRequest, CompletionItem, CompletionItemKind,
   Definition, DefinitionRequest,
-  HoverRequest, Hover, MarkedString, 
+  HoverRequest, Hover, MarkedString,
   ReferencesRequest,
 } from 'vscode-languageserver';
 
@@ -48,14 +48,14 @@ connection.onInitialize((params): Thenable<InitializeResult | ResponseError<Init
   let workspaceRoot = params.rootPath;
   const nodePath = toAbsolutePath(initOptions.nodePath || '', workspaceRoot);
   const debug = initOptions.debug;
-  
+
   return (
     resolveModule(moduleName, nodePath, trace) // loading gql from project
     .then((gqlModule) => {
       if (!semver.satisfies(gqlModule.version, '2.x')) {
         return Promise.reject(
           new ResponseError(
-            0, 
+            0,
             'Plugin requires `@playlyfe/gql v2.x`. Please upgrade the `@playlyfe/gql` package and restart vscode.',
           ),
         );
