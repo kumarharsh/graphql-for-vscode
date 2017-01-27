@@ -123,8 +123,8 @@
   },
   "dependencies": {
     "semver": "5.3.0",
-    "vscode-languageclient": "^3.0.2-beta.2",
-    "vscode-languageserver": "^3.0.2-beta.2",
+    "vscode-languageclient": "^3.0.3",
+    "vscode-languageserver": "^3.0.4",
     "vscode-uri": "^1.0.0"
   },
   "galleryBanner": {

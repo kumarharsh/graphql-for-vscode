@@ -12,15 +12,14 @@
 
   // we want to run npm
   "command": "npm",
+  // we run the custom script "watch" as defined in package.json
+  "args": ["run", "watch"],
 
   // the command is a shell script
   "isShellCommand": true,
 
   // show the output window only if unrecognized errors occur.
-  "showOutput": "silent",
-
-  // we run the custom script "compile" as defined in package.json
-  "args": ["run", "compile", "--loglevel", "silent"],
+  "showOutput": "always",
 
   // The tsc compiler is started in watching mode
   "isWatching": true,
