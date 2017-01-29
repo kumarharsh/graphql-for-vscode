@@ -39,7 +39,7 @@ VSCode extension for GraphQL schema authoring & consumption.
 * **Autocomplete**: Uses the [@playlyfe/gql](npmjs.org/package/@playlyfe/gql) library to read your whole graphql schema definitions and provide you with autocomplete support while writing & editing your `.gql` files.
 
 ## Setting it Up
-1. Ensure that you have the [@playlyfe/gql](npmjs.org/package/@playlyfe/gql) library installed and available to this plugin. If you've installed the library in a folder other than the workspace root, then add the path to the node_modules directory as a setting:
+1. Ensure that you have the [@playlyfe/gql](npmjs.org/package/@playlyfe/gql) library (v2.x) installed and available to this plugin. If you've installed the library in a folder other than the workspace root, then add the path to the node_modules directory as a setting:
     ```json
     {
       "graphqlForVSCode.nodePath": "ui/node_modules"
@@ -60,6 +60,33 @@ The .gqlconfig is a JSON file with only one required key: schema.files which is 
     ```
     You can use the string `files: "**/*.gql"` instead if you want to find any `.gql` file recursively in the workspace dir.
 
+4. To enable autocomplete support within your JS(X)/TS(X) files, also add these lines to your `.gqlconfig` file:
+    ```json
+    /* .gqlconfig */
+    {
+      schema: {
+        files: "schemas/**/*.gql"
+      },
+      query: {
+        files: [ /* define file paths which you'd like the gql parser to watch and give autocomplete suggestions for */
+          {
+            match: 'ui/src/**/*.js',
+            parser: ['EmbeddedQueryParser', { startTag: 'Relay\\.QL`', endTag: '`' }],
+            isRelay: true,
+          },
+          {
+            match: 'features/**/*.feature',
+            parser: ['EmbeddedQueryParser', { startTag: 'graphql request\\s+"""', endTag: '"""' }],
+          },
+          {
+            match: 'fixtures/**/*.gql',
+            parser: 'QueryParser',
+          },
+        ],
+      },
+    }
+
+    ```
 
 ## Future Plans
 * Enable autcomplete of graphql queries in JS/TS files.
