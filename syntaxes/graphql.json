@@ -188,7 +188,7 @@
       "begin": "\\s*(\\$?[_A-Za-z][_0-9A-Za-z]*)(?=\\s*\\(|:)",
       "end": "(?=\\s*((\\$?[_A-Za-z][_0-9A-Za-z]*)\\s*(\\(|:)|(}|\\))))|\\s*(,)",
       "beginCaptures": {
-        "1": { "name": "variable.graphql" }
+        "1": { "name": "variable.parameter.graphql" }
       },
       "endCaptures": {
         "5": { "name": "punctuation.comma.graphql" }
@@ -382,7 +382,7 @@
           "begin": "\\s*([_A-Za-z][_0-9A-Za-z]*)(?:\\s*(:))?",
           "end": "(?=\\s*(?:(?:([_A-Za-z][_0-9A-Za-z]*)\\s*(:))|\\)))|\\s*(,)",
           "beginCaptures": {
-            "1": { "name": "variable.arguments.graphql" },
+            "1": { "name": "variable.parameter.graphql" },
             "2": { "name": "punctuation.colon.graphql" }
           },
           "endCaptures": {
