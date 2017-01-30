@@ -421,6 +421,12 @@
         "1": { "name": "constant.language.boolean.graphql" }
       }
     },
+    "graphql-null-value": {
+      "match": "\\s*\\b(null)\\b",
+      "captures": {
+        "1": { "name": "constant.language.null.graphql" }
+      }
+    },
     "graphql-string-value": {
       "contentName": "string.quoted.double.graphql",
       "begin": "\\s*+((\"))",
@@ -489,6 +495,7 @@
         { "include":  "#graphql-int-value" },
         { "include":  "#graphql-string-value" },
         { "include":  "#graphql-boolean-value" },
+        { "include":  "#graphql-null-value" },
         { "include":  "#graphql-enum-value" },
         { "include":  "#graphql-list-value" },
         { "include":  "#graphql-object-value" },
