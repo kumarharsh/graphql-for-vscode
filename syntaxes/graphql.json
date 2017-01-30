@@ -406,19 +406,19 @@
     "graphql-int-value": {
       "match": "\\s*((-)?(0|[1-9][0-9]*))",
       "captures": {
-        "1": { "name": "constant.int.graphql" }
+        "1": { "name": "constant.numeric.int.graphql" }
       }
     },
     "graphql-float-value": {
       "match": "\\s*((-)?(0|([1-9]\\d*)(\\.\\d*)?((e|E)(\\+|-)?\\d*)?))",
       "captures": {
-        "1": { "name": "constant.float.graphql" }
+        "1": { "name": "constant.numeric.float.graphql" }
       }
     },
     "graphql-boolean-value": {
       "match": "\\s*\\b(true|false)\\b",
       "captures": {
-        "1": { "name": "constant.boolean.graphql" }
+        "1": { "name": "constant.language.boolean.graphql" }
       }
     },
     "graphql-string-value": {
