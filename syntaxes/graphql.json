@@ -39,7 +39,7 @@
         "1": { "name": "keyword.fragment.graphql" },
         "2": { "name": "entity.name.fragment.graphql" },
         "3": { "name": "keyword.on.graphql" },
-        "4": { "name": "support.type.graphql" }
+        "4": { "name": "storage.type.graphql" }
       },
       "patterns": [
         { "include": "#graphql-comment" },
@@ -64,14 +64,14 @@
         "2": { "name": "keyword.type.graphql"},
         "3": { "name": "keyword.interface.graphql"},
         "4": { "name": "keyword.input.graphql"},
-        "5": { "name": "support.type.graphql"}
+        "5": { "name": "storage.type.graphql"}
       },
       "patterns": [
         {
           "match": "\\s*\\b(implements)\\b\\s*([_A-Za-z][_0-9A-Za-z]*)",
           "captures": {
             "1": { "name": "keyword.implements.grapahql" },
-            "2": { "name": "support.type.graphql" }
+            "2": { "name": "storage.modifier.graphql" }
           }
         },
         { "include": "#graphql-comment" },
@@ -102,7 +102,7 @@
       "begin": "\\s*([_A-Za-z][_0-9A-Za-z]*)(?=\\s*\\(|:)",
       "end": "(?=\\s*(([_A-Za-z][_0-9A-Za-z]*)\\s*(\\(|:)|(})))|\\s*(,)",
       "beginCaptures": {
-        "1": { "name": "variable.graphql" }
+        "1": { "name": "variable.other.graphql" }
       },
       "endCaptures": {
         "5": { "name": "punctuation.comma.graphql" }
@@ -137,7 +137,7 @@
               "begin": "\\s*([_A-Za-z][_0-9A-Za-z]*)(?=\\s*\\(|:)",
               "end": "(?=\\s*(([_A-Za-z][_0-9A-Za-z]*)\\s*(\\(|:)|(})))|\\s*(,)",
               "beginCaptures": {
-                "1": { "name": "variable.arguments.graphql" }
+                "1": { "name": "variable.other.graphql" }
               },
               "endCaptures": {
                 "5": { "name": "punctuation.comma.graphql" }
@@ -146,7 +146,7 @@
                 {
                   "match": "\\s*([_A-Za-z][_0-9A-Za-z]*)",
                   "captures": {
-                    "1": { "name": "support.type.graphql" }
+                    "1": { "name": "storage.type.graphql" }
                   }
                 },
                 { "include": "#graphql-colon" },
@@ -208,7 +208,7 @@
         {
           "match": "\\s*([_A-Za-z][_0-9A-Za-z]*)(?:\\s*(!))?",
           "captures": {
-            "1": { "name": "support.type.graphql" },
+            "1": { "name": "storage.type.graphql" },
             "2": { "name": "keyword.operator.nulltype.graphql" }
           }
         },
@@ -239,7 +239,7 @@
     "graphql-scalar-type": {
       "match": "\\s*\\b(Int|Float|String|Boolean|ID)\\b(?:\\s*(!))?",
       "captures": {
-        "1": { "name": "support.type.builtin.graphql" },
+        "1": { "name": "storage.type.builtin.graphql" },
         "2": { "name": "keyword.operator.nulltype.graphql" }
       }
     },
@@ -323,7 +323,7 @@
         {
           "match": "\\s*([_A-Za-z][_0-9A-Za-z]*)",
           "captures": {
-            "1": { "name": "variable.graphql" }
+            "1": { "name": "variable.other.graphql" }
           }
         },
         { "include": "#graphql-arguments" },
@@ -339,7 +339,7 @@
       "applyEndPatternLast": 1,
       "captures": {
         "1": { "name": "keyword.operator.spread.graphql" },
-        "2": { "name": "variable.fragment.graphql" }
+        "2": { "name": "variable.other.fragment.graphql" }
       },
       "patterns": [
         { "include": "#graphql-comment" },
@@ -356,7 +356,7 @@
       "captures": {
         "1": { "name": "keyword.operator.spread.graphql" },
         "2": { "name": "keyword.on.graphql" },
-        "3": { "name": "support.type.graphql" }
+        "3": { "name": "storage.type.graphql" }
       },
       "patterns": [
         { "include": "#graphql-comment" },
@@ -400,7 +400,7 @@
     "graphql-variable-name": {
       "match": "\\s*(\\$[_A-Za-z][_0-9A-Za-z]*)",
       "captures": {
-        "1": { "name": "variable.graphql" }
+        "1": { "name": "variable.language.graphql" }
       }
     },
     "graphql-int-value": {
@@ -461,7 +461,7 @@
       "end": "(?<=})",
       "beginCaptures": {
         "1": { "name": "keyword.enum.graphql" },
-        "2": { "name": "support.type.enum.graphql" }
+        "2": { "name": "storage.type.enum.graphql" }
       },
       "patterns": [
         {
@@ -485,7 +485,7 @@
       ]
     },
     "graphql-enum-value": {
-      "name": "constant.character.enum.graphql",
+      "name": "constant.other.enum.graphql",
       "match":"\\s*(?!=\\b(true|false|null)\\b)([_A-Za-z][_0-9A-Za-z]*)"
     },
     "graphql-value":{
@@ -554,7 +554,7 @@
       "applyEndPatternLast": 1,
       "captures": {
         "1": { "name": "keyword.union.graphql" },
-        "2": { "name": "support.type.graphql" }
+        "2": { "name": "storage.type.graphql" }
       },
       "patterns": [
         {
@@ -563,7 +563,7 @@
           "applyEndPatternLast": 1,
           "captures": {
             "1": { "name": "punctuation.assignment.graphql" },
-            "2": { "name": "support.type.graphql" }
+            "2": { "name": "storage.type.graphql" }
           },
           "patterns": [
             { "include": "#graphql-skip-newlines" },
@@ -573,7 +573,7 @@
               "match": "\\s*(\\|)\\s*([_A-Za-z][_0-9A-Za-z]*)",
               "captures": {
                 "1": { "name": "punctuation.or.graphql" },
-                "2": { "name": "support.type.graphql" }
+                "2": { "name": "storage.type.graphql" }
               }
             }
           ]
