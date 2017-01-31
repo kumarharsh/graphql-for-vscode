@@ -14,6 +14,11 @@ import {
   Definition, DefinitionRequest,
   HoverRequest, Hover, MarkedString,
   ReferencesRequest,
+
+  TextDocumentSyncKind,
+  DidOpenTextDocumentNotification,
+  DidCloseTextDocumentNotification,
+  DidChangeTextDocumentNotification,
 } from 'vscode-languageserver';
 
 import {
@@ -86,6 +91,13 @@ function registerLanguages(extensions: Array<string>) {
       pattern: `**/*.{${extensions.join(',')}}`,
     }],
   };
+
+  registration.add(DidOpenTextDocumentNotification.type, documentOptions);
+  registration.add(DidChangeTextDocumentNotification.type, {
+    documentSelector: documentOptions.documentSelector,
+    syncKind: TextDocumentSyncKind.Full,
+  });
+  registration.add(DidCloseTextDocumentNotification.type, documentOptions);
 
   registration.add(CompletionRequest.type, documentOptions);
   registration.add(HoverRequest.type, documentOptions);
