@@ -43,7 +43,7 @@
   "activationEvents": [
     "workspaceContains:.gqlconfig"
   ],
-  "main": "./out/extension",
+  "main": "./out/client/extension",
   "contributes": {
     "configuration": {
       "type": "object",
@@ -67,6 +67,12 @@
         }
       }
     },
+    "commands": [
+      {
+        "command": "graphqlForVSCode.showOutputChannel",
+        "title": "GraphQL for VSCode: Show Output Channel"
+      }
+    ],
     "languages": [
       {
         "id": "graphql",
@@ -105,11 +111,13 @@
     ]
   },
   "scripts": {
-    "vscode:prepublish": "npm run compile-server && npm run compile",
+    "vscode:prepublish": "npm run clean && npm run compile-server && npm run compile",
+    "clean": "rimraf out",
     "compile-server": "tsc -p src/server",
-    "watch-server": "tsc --watch -p src/server",
+    "watch-server": "tsc -watch -p src/server",
     "compile": "tsc -p src/client",
     "watch": "tsc -watch -p src/client",
+    "dev": "npm run clean && npm run compile-server && npm run watch",
     "postinstall": "node ./node_modules/vscode/bin/install",
     "semantic-release": "semantic-release pre && vsce publish -p $VS_TOKEN && semantic-release post"
   },
@@ -119,7 +127,8 @@
     "semantic-release": "^6.3.2",
     "semantic-release-visualstudio-marketplace-version": "^1.0.0",
     "typescript": "^2.0.10",
-    "vscode": "^1.0.3"
+    "vscode": "^1.0.3",
+    "rimraf": "^2.6.1"
   },
   "dependencies": {
     "semver": "5.3.0",

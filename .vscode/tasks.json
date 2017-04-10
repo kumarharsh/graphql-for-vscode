@@ -13,7 +13,7 @@
   // we want to run npm
   "command": "npm",
   // we run the custom script "watch" as defined in package.json
-  "args": ["run", "watch"],
+  "args": ["run", "dev"],
 
   // the command is a shell script
   "isShellCommand": true,
@@ -22,7 +22,9 @@
   "showOutput": "always",
 
   // The tsc compiler is started in watching mode
-  "isWatching": true,
+  "isBackground": true,
+
+  "echoCommand": true,
 
   // use the standard tsc in watch mode problem matcher to find compile problems in the output.
   "problemMatcher": "$tsc-watch"

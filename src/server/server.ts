@@ -1,6 +1,7 @@
 'use strict';
 
 import * as semver from 'semver';
+import * as path from 'path';
 
 import {
   IPCMessageReader, IPCMessageWriter,
@@ -19,6 +20,7 @@ import {
   DidOpenTextDocumentNotification,
   DidCloseTextDocumentNotification,
   DidChangeTextDocumentNotification,
+  NotificationType,
 } from 'vscode-languageserver';
 
 import {
@@ -29,9 +31,9 @@ import {
   filePathToURI,
   uriToFilePath,
   toGQLPosition,
-} from './helpers';
 
-import * as path from 'path';
+  commonNotifications,
+} from './helpers';
 
 const moduleName = '@playlyfe/gql';
 
@@ -44,6 +46,10 @@ let documents: TextDocuments = new TextDocuments();
 // Make the text document manager listen on the connection
 // for open, change and close text document events
 documents.listen(connection);
+
+// Define server notifications to be sent to the client
+const serverInitialized = new NotificationType(commonNotifications.serverInitialized);
+const serverExited = new NotificationType(commonNotifications.serverExited);
 
 // After the server has started the client sends an initilize request. The server receives
 // in the passed params the rootPath of the workspace plus the client capabilites.
@@ -58,6 +64,7 @@ connection.onInitialize((params): Thenable<InitializeResult | ResponseError<Init
     resolveModule(moduleName, nodePath, trace) // loading gql from project
     .then((gqlModule) => {
       if (!semver.satisfies(gqlModule.version, '2.x')) {
+        connection.sendNotification(serverExited);
         return Promise.reject(
           new ResponseError(
             0,
@@ -79,6 +86,10 @@ connection.onInitialize((params): Thenable<InitializeResult | ResponseError<Init
 
 connection.onInitialized(() => {
   registerLanguages(gqlService.getFileExtensions());
+});
+
+connection.onExit(() => {
+  connection.sendNotification(serverExited);
 });
 
 function registerLanguages(extensions: Array<string>) {
@@ -120,11 +131,17 @@ function trace(message: string): void {
 
 function createGQLService(gqlModule, workspaceRoot, debug) {
   let lastSendDiagnostics = [];
+  let hasNotifiedClient = false;
 
   return new gqlModule.GQLService({
     cwd: workspaceRoot,
     debug,
     onChange() {
+      // @todo: move this it an `onInit()` function when implemented in @playlyfe/gql
+      if (gqlService._isInitialized && !hasNotifiedClient) {
+        hasNotifiedClient = true;
+        connection.sendNotification(serverInitialized);
+      }
       const errors = gqlService.status();
       const SCHEMA_FILE = '__schema__';
       const diagnosticsMap = {};

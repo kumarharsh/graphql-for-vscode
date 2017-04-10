@@ -82,3 +82,9 @@ export function filePathToURI(path: string): string {
 export function uriToFilePath(uri: string): string {
   return Files.uriToFilePath(uri);
 }
+
+// commonNotifications are shared between server and client
+export const commonNotifications = {
+  serverInitialized: 'graphqlForVSCode/serverInitialized',
+  serverExited: 'graphqlForVSCode/serverExited',
+};
