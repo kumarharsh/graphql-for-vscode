@@ -379,7 +379,7 @@
       "patterns": [
         { "include": "#graphql-comment" },
         {
-          "begin": "\\s*([_A-Za-z][_0-9A-Za-z]*)(?:\\s*(:))?",
+          "begin": "\\s*([_A-Za-z][_0-9A-Za-z]*)(?:\\s*(:))",
           "end": "(?=\\s*(?:(?:([_A-Za-z][_0-9A-Za-z]*)\\s*(:))|\\)))|\\s*(,)",
           "beginCaptures": {
             "1": { "name": "variable.parameter.graphql" },
