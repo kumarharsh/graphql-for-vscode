@@ -36,7 +36,7 @@ VSCode extension for GraphQL schema authoring & consumption.
 * **Great Syntax Highlighting**: Now, your gql files will look as beautiful as your other code with an awesome syntax highlighter which works not just with your schema files, but also within your Javascript/Typescript files.
 * **Linting**: This plugin uses a similar method as used by the [Codemirror graphql](https://github.com/graphql/codemirror-graphql) project for linting.
 * **Snippets**: Some commonly used snippets are provided which help while writing mutations and queries, such as definiting types, interfaces and input types.
-* **Autocomplete**: Uses the [@playlyfe/gql](npmjs.org/package/@playlyfe/gql) library to read your whole graphql schema definitions and provide you with autocomplete support while writing & editing your `.gql` files.
+* **Autocomplete**: Uses the [@playlyfe/gql](https://npmjs.org/package/@playlyfe/gql) library to read your whole graphql schema definitions and provide you with autocomplete support while writing & editing your `.gql` files.
 
 ## Setting it Up
 1. Ensure that you have the [@playlyfe/gql](npmjs.org/package/@playlyfe/gql) library (v2.x) installed and available to this plugin. If you've installed the library in a folder other than the workspace root, then add the path to the node_modules directory as a setting:
