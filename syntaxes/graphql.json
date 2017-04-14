@@ -74,6 +74,7 @@
             "2": { "name": "support.type.graphql" }
           }
         },
+        { "include": "#graphql-directive" },
         { "include": "#graphql-comment" },
         { "include": "#graphql-type-object" },
         { "include": "#literal-quasi-embedded" }
