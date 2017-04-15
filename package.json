@@ -22,7 +22,7 @@
   "contributors": [
     {
       "name": "Mayank Agarwal (@Mayank1791989)",
-      "url": "github.com/Mayank1791989",
+      "url": "https://github.com/Mayank1791989",
       "email": "mayank@playlyfe.com"
     }
   ],
@@ -115,6 +115,13 @@
         "embeddedLanguages": {
           "meta.embedded.block.graphql": "graphql"
         }
+      },
+      {
+        "injectTo": [
+          "text.gherkin.feature"
+        ],
+        "scopeName": "text.gherkin.feature.graphql",
+        "path": "./syntaxes/graphql.feature.json"
       }
     ],
     "snippets": [

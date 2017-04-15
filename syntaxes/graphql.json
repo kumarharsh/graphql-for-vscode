@@ -73,13 +73,13 @@
           "begin": "\\s*\\b(implements)\\b\\s*",
           "end": "\\s*(?={)",
           "beginCaptures": {
-            "1": { "name": "keyword.implements.graphql.RRR" }
+            "1": { "name": "keyword.implements.graphql" }
           },
           "patterns": [
             {
               "match": "\\s*([_A-Za-z][_0-9A-Za-z]*)",
               "captures": {
-                "1": { "name": "support.type.graphql.XXX" }
+                "1": { "name": "support.type.graphql" }
               }
             },
             { "include": "#graphql-comma" }
