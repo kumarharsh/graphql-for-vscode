@@ -29,14 +29,13 @@ VSCode extension for GraphQL schema authoring & consumption.
 * **Go to Definition**: Just <kbd>F12</kbd> or <kbd>Ctrl</kbd>+Click on any graphql type, and you'll jump right to it's definition.
 
     ![Go to Definition](https://cdn.rawgit.com/kumarharsh/graphql-for-vscode/master/images/goto-definition.gif)
-* **Schema Validation**: The plugin also validates your schema, so that you catch errors early.
-* **Autocomplete**: You also get full cross-file autocomplete support.
-
-    ![Autocomplete](https://cdn.rawgit.com/kumarharsh/graphql-for-vscode/master/images/autocomplete.gif)
-* **Great Syntax Highlighting**: Now, your gql files will look as beautiful as your other code with an awesome syntax highlighter which works not just with your schema files, but also within your Javascript/Typescript files.
-* **Linting**: This plugin uses a similar method as used by the [Codemirror graphql](https://github.com/graphql/codemirror-graphql) project for linting.
-* **Snippets**: Some commonly used snippets are provided which help while writing mutations and queries, such as definiting types, interfaces and input types.
 * **Autocomplete**: Uses the [@playlyfe/gql](https://npmjs.org/package/@playlyfe/gql) library to read your whole graphql schema definitions and provide you with autocomplete support while writing & editing your `.gql` files.
+
+  ![Autocomplete](https://cdn.rawgit.com/kumarharsh/graphql-for-vscode/master/images/autocomplete.gif)
+* **Schema Validation**: The plugin also validates your schema, so that you catch errors early.
+* **Great Syntax Highlighting**: Now, your gql files will look as beautiful as the rest of your code with an awesome syntax highlighter which works not just with your schema files, but also within your Javascript/Typescript files.
+* **Linting**: This plugin uses a similar method as used by the [Codemirror graphql](https://github.com/graphql/codemirror-graphql) project for linting.
+* **Snippets**: Some commonly used snippets are provided which help while writing mutations and queries, such as defining types, interfaces and input types.
 
 ## Setting it Up
 1. Ensure that you have the [@playlyfe/gql](npmjs.org/package/@playlyfe/gql) library (v2.x) installed and available to this plugin. If you've installed the library in a folder other than the workspace root, then add the path to the node_modules directory as a setting:
@@ -48,20 +47,24 @@ VSCode extension for GraphQL schema authoring & consumption.
 
 2. Ensure you have [watchman](https://facebook.github.io/watchman/docs/install.html) installed and available in your path. Watchman watches your gql files and provides up-to-date suggestions. For users on Windows, get the latest build mentioned in [this issue](https://github.com/facebook/watchman/issues/19) and add the location of `watchman.exe` to your environment path.
 
-3. Create a .gqlconfig file (required by the `@playlyfe/gql` package). Example:
-The .gqlconfig is a JSON file with only one required key: schema.files which is the path to your *.gql files relative to your workspace root.
-    ```json
+3. Create a .gqlconfig file (required by the `@playlyfe/gql` package).
+
+    ### A minimal example:
+    The .gqlconfig is a JSON file with only one required key: schema.files which is the path to your *.gql files relative to your workspace root.
+    ```js
     /* .gqlconfig */
     {
-      "schema": {
-        "files": "schemas/**/*.gql"
+      schema: {
+        files: 'schemas/**/*.gql'
       }
     }
     ```
     You can use the string `files: "**/*.gql"` instead if you want to find any `.gql` file recursively in the workspace dir.
 
-4. To enable autocomplete support within your JS(X)/TS(X) files, also add these lines to your `.gqlconfig` file:
-    ```json
+    To see the full configuration, check out the [GQL](https://github.com/Mayank1791989/gql) project's docs.
+
+4. To enable autocomplete support within your JS(X)/TS(X) files, and even your gherkin feature files, add these lines to your `.gqlconfig` file:
+    ```js
     /* .gqlconfig */
     {
       schema: {
@@ -85,11 +88,11 @@ The .gqlconfig is a JSON file with only one required key: schema.files which is 
         ],
       },
     }
-
     ```
 
+    Again, refer to [GQL](https://github.com/Mayank1791989/gql) docs for details about configuring your .gqlconfig.
+
 ## Future Plans
-* Enable autcomplete of graphql queries in JS/TS files.
 * Tests: Figure out tests.
 
 ## Contributing
@@ -113,6 +116,7 @@ If you're making changes to the server, then run `npm run watch-server` from the
 
 ## Changelog
 * Latest changes are available on the [releases](https://github.com/kumarharsh/graphql-for-vscode/releases) page.
+* Older changelogs can be found [here](/CHANGELOG.md).
 
 ---
 
