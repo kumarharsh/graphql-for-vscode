@@ -38,7 +38,7 @@ VSCode extension for GraphQL schema authoring & consumption.
 * **Snippets**: Some commonly used snippets are provided which help while writing mutations and queries, such as defining types, interfaces and input types.
 
 ## Setting it Up
-1. Ensure that you have the [@playlyfe/gql](npmjs.org/package/@playlyfe/gql) library (v2.x) installed and available to this plugin. If you've installed the library in a folder other than the workspace root, then add the path to the node_modules directory as a setting:
+1. Ensure that you have the [@playlyfe/gql](https://npmjs.org/package/@playlyfe/gql) library (v2.x) installed and available to this plugin. If you've installed the library in a folder other than the workspace root, then add the path to the node_modules directory as a setting:
     ```json
     {
       "graphqlForVSCode.nodePath": "ui/node_modules"
@@ -112,7 +112,7 @@ then just press <kbd>F5</kbd> to launch the *Extension Development Host* instanc
 If you're making changes to the server, then run `npm run watch-server` from the root directory. Then, run the client in debug mode. If you make any change in the server code, you need to reload the *Extension Development Host* instance of vscode.
 
 ## Major Contributors
-* [Mayank Agarwal](github.com/Mayank1791989) - added autocomplete, goto definition, schema validation support
+* [Mayank Agarwal](https://github.com/Mayank1791989) - added autocomplete, goto definition, schema validation support
 
 ## Changelog
 * Latest changes are available on the [releases](https://github.com/kumarharsh/graphql-for-vscode/releases) page.
