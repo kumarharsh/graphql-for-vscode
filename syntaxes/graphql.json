@@ -309,6 +309,7 @@
         { "include": "#graphql-inline-fragment" },
         { "include": "#graphql-comma" },
         { "include": "#graphql-comment" },
+        { "include": "#native-interpolation" },
         { "include": "#literal-quasi-embedded" }
       ]
     },
@@ -575,6 +576,23 @@
         { "include": "#graphql-skip-newlines" },
         { "include": "#graphql-comment" },
         { "include": "#literal-quasi-embedded" }
+      ]
+    },
+    "native-interpolation": {
+      "name": "native.interpolation",
+      "begin": "\\s*(\\${)",
+      "end": "(})",
+      "beginCaptures": {
+        "1": { "name": "keyword.other.substitution.begin" }
+      },
+      "endCaptures": {
+        "1": { "name": "keyword.other.substitution.end" }
+      },
+      "patterns": [
+        { "include": "source.js" },
+        { "include": "source.ts" },
+        { "include": "source.jsx" },
+        { "include": "source.tsx" }
       ]
     },
     "graphql-skip-newlines": {
