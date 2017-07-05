@@ -218,7 +218,7 @@
           "begin": "\\s*(\\[)",
           "end": "\\s*(\\])(?:\\s*(!))?",
           "captures": {
-            "1": { "name": "meta.brace.squart.graphql" },
+            "1": { "name": "meta.brace.square.graphql" },
             "2": { "name": "keyword.operator.nulltype.graphql" }
           },
           "patterns": [
@@ -522,10 +522,10 @@
           "name": "meta.objectvalues.graphql",
           "begin": "\\s*+({)",
           "end": "\\s*(})",
-          "endCaptures": {
+          "beginCaptures": {
             "1": { "name": "meta.brace.curly.graphql" }
           },
-          "beginCaptures": {
+          "endCaptures": {
             "1": { "name": "meta.brace.curly.graphql" }
           },
           "patterns": [
