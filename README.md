@@ -1,14 +1,14 @@
-<h1 align="center"><img src="https://cdn.rawgit.com/kumarharsh/graphql-for-vscode/master/images/logo.svg" alt="Logo" height="100" /></h1>
+<h1 align="center"><img src="https://cdn.rawgit.com/kumarharsh/graphql-for-vscode/master/images/logo.png" alt="Logo" height="128" /></h1>
 <h2 align="center">Graphql For VSCode</h2>
 <div align="center">
   <a href="https://marketplace.visualstudio.com/items?itemName=kumar-harsh.graphql-for-vscode">
-    <img src="http://vsmarketplacebadge.apphb.com/version-short/kumar-harsh.graphql-for-vscode.svg" alt="Latest Release">
+    <img src="https://vsmarketplacebadge.apphb.com/version-short/kumar-harsh.graphql-for-vscode.svg" alt="Latest Release">
   </a>
   <a href="https://marketplace.visualstudio.com/items?itemName=kumar-harsh.graphql-for-vscode">
-    <img src="http://vsmarketplacebadge.apphb.com/installs-short/kumar-harsh.graphql-for-vscode.svg" alt="Installs">
+    <img src="https://vsmarketplacebadge.apphb.com/installs-short/kumar-harsh.graphql-for-vscode.svg" alt="Installs">
   </a>
   <a href="https://marketplace.visualstudio.com/items?itemName=kumar-harsh.graphql-for-vscode">
-    <img src="http://vsmarketplacebadge.apphb.com/rating-short/kumar-harsh.graphql-for-vscode.svg" alt="Rating">
+    <img src="https://vsmarketplacebadge.apphb.com/rating-short/kumar-harsh.graphql-for-vscode.svg" alt="Rating">
   </a>
 
   <br>

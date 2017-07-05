@@ -39,7 +39,7 @@
     "url": "https://github.com/kumarharsh/graphql-for-vscode/issues"
   },
   "homepage": "https://github.com/kumarharsh/graphql-for-vscode/blob/master/README.md",
-  "icon": "images/logo.svg",
+  "icon": "images/logo.png",
   "activationEvents": [
     "workspaceContains:.gqlconfig"
   ],
