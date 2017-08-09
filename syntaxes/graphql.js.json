@@ -4,7 +4,7 @@
   "patterns": [
     {
       "name": "taggedTemplates",
-      "begin": "(Relay.QL|gql)(`)",
+      "begin": "(Relay.QL|gql|graphql)(`)",
       "beginCaptures": {
         "1": {
           "name": "entity.name.function.tagged-template.js"
