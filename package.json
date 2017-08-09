@@ -99,7 +99,7 @@
           "source.jsx",
           "source.tsx"
         ],
-        "scopeName": "relayQL.graphql",
+				"scopeName": "inline.graphql",
         "path": "./syntaxes/graphql.js.json"
       }
     ],
