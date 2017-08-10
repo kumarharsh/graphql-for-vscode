@@ -99,7 +99,7 @@
           "source.jsx",
           "source.tsx"
         ],
-				"scopeName": "inline.graphql",
+        "scopeName": "inline.graphql",
         "path": "./syntaxes/graphql.js.json"
       }
     ],
