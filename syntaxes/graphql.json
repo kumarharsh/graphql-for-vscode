@@ -3,6 +3,7 @@
   "scopeName": "source.graphql",
   "fileTypes": [
     "graphql",
+    "graphqls",
     "gql",
     "graphcool"
   ],
