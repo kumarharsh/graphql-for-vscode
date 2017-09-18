@@ -54,7 +54,7 @@ const serverExited = new NotificationType(commonNotifications.serverExited);
 // After the server has started the client sends an initilize request. The server receives
 // in the passed params the rootPath of the workspace plus the client capabilites.
 let gqlService;
-connection.onInitialize((params): Thenable<InitializeResult | ResponseError<InitializeError>> => {
+connection.onInitialize((params): PromiseLike<InitializeResult> => {
   let initOptions: { nodePath: string, debug: boolean } = params.initializationOptions;
   let workspaceRoot = params.rootPath;
   const nodePath = toAbsolutePath(initOptions.nodePath || '', workspaceRoot);
@@ -62,15 +62,15 @@ connection.onInitialize((params): Thenable<InitializeResult | ResponseError<Init
 
   return (
     resolveModule(moduleName, nodePath, trace) // loading gql from project
-    .then((gqlModule) => {
+    .then((gqlModule): PromiseLike<InitializeResult> | InitializeResult => {
       if (!semver.satisfies(gqlModule.version, '2.x')) {
         connection.sendNotification(serverExited);
-        return Promise.reject(
-          new ResponseError(
-            0,
-            'Plugin requires `@playlyfe/gql v2.x`. Please upgrade the `@playlyfe/gql` package and restart vscode.',
-          ),
-        );
+         return Promise.reject<InitializeResult>(
+           new ResponseError(
+             0,
+             'Plugin requires `@playlyfe/gql v2.x`. Please upgrade the `@playlyfe/gql` package and restart vscode.',
+           ),
+         );
       }
 
       gqlService = createGQLService(gqlModule, workspaceRoot, debug);
