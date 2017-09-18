@@ -100,7 +100,10 @@
           "source.tsx"
         ],
         "scopeName": "inline.graphql",
-        "path": "./syntaxes/graphql.js.json"
+        "path": "./syntaxes/graphql.js.json",
+        "embeddedLanguages": {
+          "meta.embedded.block.graphql": "graphql"
+        }
       }
     ],
     "snippets": [

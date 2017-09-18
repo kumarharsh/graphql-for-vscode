@@ -4,6 +4,7 @@
   "patterns": [
     {
       "name": "taggedTemplates",
+      "contentName": "meta.embedded.block.graphql",
       "begin": "(Relay\\.QL|gql|graphql(\\.experimental)?)(`)",
       "beginCaptures": {
         "1": {
