@@ -16,7 +16,7 @@
   ],
   "publisher": "kumar-harsh",
   "engines": {
-    "vscode": "^1.6.0"
+    "vscode": "^1.16.0"
   },
   "license": "MIT",
   "contributors": [
@@ -124,11 +124,11 @@
   "devDependencies": {
     "@types/node": "^6.0.40",
     "conventional-recommended-bump": "^0.3.0",
+    "rimraf": "^2.6.1",
     "semantic-release": "^6.3.2",
     "semantic-release-visualstudio-marketplace-version": "^1.0.0",
-    "typescript": "^2.0.10",
-    "vscode": "^1.0.3",
-    "rimraf": "^2.6.1"
+    "typescript": "^2.5.2",
+    "vscode": "^1.1.5"
   },
   "dependencies": {
     "semver": "5.3.0",
