@@ -65,12 +65,12 @@ connection.onInitialize((params): PromiseLike<InitializeResult> => {
     .then((gqlModule): PromiseLike<InitializeResult> | InitializeResult => {
       if (!semver.satisfies(gqlModule.version, '2.x')) {
         connection.sendNotification(serverExited);
-         return Promise.reject<InitializeResult>(
-           new ResponseError(
-             0,
-             'Plugin requires `@playlyfe/gql v2.x`. Please upgrade the `@playlyfe/gql` package and restart vscode.',
-           ),
-         );
+        return Promise.reject<InitializeResult>(
+          new ResponseError(
+            0,
+            'Plugin requires `@playlyfe/gql v2.x`. Please upgrade the `@playlyfe/gql` package and restart vscode.',
+          ),
+        );
       }
 
       gqlService = createGQLService(gqlModule, workspaceRoot, debug);
