@@ -1,1 +1,1 @@
-/// <reference path="globals/graphql/index.d.ts" />
+import 'globals/graphql/index.d.ts';

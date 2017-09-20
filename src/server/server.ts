@@ -1,48 +1,45 @@
 'use strict';
 
-import * as semver from 'semver';
 import * as path from 'path';
+import * as semver from 'semver';
 
 import {
-  IPCMessageReader, IPCMessageWriter,
-  createConnection, IConnection,
-  TextDocuments, Diagnostic,
-  InitializeParams, InitializeResult, InitializeError, ResponseError,
+  BulkRegistration, CompletionItem, CompletionRequest,
+  createConnection, Definition,
+  DefinitionRequest, DidChangeTextDocumentNotification, DidCloseTextDocumentNotification,
 
-  Location, TextDocumentPositionParams,
-  BulkRegistration, TextDocumentRegistrationOptions,
-  CompletionRequest, CompletionItem, CompletionItemKind,
-  Definition, DefinitionRequest,
-  HoverRequest, Hover, MarkedString,
+  DidOpenTextDocumentNotification, Hover,
+  HoverRequest, IConnection, InitializeResult,
+  IPCMessageReader, IPCMessageWriter,
+  Location, NotificationType,
   ReferencesRequest,
 
+  ResponseError,
+  TextDocumentPositionParams,
+  TextDocumentRegistrationOptions,
+  TextDocuments,
   TextDocumentSyncKind,
-  DidOpenTextDocumentNotification,
-  DidCloseTextDocumentNotification,
-  DidChangeTextDocumentNotification,
-  NotificationType,
 } from 'vscode-languageserver';
 
 import {
-  resolveModule,
-  makeDiagnostic,
-  mapSeverity,
-  mapLocation,
+  commonNotifications,
   filePathToURI,
-  uriToFilePath,
+  makeDiagnostic,
+  mapLocation,
+  resolveModule,
   toGQLPosition,
 
-  commonNotifications,
+  uriToFilePath,
 } from './helpers';
 
 const moduleName = '@playlyfe/gql';
 
 // Create a connection for the server. The connection uses Node's IPC as a transport
-let connection: IConnection = createConnection(new IPCMessageReader(process), new IPCMessageWriter(process));
+const connection: IConnection = createConnection(new IPCMessageReader(process), new IPCMessageWriter(process));
 
 // Create a simple text document manager. The text document manager
 // supports full document sync only
-let documents: TextDocuments = new TextDocuments();
+const documents: TextDocuments = new TextDocuments();
 // Make the text document manager listen on the connection
 // for open, change and close text document events
 documents.listen(connection);
@@ -55,8 +52,8 @@ const serverExited = new NotificationType(commonNotifications.serverExited);
 // in the passed params the rootPath of the workspace plus the client capabilites.
 let gqlService;
 connection.onInitialize((params): PromiseLike<InitializeResult> => {
-  let initOptions: { nodePath: string, debug: boolean } = params.initializationOptions;
-  let workspaceRoot = params.rootPath;
+  const initOptions: { nodePath: string, debug: boolean } = params.initializationOptions;
+  const workspaceRoot = params.rootPath;
   const nodePath = toAbsolutePath(initOptions.nodePath || '', workspaceRoot);
   const debug = initOptions.debug;
 
@@ -75,7 +72,7 @@ connection.onInitialize((params): PromiseLike<InitializeResult> => {
 
       gqlService = createGQLService(gqlModule, workspaceRoot, debug);
 
-      let result: InitializeResult = {
+      const result: InitializeResult = {
         capabilities: {}, // see registerLanguages
       };
 
@@ -92,11 +89,12 @@ connection.onExit(() => {
   connection.sendNotification(serverExited);
 });
 
-function registerLanguages(extensions: Array<string>) {
-  console.log('[vscode] File extensions registered: ', extensions);
+function registerLanguages(extensions: string[]) {
+  // tslint:disable-next-line no-console
+  console.info('[vscode] File extensions registered: ', extensions);
 
-  let registration = BulkRegistration.create();
-  let documentOptions: TextDocumentRegistrationOptions = {
+  const registration = BulkRegistration.create();
+  const documentOptions: TextDocumentRegistrationOptions = {
     documentSelector: [{
       scheme: 'file',
       pattern: `**/*.{${extensions.join(',')}}`,
@@ -120,12 +118,13 @@ function registerLanguages(extensions: Array<string>) {
 
 function toAbsolutePath(nodePath, workspaceRoot) {
   if (!path.isAbsolute(nodePath)) {
-  	return path.join(workspaceRoot, nodePath);
+    return path.join(workspaceRoot, nodePath);
   }
   return nodePath;
 }
 
 function trace(message: string): void {
+  // tslint:disable-next-line no-console
   connection.console.info(message);
 }
 
@@ -153,7 +152,7 @@ function createGQLService(gqlModule, workspaceRoot, debug) {
             diagnosticsMap[SCHEMA_FILE] = {
               uri: SCHEMA_FILE,
               diagnostics: [],
-            }
+            };
           }
           diagnosticsMap[SCHEMA_FILE].diagnostics.push(makeDiagnostic(error, { line: 1, column: 1 }));
         } else {
@@ -164,7 +163,7 @@ function createGQLService(gqlModule, workspaceRoot, debug) {
                 diagnostics: [],
               };
             }
-            diagnosticsMap[loc.path].diagnostics.push(makeDiagnostic(error, loc))
+            diagnosticsMap[loc.path].diagnostics.push(makeDiagnostic(error, loc));
           });
         }
       });
@@ -184,7 +183,7 @@ function createGQLService(gqlModule, workspaceRoot, debug) {
       });
 
       lastSendDiagnostics = sendDiagnostics;
-    }
+    },
   });
 }
 

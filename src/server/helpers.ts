@@ -1,14 +1,12 @@
-import Uri from 'vscode-uri';
 import {
-  Files,
-  DiagnosticSeverity,
   Diagnostic,
+  DiagnosticSeverity,
+  Files,
   Location,
-  Range,
   Position,
+  Range,
 } from 'vscode-languageserver';
-
-import * as path from 'path';
+import Uri from 'vscode-uri';
 
 export function resolveModule(moduleName, nodePath, tracer) {
   return Files.resolve(moduleName, nodePath, nodePath, tracer).then((modulePath) => {
@@ -19,14 +17,13 @@ export function resolveModule(moduleName, nodePath, tracer) {
     return _module;
   }, (error) => {
     return Promise.reject(new Error(
-      `Couldn't find module '${moduleName}' in path '${nodePath}'.`
-    ))
+      `Couldn't find module '${moduleName}' in path '${nodePath}'.`,
+    ));
   });
 }
 
 export function makeDiagnostic(error, position): Diagnostic {
   const startPosition = mapPosition(position);
-  let severity;
 
   return {
     severity: mapSeverity(error.severity),
@@ -36,7 +33,7 @@ export function makeDiagnostic(error, position): Diagnostic {
       start: startPosition,
       end: startPosition,
     },
-    code: 'syntax'
+    code: 'syntax',
   };
 }
 
@@ -75,8 +72,8 @@ export function mapSeverity(severity): DiagnosticSeverity {
   }
 }
 
-export function filePathToURI(path: string): string {
-  return Uri.file(path).toString();
+export function filePathToURI(filePath: string): string {
+  return Uri.file(filePath).toString();
 }
 
 export function uriToFilePath(uri: string): string {

@@ -6,25 +6,20 @@
 
 import * as path from 'path';
 import {
-  workspace,
   commands,
-  window,
-  Disposable,
-  TextEditor,
   ExtensionContext,
   StatusBarAlignment,
+  TextEditor,
+  window,
+  workspace,
 } from 'vscode';
 import {
   LanguageClient,
   LanguageClientOptions,
-  SettingMonitor,
-  ServerOptions,
-  TransportKind,
-  ErrorHandler,
-  ErrorAction,
-  CloseAction,
-  State as ClientState,
   NotificationType,
+  ServerOptions,
+  State as ClientState,
+  TransportKind,
 } from 'vscode-languageclient';
 
 import { commonNotifications } from '../server/helpers';
@@ -33,7 +28,7 @@ enum Status {
   init = 1,
   ok = 2,
   error = 3,
-};
+}
 const extName = 'graphqlForVSCode';
 const statusBarText = 'GQL';
 const statusBarUIElements = {
@@ -53,7 +48,7 @@ const statusBarUIElements = {
     tooltip: 'Graphql language server has stopped',
   },
 };
-let statusBarItem = window.createStatusBarItem(StatusBarAlignment.Right, 0);
+const statusBarItem = window.createStatusBarItem(StatusBarAlignment.Right, 0);
 let extensionStatus: Status = Status.ok;
 let serverRunning: boolean = false;
 const statusBarActivationLanguageIds = [
@@ -67,21 +62,19 @@ const statusBarActivationLanguageIds = [
 export function activate(context: ExtensionContext) {
 
   // The server is implemented in node
-  let serverModule = context.asAbsolutePath(path.join('out', 'server', 'server.js'));
+  const serverModule = context.asAbsolutePath(path.join('out', 'server', 'server.js'));
   // The debug options for the server
-  let debugOptions = { execArgv: ["--nolazy", "--debug=6004"] };
+  const debugOptions = { execArgv: ['--nolazy', '--debug=6004'] };
 
   // If the extension is launched in debug mode then the debug server options are used
   // Otherwise the run options are used
-  let serverOptions: ServerOptions = {
+  const serverOptions: ServerOptions = {
     run : { module: serverModule, transport: TransportKind.ipc },
-    debug: { module: serverModule, transport: TransportKind.ipc, options: debugOptions }
-  }
+    debug: { module: serverModule, transport: TransportKind.ipc, options: debugOptions },
+  };
 
   // Options to control the language client
-  let serverCalledProcessExit: boolean = false;
-  let defaultErrorHandler: ErrorHandler;
-  let clientOptions: LanguageClientOptions = {
+  const clientOptions: LanguageClientOptions = {
     diagnosticCollectionName: 'graphql',
     initializationOptions: () => {
       const configuration = workspace.getConfiguration(extName);
@@ -96,10 +89,10 @@ export function activate(context: ExtensionContext) {
       client.outputChannel.show(true);
       return false;
     },
-  }
+  };
 
   // Create the language client and start the client.
-  let client = new LanguageClient('Graphql For VSCode', serverOptions, clientOptions);
+  const client = new LanguageClient('Graphql For VSCode', serverOptions, clientOptions);
 
   // Push the disposable to the context's subscriptions so that the
   // client can be deactivated on extension deactivation
@@ -109,7 +102,7 @@ export function activate(context: ExtensionContext) {
     statusBarItem,
   );
 
-  client.onReady().then(function() {
+  client.onReady().then(() => {
     initializeStatusBar(context, client);
   });
 }
@@ -131,16 +124,16 @@ function initializeStatusBar(context, client) {
   });
 
   client.onDidChangeState((event) => {
-		if (event.newState === ClientState.Running) {
+    if (event.newState === ClientState.Running) {
       extensionStatus = Status.ok;
-			serverRunning = true;
-		} else {
+      serverRunning = true;
+    } else {
       extensionStatus = Status.error;
-			client.info('The graphql server has stopped running');
-			serverRunning = false;
-		}
+      client.info('The graphql server has stopped running');
+      serverRunning = false;
+    }
     updateStatusBar(window.activeTextEditor);
-	});
+  });
   updateStatusBar(window.activeTextEditor);
 
   window.onDidChangeActiveTextEditor((editor: TextEditor) => {
