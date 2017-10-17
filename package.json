@@ -104,6 +104,21 @@
         "embeddedLanguages": {
           "meta.embedded.block.graphql": "graphql"
         }
+      },
+      {
+        "language": "graphql",
+        "scopeName": "source.graphql",
+        "path": "./syntaxes/graphql.json"
+      },
+      {
+        "injectTo": [
+          "source.ruby"
+        ],
+        "scopeName": "inline.graphql",
+        "path": "./syntaxes/graphql.rb.json",
+        "embeddedLanguages": {
+          "meta.embedded.block.graphql": "graphql"
+        }
       }
     ],
     "snippets": [
