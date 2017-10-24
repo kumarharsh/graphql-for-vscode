@@ -5,7 +5,7 @@ cache:
 notifications:
   email: false
 node_js:
-  - '6'
+  - '8'
 before_install:
   npm install -g vsce
 before_script:
