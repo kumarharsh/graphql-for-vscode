@@ -106,11 +106,6 @@
         }
       },
       {
-        "language": "graphql",
-        "scopeName": "source.graphql",
-        "path": "./syntaxes/graphql.json"
-      },
-      {
         "injectTo": [
           "source.ruby"
         ],

@@ -63,7 +63,7 @@ VSCode extension for GraphQL schema authoring & consumption.
 
     To see the full configuration, check out the [GQL](https://github.com/Mayank1791989/gql) project's docs.
 
-4. To enable autocomplete support within your JS(X)/TS(X) files, and even your gherkin feature files, add these lines to your `.gqlconfig` file:
+4. To enable autocomplete support within your code, add these lines to your `.gqlconfig` file. The `query` section of the config contains an array of `file` config with matchers. You can add more files by directing the `EmbeddedQueryParser` to run when your code within the `startTag` and `endTag` matches:
     ```js
     /* .gqlconfig */
     {
@@ -73,38 +73,24 @@ VSCode extension for GraphQL schema authoring & consumption.
       query: {
         files: [ /* define file paths which you'd like the gql parser to watch and give autocomplete suggestions for */
           {
-            match: 'ui/src/**/*.js',
+            match: 'ui/src/**/*.js', // for js
             parser: ['EmbeddedQueryParser', { startTag: 'Relay\\.QL`', endTag: '`' }],
             isRelay: true,
           },
           {
-            match: 'features/**/*.feature',
+            match: 'features/**/*.feature', // for gherkin
             parser: ['EmbeddedQueryParser', { startTag: 'graphql request\\s+"""', endTag: '"""' }],
           },
+          {
+            "match": "lib/**/*.rb", // sample config you might use for Ruby-aware highlighting (inside `<<-GRAPHQL` heredocs)
+            "parser": ["EmbeddedQueryParser", { "startTag": "<<-GRAPHQL", "endTag": "GRAPHQL" }]
+          }
           {
             match: 'fixtures/**/*.gql',
             parser: 'QueryParser',
           },
         ],
       },
-    }
-    ```
-
-5. Here's an example of a sample config you might use for Ruby-aware highlighting (inside `<<-GRAPHQL` heredocs):
-
-    ```
-    {
-      schema: {
-        files: "schemas/**/*.gql"
-      },
-      query: {
-        files: [
-          {
-            "match": "lib/**/*.rb",
-            "parser": ["EmbeddedQueryParser", { "startTag": "<<-GRAPHQL", "endTag": "GRAPHQL" }]
-          }
-        ]
-      }
     }
     ```
 
