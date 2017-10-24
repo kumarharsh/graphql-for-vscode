@@ -138,7 +138,7 @@
     "@types/node": "^7.0.46",
     "conventional-recommended-bump": "^1.0.2",
     "rimraf": "^2.6.2",
-    "semantic-release": "^8.2.2",
+    "semantic-release": "^7.0.2",
     "semantic-release-visualstudio-marketplace-version": "^1.0.0",
     "tslint": "^4.5.1",
     "typescript": "^2.5.3",

@@ -5,11 +5,11 @@ notifications:
 node_js:
   - '8'
 before_install:
-  npm install -g vsce
+  yarn global add vsce
 before_script:
-  npm prune
+  yarn prune
 after_success:
-  npm run semantic-release
+  yarn semantic-release
 branches:
   only:
     - master
