@@ -109,7 +109,7 @@
         "injectTo": [
           "source.ruby"
         ],
-        "scopeName": "inline.graphql",
+        "scopeName": "inline.graphql.rb",
         "path": "./syntaxes/graphql.rb.json",
         "embeddedLanguages": {
           "meta.embedded.block.graphql": "graphql"
