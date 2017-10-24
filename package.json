@@ -16,7 +16,7 @@
   ],
   "publisher": "kumar-harsh",
   "engines": {
-    "vscode": "^1.16.0"
+    "vscode": "^1.17.0"
   },
   "license": "MIT",
   "contributors": [
@@ -135,20 +135,20 @@
     "semantic-release": "semantic-release pre && vsce publish -p $VS_TOKEN && semantic-release post"
   },
   "devDependencies": {
-    "@types/node": "^6.0.40",
-    "conventional-recommended-bump": "^0.3.0",
-    "rimraf": "^2.6.1",
-    "semantic-release": "^6.3.2",
+    "@types/node": "^7.0.46",
+    "conventional-recommended-bump": "^1.0.2",
+    "rimraf": "^2.6.2",
+    "semantic-release": "^8.2.2",
     "semantic-release-visualstudio-marketplace-version": "^1.0.0",
-    "typescript": "^2.5.2",
-    "vscode": "^1.1.5"
+    "tslint": "^4.5.1",
+    "typescript": "^2.5.3",
+    "vscode": "^1.1.6"
   },
   "dependencies": {
-    "semver": "5.3.0",
-    "tslint": "^4.5.1",
-    "vscode-languageclient": "^3.0.3",
-    "vscode-languageserver": "^3.0.4",
-    "vscode-uri": "^1.0.0"
+    "semver": "5.4.1",
+    "vscode-languageclient": "^3.4.5",
+    "vscode-languageserver": "^3.4.3",
+    "vscode-uri": "^1.0.1"
   },
   "galleryBanner": {
     "color": "#2e2348",
