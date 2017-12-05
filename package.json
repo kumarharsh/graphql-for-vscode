@@ -79,7 +79,7 @@
         "extensions": [
           ".gql",
           ".graphql",
-	  ".graphqls"
+          ".graphqls"
         ],
         "aliases": [
           "GraphQL"
@@ -133,11 +133,15 @@
     "watch": "tsc -watch -p src/client",
     "dev": "yarn clean && yarn compile-server && yarn watch",
     "postinstall": "node ./node_modules/vscode/bin/install",
-    "semantic-release": "semantic-release pre && vsce publish -p $VS_TOKEN && semantic-release post"
+    "semantic-release": "semantic-release pre && vsce publish -p $VS_TOKEN && semantic-release post",
+    "commitmsg": "commitlint -e %GIT_PARAMS%"
   },
   "devDependencies": {
+    "@commitlint/cli": "^5.2.0",
+    "@commitlint/config-conventional": "^5.1.3",
     "@types/node": "^7.0.46",
     "conventional-recommended-bump": "^1.0.2",
+    "husky": "^0.14.3",
     "rimraf": "^2.6.2",
     "semantic-release": "^7.0.2",
     "semantic-release-visualstudio-marketplace-version": "^1.0.0",
@@ -158,5 +162,8 @@
   "release": {
     "getLastRelease": "semantic-release-visualstudio-marketplace-version",
     "analyzeCommits": "./scripts/analyzeCommits"
+  },
+  "commitlint": {
+    "extends": ["@commitlint/config-conventional"]
   }
 }

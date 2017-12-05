@@ -5,7 +5,10 @@ notifications:
 node_js:
   - '8'
 before_install:
+  git fetch --unshallow
   yarn global add vsce
+script:
+  - /bin/bash scripts/lint-commits.sh
 after_success:
   yarn semantic-release
 branches:
