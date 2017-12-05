@@ -134,7 +134,7 @@
     "dev": "yarn clean && yarn compile-server && yarn watch",
     "postinstall": "node ./node_modules/vscode/bin/install",
     "semantic-release": "semantic-release pre && vsce publish -p $VS_TOKEN && semantic-release post",
-    "commitmsg": "commitlint -e"
+    "commitmsg": "commitlint -e $GIT_PARAMS"
   },
   "devDependencies": {
     "@commitlint/cli": "^5.2.0",
@@ -164,6 +164,8 @@
     "analyzeCommits": "./scripts/analyzeCommits"
   },
   "commitlint": {
-    "extends": ["@commitlint/config-conventional"]
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
   }
 }
