@@ -26,6 +26,8 @@ VSCode extension for GraphQL schema authoring & consumption.
 
 
 ## What's in the Box?
+
+[![Greenkeeper badge](https://badges.greenkeeper.io/kumarharsh/graphql-for-vscode.svg)](https://greenkeeper.io/)
 * **Go to Definition**: Just <kbd>F12</kbd> or <kbd>Ctrl</kbd>+Click on any graphql type, and you'll jump right to it's definition.
 
     ![Go to Definition](https://cdn.rawgit.com/kumarharsh/graphql-for-vscode/master/images/goto-definition.gif)
