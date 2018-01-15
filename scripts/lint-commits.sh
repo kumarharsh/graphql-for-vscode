@@ -1,4 +1,3 @@
-# lint-commits.sh
 #!/bin/bash
 set -e
 set -u
@@ -7,7 +6,7 @@ if [[ $TRAVIS_PULL_REQUEST_SLUG != "" && $TRAVIS_PULL_REQUEST_SLUG != $TRAVIS_RE
 	# This is a Pull Request from a different slug, hence a forked repository
 	git remote add "$TRAVIS_PULL_REQUEST_SLUG" "https://github.com/$TRAVIS_PULL_REQUEST_SLUG.git"
 	git fetch "$TRAVIS_PULL_REQUEST_SLUG"
-	
+
 	# Use the fetched remote pointing to the source clone for comparison
 	TO="$TRAVIS_PULL_REQUEST_SLUG/$TRAVIS_PULL_REQUEST_BRANCH"
 else
@@ -22,4 +21,3 @@ fi
 # Always lint the triggerig commit
 # - Covers direct commits
 ./node_modules/.bin/commitlint --from="$TRAVIS_COMMIT"
-

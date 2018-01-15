@@ -10,7 +10,4 @@ before_install:
 script:
   - /bin/bash scripts/lint-commits.sh
 after_success:
-  yarn semantic-release
-branches:
-  only:
-    - master
+  - /bin/bash scripts/deploy.sh
