@@ -7,7 +7,14 @@ node_js:
 before_install:
   - git fetch --unshallow
   - yarn global add vsce
+  - yarn global add greenkeeper-lockfile@1
+before_script: greenkeeper-lockfile-update
 script:
   - /bin/bash scripts/lint-commits.sh
+after_script: greenkeeper-lockfile-upload
 after_success:
   - /bin/bash scripts/deploy.sh
+branches:
+  only:
+    - master
+    - /^greenkeeper-.*$/
