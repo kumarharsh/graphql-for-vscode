@@ -5,7 +5,7 @@
     {
       "name": "taggedTemplates",
       "contentName": "meta.embedded.block.graphql",
-      "begin": "(Relay\\.QL|gql|graphql(\\.experimental)?)(`)",
+      "begin": "\\s*+(?:((Relay)(?:(\\?\\.)|(\\.))(QL))|(gql|graphql|graphql\\.experimental)|(/\\* GraphQL \\*/))\\s*((`))",
       "beginCaptures": {
         "1": {
           "name": "entity.name.function.tagged-template.js"
