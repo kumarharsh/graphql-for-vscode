@@ -65,6 +65,7 @@
       "name": "meta.type.interface.graphql",
       "begin": "\\s*\\b(?:(extends)?\\b\\s*\\b(type)|(interface)|(input))\\b\\s*([_A-Za-z][_0-9A-Za-z]*)?",
       "end": "(?=.)",
+      "applyEndPatternLast": 1,
       "captures": {
         "1": { "name": "keyword.type.graphql"},
         "2": { "name": "keyword.type.graphql"},
