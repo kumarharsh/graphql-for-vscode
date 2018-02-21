@@ -3,7 +3,6 @@
   "injectionSelector": "L:source -string -comment",
   "patterns": [
     {
-      "name": "taggedTemplates",
       "contentName": "meta.embedded.block.graphql",
       "begin": "(?=(?><<[-~](['\"]?)((?:[_\\w]+_|)GRAPHQL)\\b\\1))",
       "beginCaptures": {
