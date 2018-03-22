@@ -78,7 +78,7 @@ VSCode extension for GraphQL schema authoring & consumption.
           {
             "match": "lib/**/*.rb", // sample config you might use for Ruby-aware highlighting (inside `<<-GRAPHQL` heredocs)
             "parser": ["EmbeddedQueryParser", { "startTag": "<<-GRAPHQL", "endTag": "GRAPHQL" }]
-          }
+          },
           {
             match: 'fixtures/**/*.gql',
             parser: 'QueryParser',
