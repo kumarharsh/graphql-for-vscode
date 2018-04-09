@@ -28,7 +28,14 @@ VSCode extension for GraphQL schema authoring & consumption.
   ![Autocomplete](https://cdn.rawgit.com/kumarharsh/graphql-for-vscode/master/images/autocomplete.gif)
 * **Schema Validation**: The plugin also validates your schema, so that you catch errors early.
 * **Linting**: This plugin uses a similar method as used by the [Codemirror graphql](https://github.com/graphql/codemirror-graphql) project for linting.
-* **Great Syntax Highlighting**: Now, your graphql queries, mutations and gql files will look as beautiful as the rest of your code with an awesome syntax highlighter. It works not just with your .gql/.graphql schema files, but also within your code - supports syntax highlighting within Javascript, Typescript, Ruby and Cucumber files. Feel free to submit a PR for any other language you want support for.
+* **Great Syntax Highlighting**: Now, your graphql queries, mutations and gql files will look as beautiful as the rest of your code with an awesome syntax highlighter. It works not just with your .gql/.graphql schema files, but also within your code - supports syntax highlighting within:
+  + Javascript
+  + Typescript
+  + Vue
+  + Ruby
+  + Cucumber
+  + (Submit a PR to support your language!)
+
 * **Snippets**: Some commonly used snippets are provided which help while writing mutations and queries, such as defining types, interfaces and input types.
 
 ## Setting it Up
