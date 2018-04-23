@@ -14,8 +14,8 @@
     "graphql": {
       "patterns": [
         { "include": "#graphql-comment" },
-        { "include": "#graphql-description-singleline" },
         { "include": "#graphql-description-docstring" },
+        { "include": "#graphql-description-singleline" },
         { "include": "#graphql-fragment-definition" },
         { "include": "#graphql-type-interface" },
         { "include": "#graphql-enum" },
@@ -47,8 +47,8 @@
       },
       "patterns": [
         { "include": "#graphql-comment" },
-        { "include": "#graphql-description-singleline" },
         { "include": "#graphql-description-docstring" },
+        { "include": "#graphql-description-singleline" },
         { "include": "#graphql-selection-set" },
         { "include": "#graphql-directive" },
         { "include": "#graphql-skip-newlines" },
@@ -91,8 +91,8 @@
           ]
         },
         { "include": "#graphql-comment" },
-        { "include": "#graphql-description-singleline" },
         { "include": "#graphql-description-docstring" },
+        { "include": "#graphql-description-singleline" },
         { "include": "#graphql-directive" },
         { "include": "#graphql-type-object" },
         { "include": "#literal-quasi-embedded" },
@@ -114,8 +114,8 @@
       },
       "patterns": [
         { "include": "#graphql-comment" },
-        { "include": "#graphql-description-singleline" },
         { "include": "#graphql-description-docstring" },
+        { "include": "#graphql-description-singleline" },
         { "include": "#graphql-object-type" },
         { "include": "#graphql-type-definition" },
         { "include": "#literal-quasi-embedded" }
@@ -133,8 +133,8 @@
       },
       "patterns": [
         { "include": "#graphql-comment" },
-        { "include": "#graphql-description-singleline" },
         { "include": "#graphql-description-docstring" },
+        { "include": "#graphql-description-singleline" },
         { "include": "#graphql-variable-definitions" },
         { "include": "#graphql-type-object" },
         { "include": "#graphql-colon"},
@@ -176,21 +176,21 @@
                   }
                 },
                 { "include": "#graphql-comment" },
-                { "include": "#graphql-description-singleline" },
                 { "include": "#graphql-description-docstring" },
+                { "include": "#graphql-description-singleline" },
                 { "include": "#graphql-colon" },
                 { "include": "#graphql-skip-newlines" }
               ]
             },
             { "include": "#graphql-comment" },
-            { "include": "#graphql-description-singleline" },
             { "include": "#graphql-description-docstring" },
+            { "include": "#graphql-description-singleline" },
             { "include": "#graphql-skip-newlines" }
           ]
         },
         { "include": "#graphql-comment" },
-        { "include": "#graphql-description-singleline" },
         { "include": "#graphql-description-docstring" },
+        { "include": "#graphql-description-singleline" },
         { "include": "#graphql-skip-newlines" }
       ]
     },
@@ -202,19 +202,20 @@
     "graphql-description-singleline": {
       "comment": "In new graphql spec 0.12.0, the description have to be specified as doc-strings or single-line text in double quotes",
       "name": "graphql.description",
-      "match": "^\\s*(\"[^\"])(.*)([^\"]\")$",
+      "match": "^\\s*(\"(?:\"\")?)([^\"].*)(\"(?:\"\")?)$",
       "captures": {
         "1": { "name": "comment.quoted.double.graphql.begin" },
-        "2": { "name": "comment.block.documentation.graphql" },
+        "2": { "name": "comment.description.graphql" },
         "3": { "name": "comment.quoted.double.graphql.end" }
       }
     },
     "graphql-description-docstring": {
       "comment": "In new graphql spec 0.12.0, the description have to be specified as doc-strings or single-line text in double quotes",
       "name": "graphql.description",
-      "begin": "^\\s*(\"\"\")$",
+      "begin": "(\"\"\")(?:$|(.*))",
       "beginCaptures": {
-        "1": { "name": "comment.quoted.double.graphql.begin" }
+        "1": { "name": "comment.quoted.double.graphql.begin" },
+        "2": { "name": "comment.block.description.graphql" }
       },
       "end": "^\\s*(\"\"\")$",
       "endCaptures": {
@@ -222,7 +223,7 @@
       },
       "patterns": [
         {
-          "name": "comment.block.documentation.graphql",
+          "name": "comment.block.description.graphql",
           "match": "^\\s*.*$"
         }
       ]
@@ -235,8 +236,8 @@
       },
       "patterns": [
         { "include": "#graphql-comment" },
-        { "include": "#graphql-description-singleline" },
         { "include": "#graphql-description-docstring" },
+        { "include": "#graphql-description-singleline" },
         { "include": "#graphql-variable-definition"},
         { "include": "#literal-quasi-embedded" }
       ]
@@ -254,8 +255,8 @@
       },
       "patterns": [
         { "include": "#graphql-comment" },
-        { "include": "#graphql-description-singleline" },
         { "include": "#graphql-description-docstring" },
+        { "include": "#graphql-description-singleline" },
         { "include": "#graphql-colon" },
         { "include": "#graphql-input-types"},
         { "include": "#graphql-variable-assignment"},
@@ -283,8 +284,8 @@
           },
           "patterns": [
             { "include": "#graphql-comment" },
-            { "include": "#graphql-description-singleline" },
             { "include": "#graphql-description-docstring" },
+            { "include": "#graphql-description-singleline" },
             { "include": "#graphql-input-types" },
             { "include": "#graphql-comma" },
             { "include": "#literal-quasi-embedded" }
@@ -350,8 +351,8 @@
       },
       "patterns": [
         { "include": "#graphql-comment" },
-        { "include": "#graphql-description-singleline" },
         { "include": "#graphql-description-docstring" },
+        { "include": "#graphql-description-singleline" },
         { "include": "#graphql-arguments"},
         { "include": "#literal-quasi-embedded" },
         { "include": "#graphql-skip-newlines" }
@@ -369,8 +370,8 @@
       },
       "patterns": [
         { "include": "#graphql-comment" },
-        { "include": "#graphql-description-singleline" },
         { "include": "#graphql-description-docstring" },
+        { "include": "#graphql-description-singleline" },
         { "include": "#graphql-field" },
         { "include": "#graphql-fragment-spread" },
         { "include": "#graphql-inline-fragment" },
@@ -411,8 +412,8 @@
       },
       "patterns": [
         { "include": "#graphql-comment" },
-        { "include": "#graphql-description-singleline" },
         { "include": "#graphql-description-docstring" },
+        { "include": "#graphql-description-singleline" },
         { "include": "#graphql-selection-set" },
         { "include": "#graphql-directive" },
         { "include": "#literal-quasi-embedded" },
@@ -430,8 +431,8 @@
       },
       "patterns": [
         { "include": "#graphql-comment" },
-        { "include": "#graphql-description-singleline" },
         { "include": "#graphql-description-docstring" },
+        { "include": "#graphql-description-singleline" },
         { "include": "#graphql-selection-set" },
         { "include": "#graphql-directive" },
         { "include": "#graphql-skip-newlines" },
@@ -450,8 +451,8 @@
       },
       "patterns": [
         { "include": "#graphql-comment" },
-        { "include": "#graphql-description-singleline" },
         { "include": "#graphql-description-docstring" },
+        { "include": "#graphql-description-singleline" },
         {
           "begin": "\\s*([_A-Za-z][_0-9A-Za-z]*)(?:\\s*(:))",
           "end": "(?=\\s*(?:(?:([_A-Za-z][_0-9A-Za-z]*)\\s*(:))|\\)))|\\s*(,)",
@@ -464,8 +465,8 @@
           },
           "patterns": [
             { "include": "#graphql-comment" },
-            { "include": "#graphql-description-singleline" },
             { "include": "#graphql-description-docstring" },
+            { "include": "#graphql-description-singleline" },
             { "include": "#graphql-value" },
             { "include": "#graphql-skip-newlines" }
           ]
@@ -548,8 +549,8 @@
             { "include": "#graphql-object-type" },
 
             { "include": "#graphql-comment" },
-            { "include": "#graphql-description-singleline" },
             { "include": "#graphql-description-docstring" },
+            { "include": "#graphql-description-singleline" },
             { "include": "#graphql-enum-value" },
             { "include": "#literal-quasi-embedded" }
           ]
@@ -639,8 +640,8 @@
           },
           "patterns": [
             { "include": "#graphql-comment" },
-            { "include": "#graphql-description-singleline" },
             { "include": "#graphql-description-docstring" },
+            { "include": "#graphql-description-singleline" },
             { "include": "#graphql-skip-newlines" },
             { "include": "#literal-quasi-embedded" },
             {
@@ -653,8 +654,8 @@
           ]
         },
         { "include": "#graphql-comment" },
-        { "include": "#graphql-description-singleline" },
         { "include": "#graphql-description-docstring" },
+        { "include": "#graphql-description-singleline" },
         { "include": "#graphql-skip-newlines" },
         { "include": "#literal-quasi-embedded" }
       ]
