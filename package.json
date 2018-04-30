@@ -134,14 +134,14 @@
   },
   "scripts": {
     "vscode:prepublish": "yarn clean && yarn compile-server && yarn compile",
+    "postinstall": "node ./node_modules/vscode/bin/install",
     "clean": "rimraf out",
     "compile-server": "tsc -p src/server",
-    "watch-server": "tsc -watch -p src/server",
     "compile": "tsc -p src/client",
+    "watch-server": "tsc -watch -p src/server",
     "watch": "tsc -watch -p src/client",
     "dev": "yarn clean && yarn compile-server && yarn watch",
-    "postinstall": "node ./node_modules/vscode/bin/install",
-    "semantic-release": "semantic-release pre && vsce publish -p $VS_TOKEN && semantic-release post",
+    "package": "vsce package",
     "commitmsg": "commitlint -e $GIT_PARAMS"
   },
   "devDependencies": {
@@ -151,8 +151,8 @@
     "conventional-recommended-bump": "^1.0.2",
     "husky": "^0.14.3",
     "rimraf": "^2.6.2",
-    "semantic-release": "^7.0.2",
-    "semantic-release-visualstudio-marketplace-version": "^1.0.0",
+    "semantic-release": "^15.1.8",
+    "semantic-release-vsce": "^2.0.0",
     "tslint": "^5.9.1",
     "typescript": "^2.5.3",
     "vscode": "^1.1.6"
@@ -166,10 +166,6 @@
   "galleryBanner": {
     "color": "#2e2348",
     "theme": "dark"
-  },
-  "release": {
-    "getLastRelease": "semantic-release-visualstudio-marketplace-version",
-    "analyzeCommits": "./scripts/analyzeCommits"
   },
   "commitlint": {
     "extends": [

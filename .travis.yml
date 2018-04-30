@@ -1,9 +1,5 @@
-language: node_js
+# .travis.yml
 cache: yarn
-notifications:
-  email: false
-node_js:
-  - '8'
 before_install:
   - git fetch --unshallow
   - yarn global add vsce
@@ -12,9 +8,21 @@ before_script: greenkeeper-lockfile-update
 script:
   - /bin/bash scripts/lint-commits.sh
 after_script: greenkeeper-lockfile-upload
-after_success:
-  - /bin/bash scripts/deploy.sh
-branches:
-  only:
-    - master
-    - /^greenkeeper-.*$/
+stages:
+  - test
+  - name: release
+    if: branch = master AND type = push AND fork = false
+  - name: integrate
+    if: branch =~ /^greenkeeper-.*$/ AND type = pull_request AND fork = false
+jobs:
+  include:
+    - stage: release
+      language: node_js
+      node_js: '8'
+      script: yarn semantic-release
+    - stage: integrate
+      language: node_js
+      node_js: '8'
+      script: yarn package
+notifications:
+  email: false

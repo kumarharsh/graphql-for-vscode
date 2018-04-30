@@ -1,0 +1,35 @@
+{
+  "verifyConditions": ["semantic-release-vsce", "@semantic-release/github"],
+  "getLastRelease": ["@semantic-release/git"],
+  "analyzeCommits": {
+    "preset": "angular",
+    "releaseRules": [
+      {"type": "docs", "scope":"README", "release": "patch"},
+      {"type": "refactor", "release": "patch"}
+    ],
+    "parserOpts": {
+      "noteKeywords": ["BREAKING"]
+    }
+  },
+  "generateNotes": {
+    "preset": "angular",
+    "parserOpts": {
+      "noteKeywords": ["BREAKING"]
+    },
+    "writerOpts": {
+      "commitsSort": ["subject", "scope"]
+    }
+  },
+  "publish": [
+    {
+      "path": "semantic-release-vsce",
+      "packageVsix": "graphql-for-vscode.vsix"
+    },
+    {
+      "path": "@semantic-release/github",
+      "assets": "graphql-for-vscode.vsix"
+    }
+  ],
+  "success": ["@semantic-release/github"],
+  "fail": ["@semantic-release/github"]
+}
