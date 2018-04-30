@@ -159,7 +159,7 @@
   "dependencies": {
     "semver": "5.5.0",
     "vscode-languageclient": "^3.4.5",
-    "vscode-languageserver": "^3.4.3",
+    "vscode-languageserver": "^4.0.0",
     "vscode-uri": "^1.0.1"
   },
   "galleryBanner": {
