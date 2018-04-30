@@ -148,7 +148,6 @@
     "@commitlint/cli": "^6.0.2",
     "@commitlint/config-conventional": "^6.0.2",
     "@types/node": "^9.3.0",
-    "conventional-recommended-bump": "^1.0.2",
     "husky": "^0.14.3",
     "rimraf": "^2.6.2",
     "semantic-release": "^15.1.8",

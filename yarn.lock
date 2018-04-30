@@ -805,14 +805,6 @@ concat-map@0.0.1:
   version "0.0.1"
   resolved "https://registry.yarnpkg.com/concat-map/-/concat-map-0.0.1.tgz#d8a96bd77fd68df7793a73036a3ba0d5405d477b"
 
-concat-stream@^1.4.10:
-  version "1.6.0"
-  resolved "https://registry.yarnpkg.com/concat-stream/-/concat-stream-1.6.0.tgz#0aac662fd52be78964d5532f694784e70110acf7"
-  dependencies:
-    inherits "^2.0.3"
-    readable-stream "^2.2.2"
-    typedarray "^0.0.6"
-
 concat-stream@^1.6.0:
   version "1.6.2"
   resolved "https://registry.yarnpkg.com/concat-stream/-/concat-stream-1.6.2.tgz#904bdf194cd3122fc675c77fc4ac3d4ff0fd1a34"
@@ -855,13 +847,6 @@ conventional-changelog-writer@^3.0.9:
     split "^1.0.0"
     through2 "^2.0.0"
 
-conventional-commits-filter@^1.1.0:
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/conventional-commits-filter/-/conventional-commits-filter-1.1.0.tgz#1fc29af30b5edab76f54e229c411b0c663d0f9eb"
-  dependencies:
-    is-subset "^0.1.1"
-    modify-values "^1.0.0"
-
 conventional-commits-filter@^1.1.6:
   version "1.1.6"
   resolved "https://registry.yarnpkg.com/conventional-commits-filter/-/conventional-commits-filter-1.1.6.tgz#4389cd8e58fe89750c0b5fb58f1d7f0cc8ad3831"
@@ -881,18 +866,6 @@ conventional-commits-parser@^2.0.0, conventional-commits-parser@^2.1.7:
     through2 "^2.0.0"
     trim-off-newlines "^1.0.0"
 
-conventional-commits-parser@^2.0.1:
-  version "2.0.1"
-  resolved "https://registry.yarnpkg.com/conventional-commits-parser/-/conventional-commits-parser-2.0.1.tgz#1f15ce6b844f7ca41495c8190c0833c30b8b1693"
-  dependencies:
-    JSONStream "^1.0.4"
-    is-text-path "^1.0.0"
-    lodash "^4.2.1"
-    meow "^3.3.0"
-    split2 "^2.0.0"
-    through2 "^2.0.0"
-    trim-off-newlines "^1.0.0"
-
 conventional-commits-parser@^2.1.0:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/conventional-commits-parser/-/conventional-commits-parser-2.1.0.tgz#9b4b7c91124bf2a1a9a2cc1c72760d382cbbb229"
@@ -904,18 +877,6 @@ conventional-commits-parser@^2.1.0:
     split2 "^2.0.0"
     through2 "^2.0.0"
     trim-off-newlines "^1.0.0"
-
-conventional-recommended-bump@^1.0.2:
-  version "1.0.3"
-  resolved "https://registry.yarnpkg.com/conventional-recommended-bump/-/conventional-recommended-bump-1.0.3.tgz#472b69b1b8f09c5c4ed40fe28a41e63cc04bd736"
-  dependencies:
-    concat-stream "^1.4.10"
-    conventional-commits-filter "^1.1.0"
-    conventional-commits-parser "^2.0.1"
-    git-raw-commits "^1.3.0"
-    git-semver-tags "^1.2.3"
-    meow "^3.3.0"
-    object-assign "^4.0.1"
 
 convert-source-map@^1.1.1:
   version "1.5.1"
@@ -1726,13 +1687,6 @@ git-raw-commits@^1.3.0:
     meow "^3.3.0"
     split2 "^2.0.0"
     through2 "^2.0.0"
-
-git-semver-tags@^1.2.3:
-  version "1.2.3"
-  resolved "https://registry.yarnpkg.com/git-semver-tags/-/git-semver-tags-1.2.3.tgz#188b453882bf9d7a23afd31baba537dab7388d5d"
-  dependencies:
-    meow "^3.3.0"
-    semver "^5.0.1"
 
 git-up@^2.0.0:
   version "2.0.10"
@@ -3921,7 +3875,7 @@ semantic-release@^15.1.8:
     semver "^5.4.1"
     yargs "^11.0.0"
 
-"semver@2 || 3 || 4 || 5", semver@^5.0.1, semver@^5.3.0, semver@^5.4.1:
+"semver@2 || 3 || 4 || 5", semver@^5.3.0, semver@^5.4.1:
   version "5.4.1"
   resolved "https://registry.yarnpkg.com/semver/-/semver-5.4.1.tgz#e059c09d8571f0540823733433505d3a2f00b18e"
 
