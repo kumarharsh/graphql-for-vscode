@@ -1,6 +1,7 @@
 {
     "extends": [
-        "tslint:recommended"
+        "tslint:recommended",
+        "tslint-config-prettier"
     ],
     "defaultSeverity": "error",
     "jsRules": {},
@@ -9,7 +10,7 @@
         "space-before-function-paren": [true, {"anonymous": "always", "named": "never", "asyncArrow": "always"}],
         "object-literal-sort-keys": false,
         "no-unused-variable": true,
-        "variable-name": [true, "check-format", "allow-leading-underscore"]
+        "variable-name": [true, "check-format", "allow-leading-underscore"],
     },
     "rulesDirectory": []
 }
