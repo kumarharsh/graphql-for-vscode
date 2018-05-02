@@ -147,6 +147,8 @@
   "devDependencies": {
     "@commitlint/cli": "^6.0.2",
     "@commitlint/config-conventional": "^6.0.2",
+    "@semantic-release/changelog": "^2.0.1",
+    "@semantic-release/git": "^4.0.2",
     "@types/node": "^9.3.0",
     "husky": "^0.14.3",
     "rimraf": "^2.6.2",

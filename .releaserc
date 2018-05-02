@@ -1,25 +1,33 @@
 {
-  "verifyConditions": ["semantic-release-vsce", "@semantic-release/github"],
+  "verifyConditions": ["@semantic-release/changelog", "@semantic-release/git", "semantic-release-vsce", "@semantic-release/github"],
   "getLastRelease": ["@semantic-release/git"],
   "analyzeCommits": {
     "preset": "angular",
     "releaseRules": [
-      {"type": "docs", "scope":"README", "release": "patch"},
+      {"type": "docs", "scope":"readme", "release": "patch"},
       {"type": "refactor", "release": "patch"}
     ],
     "parserOpts": {
-      "noteKeywords": ["BREAKING"]
+      "noteKeywords": ["BREAKING CHANGE:"]
     }
   },
   "generateNotes": {
     "preset": "angular",
     "parserOpts": {
-      "noteKeywords": ["BREAKING"]
+      "noteKeywords": ["BREAKING CHANGE:"]
     },
     "writerOpts": {
       "commitsSort": ["subject", "scope"]
     }
   },
+  "prepare": [
+    "@semantic-release/changelog",
+    {
+      "path": "@semantic-release/git",
+      "assets": ["CHANGELOG.md"],
+      "message": "ci(release): update changelog [skip ci]"
+    }
+  ],
   "publish": [
     {
       "path": "semantic-release-vsce",

@@ -1,9 +1,8 @@
-# Notice
-Due to some changes in the build process, the changelogs are now automatically generated using [semantic-release](https://www.npmjs.com/package/semantic-release), and are now accessible here: [https://github.com/kumarharsh/graphql-for-vscode/releases](https://github.com/kumarharsh/graphql-for-vscode/releases).
+<hr>
 
----
-
-The following is a list of older releases:
+### Notice
+Due to some intermediate changes in the build process,
+the changelogs from 1.10.1 till 1.0.1 are only hosted on the releases page of the github repo: [https://github.com/kumarharsh/graphql-for-vscode/releases](https://github.com/kumarharsh/graphql-for-vscode/releases).
 
 ### 1.0.0
 ### Improved syntax highlighting in injected grammars
