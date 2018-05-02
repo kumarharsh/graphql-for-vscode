@@ -7,7 +7,7 @@
   [![Rating](https://vsmarketplacebadge.apphb.com/rating-short/kumar-harsh.graphql-for-vscode.svg)](https://marketplace.visualstudio.com/items?itemName=kumar-harsh.graphql-for-vscode)
 
 
-  [![Semantic Release](https://img.shields.io/badge/%20%20%F0%9F%9A%80-semantic--release-e10079.svg)](https://github.com/semantic-release/semantic-release)
+  [![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg)](https://github.com/semantic-release/semantic-release)
   [![Greenkeeper badge](https://badges.greenkeeper.io/kumarharsh/graphql-for-vscode.svg)](https://greenkeeper.io/)
 </div>
 
@@ -39,89 +39,66 @@ VSCode extension for GraphQL schema authoring & consumption.
 * **Snippets**: Some commonly used snippets are provided which help while writing mutations and queries, such as defining types, interfaces and input types.
 
 ## Setting it Up
-1. Ensure that you have the [@playlyfe/gql](https://npmjs.org/package/@playlyfe/gql) library (v2.x) installed and available to this plugin. If you've installed the library in a folder other than the workspace root, then add the path to the node_modules directory as a setting:
-    ```json
-    {
-      "graphqlForVSCode.nodePath": "ui/node_modules"
-    }
-    ```
+If you only need syntax highlighting for gql and embedded queries, then just install this plugin and you're done!
 
-2. Ensure you have [watchman](https://facebook.github.io/watchman/docs/install.html) installed and available in your path. Watchman watches your gql files and provides up-to-date suggestions. For users on Windows, get the latest build mentioned in [this issue](https://github.com/facebook/watchman/issues/19) and add the location of `watchman.exe` to your environment path.
+To get the more IDE-like features such as autocomplete, Go to Definition, etc, read on.
 
-3. Create a .gqlconfig file (required by the `@playlyfe/gql` package).
+0. The configuration for the v2 is simpler and falls back to sane defaults. These are the new config options, with their significance described below.
 
-    ### A minimal example:
-    The .gqlconfig is a JSON file with only one required key: schema.files which is the path to your *.gql files relative to your workspace root.
-    ```js
-    /* .gqlconfig */
-    {
-      schema: {
-        files: 'schemas/**/*.gql'
-      }
-    }
-    ```
-    You can use the string `files: "**/*.gql"` instead if you want to find any `.gql` file recursively in the workspace dir.
+```js
+// should the plugin auto-download the gql library
+// defaults to true
+"graphqlForVSCode.autoDownloadGQL": true,
+// if you have specifically installed the `gql` library in your project in a
+// location other than `<workspaceRoot>/node_modules`, then you need to
+// tell the extension the path to the library
+"graphqlForVSCode.gqlPath": "${workspaceRoot}/src/ui",
+// An absolute path to directory containing the `.gqlconfig` file
+// Useful for more complex, monorepo-like projects
+"graphqlForVSCode.configDir": "${workspaceRoot}",
+// whether to use watchman for watching changes (if available in your path)
+// defaults to true
+"graphqlForVSCode.watchman": true,
+// control the logging level - useful for debugging errors / performance
+// defaults to info
+"graphqlForVSCode.loglevel": "info",
+```
 
-    To see the full configuration, check out the [GQL](https://github.com/Mayank1791989/gql) project's docs.
+1. This extension relies on the [@playlyfe/gql](https://npmjs.org/package/@playlyfe/gql) library. With version 2.0 of the extension, this library is set to auto-download to your home path so you don't have to worry about setting more things up.
 
-4. To enable autocomplete support within your code, add these lines to your `.gqlconfig` file. The `query` section of the config contains an array of `file` config with matchers. You can add more files by directing the `EmbeddedQueryParser` to run when your code within the `startTag` and `endTag` matches:
-    ```js
-    /* .gqlconfig */
-    {
-      schema: {
-        files: "schemas/**/*.gql"
-      },
-      query: {
-        files: [ /* define file paths which you'd like the gql parser to watch and give autocomplete suggestions for */
-          {
-            match: 'ui/src/**/*.js', // for js
-            parser: ['EmbeddedQueryParser', { startTag: 'Relay\\.QL`', endTag: '`' }],
-            isRelay: true,
-          },
-          {
-            match: 'features/**/*.feature', // for gherkin
-            parser: ['EmbeddedQueryParser', { startTag: 'graphql request\\s+"""', endTag: '"""' }],
-          },
-          {
-            "match": "lib/**/*.rb", // sample config you might use for Ruby-aware highlighting (inside `<<-GRAPHQL` heredocs)
-            "parser": ["EmbeddedQueryParser", { "startTag": "<<-GRAPHQL", "endTag": "GRAPHQL" }]
-          },
-          {
-            match: 'fixtures/**/*.gql',
-            parser: 'QueryParser',
-          },
-        ],
-      },
-    }
-    ```
+2. This extension uses a watcher service to watch all your gql schema and query files, so that you can get live autocomplete, linting, etc. The extension now defaults to using [watchman](https://facebook.github.io/watchman/docs/install.html) *if it is already in your path*, otherwise it falls back on a node-based watcher.
+> Note: If you want to use watchman on Windows, get the latest build mentioned in [this issue](https://github.com/facebook/watchman/issues/19) and add the location of `watchman.exe` to your environment path.
 
-    Again, refer to [GQL](https://github.com/Mayank1791989/gql) docs for details about configuring your .gqlconfig.
+3. Create a .gqlconfig file in your project root (required by the `@playlyfe/gql` package).
+To see the full configuration, check out the [GQL](https://github.com/Mayank1791989/gql) project's docs.
+> Note: The gqlconfig file is consumed by the GQL library. With the v3.0.0 release of the GQL library, the format of the .gqlconfig file has changed. Refer to the GQL library page for details.
+
+> Note: This extension transparently converts v2-style .gqlconfig file to the v3-style. If you face any troubles with the config, open an issue with the GQL repo.
 
 ## Future Plans
 * Tests: Figure out tests.
 
 ## Contributing
 * If you have a suggestion or a problem, please open an issue.
+  + [syntax highlighting issue](https://github.com/kumarharsh/graphql-for-vscode/issues)
+  + [language server issues](https://github.com/Mayank1791989/gql/issues)
 * If you'd like to improve the extension:
   + If you've made any improvements to the extension, send a Pull Request!
-  + The instructions to run the server are [here](#server)
   + The instructions to run and debug the client are [here](#hacking)
 
 ## Hacking
 
-#### Client
-If you're making changes to the client, then run `npm run watch` inside this directory,
-then just press <kbd>F5</kbd> to launch the *Extension Development Host* instance of vscode. Whenever you make a change, press *Reload* to reload the EDH instance.
+The main extension code is in the `src` directory. On making changes to the code,
+press <kbd>F5</kbd> to launch the *Extension Development Host* instance of vscode. Whenever you make a change, press *Reload* to reload the EDH instance.
 
-#### Server
-If you're making changes to the server, then run `npm run watch-server` from the root directory. Then, run the client in debug mode. If you make any change in the server code, you need to reload the *Extension Development Host* instance of vscode.
+The language-server part of this extension has been moved to the [GQL Language Server](https://github.com/Mayank1791989/gql-language-server) library.
 
 ## Major Contributors
-* [Mayank Agarwal](https://github.com/Mayank1791989) - added autocomplete, goto definition, schema validation support
+* [Mayank Agarwal](https://github.com/Mayank1791989) - language server implementation
 
-## Changelog
-* Latest changes are available on the [releases](https://github.com/kumarharsh/graphql-for-vscode/releases) page.
-* Older changelogs can be found [here](/CHANGELOG.md).
+## Postscript
+* Changelog can be found [here](/CHANGELOG.md).
+* All releases can be found on the [releases](https://github.com/kumarharsh/graphql-for-vscode/releases) page. You can also download pre-built extension packages for v1.10.2 onwards directly from there.
 
 ---
 
