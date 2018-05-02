@@ -1,3 +1,11 @@
+<a name="1.10.2"></a>
+## [1.10.2](https://github.com/kumarharsh/graphql-for-vscode/compare/v1.10.1...v1.10.2) (2018-05-02)
+
+
+### Bug Fixes
+
+* **release:** fix changelogs generation on release ([fc6051f](https://github.com/kumarharsh/graphql-for-vscode/commit/fc6051f))
+
 <hr>
 
 ### Notice
