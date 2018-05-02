@@ -1,6 +1,5 @@
 {
   "verifyConditions": ["@semantic-release/changelog", "@semantic-release/git", "semantic-release-vsce", "@semantic-release/github"],
-  "getLastRelease": ["@semantic-release/git"],
   "analyzeCommits": {
     "preset": "angular",
     "releaseRules": [
