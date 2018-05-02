@@ -10,6 +10,7 @@ import {
   TextDocument,
   commands,
   Disposable,
+  ThemeColor,
 } from 'vscode';
 
 import { LanguageClient, State } from 'vscode-languageclient';
@@ -19,22 +20,27 @@ enum Status {
   ok = 2,
   error = 3,
 }
+type StatusBarItemConfig = {
+  icon: string,
+  tooltip: string,
+  color: string,
+};
 
 const STATUS_BAR_ITEM_NAME = 'GQL';
 const STATUS_BAR_UI = {
   [Status.init]: {
     icon: 'sync',
-    color: 'white',
+    color: 'progressBar.background',
     tooltip: 'Graphql language server is initializing.',
   },
   [Status.ok]: {
     icon: 'plug',
-    color: 'while',
+    color: 'statusBar.foreground',
     tooltip: 'Graphql language server is running.',
   },
   [Status.error]: {
     icon: 'stop',
-    color: 'red',
+    color: 'editorError.foreground',
     tooltip: 'Graphql language server is not running.',
   },
 };
@@ -136,9 +142,9 @@ export default class ClientStatusBarItem {
   }
 
   private _setStatus(status: Status) {
-    const ui = STATUS_BAR_UI[status];
+    const ui: StatusBarItemConfig = STATUS_BAR_UI[status];
     this._item.text = `$(${ui.icon}) ${STATUS_BAR_ITEM_NAME}`;
     this._item.tooltip = ui.tooltip;
-    this._item.color = ui.color;
+    this._item.color = new ThemeColor(ui.color);
   }
 }
