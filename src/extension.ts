@@ -35,7 +35,6 @@ interface Client {
 }
 
 const clients: Map<string, Client | null> = new Map();
-let activeStatusBarItem: ClientStatusBarItem = null;
 
 export function activate(context: ExtensionContext) {
   createClientForWorkspaces();
@@ -91,8 +90,9 @@ function createClientForWorkspace(folder: WorkspaceFolder): null | Client {
     findGQLConfigFile(gqlconfigDir);
   } catch (err) {
     outputChannel.appendLine(
-      `Not activating language-server for workspace folder '${folder.name}'.\n` +
-      `Reason: ${err.message}`,
+      `Not activating language-server for workspace folder '${
+        folder.name
+      }'.\n` + `Reason: ${err.message}`,
     );
     return null;
   }

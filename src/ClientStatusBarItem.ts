@@ -21,9 +21,9 @@ enum Status {
   error = 3,
 }
 type StatusBarItemConfig = {
-  icon: string,
-  tooltip: string,
-  color: string,
+  icon: string;
+  tooltip: string;
+  color: string;
 };
 
 const STATUS_BAR_ITEM_NAME = 'GQL';
@@ -106,8 +106,10 @@ export default class ClientStatusBarItem {
 
     if (textEditor && this._checkDocumentInsideWorkspace(textEditor.document)) {
       if (this._client.initializeResult) {
-        // if client is initialized than show only for file extensions defined in .gqlconfig
-        // @TODO: if possible match against patterns in .gqlconfig instead of extensions.
+        // if client is initialized then show only for file extensions
+        // defined in .gqlconfig
+        // @TODO: if possible, match against patterns defined in .gqlconfig
+        // instead of extensions.
         const extensions = this._client.initializeResult.fileExtensions;
         const score = languages.match(
           { scheme: 'file', pattern: `**/*.{${extensions.join(',')}}` },
