@@ -84,7 +84,7 @@
         "aliases": [
           "GraphQL"
         ],
-        "configuration": "./graphql.configuration.json"
+        "configuration": "./syntaxes/language-configuration.json"
       }
     ],
     "grammars": [
