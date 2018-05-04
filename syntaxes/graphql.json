@@ -87,6 +87,7 @@
                 "1": { "name": "support.type.graphql" }
               }
             },
+            { "include": "#graphql-ampersand" },
             { "include": "#graphql-comma" }
           ]
         },
@@ -322,6 +323,12 @@
       "match": "\\s*(,)",
       "captures": {
         "1": { "name": "punctuation.comma.graphql" }
+      }
+    },
+    "graphql-ampersand": {
+      "match": "\\s*(&)",
+      "captures": {
+        "1": { "name": "keyword.operator.logical.graphql" }
       }
     },
     "graphql-colon": {
