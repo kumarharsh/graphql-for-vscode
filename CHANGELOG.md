@@ -1,3 +1,11 @@
+<a name="1.10.3"></a>
+## [1.10.3](https://github.com/kumarharsh/graphql-for-vscode/compare/v1.10.2...v1.10.3) (2018-05-04)
+
+
+### Bug Fixes
+
+* **syntax:** highlight '&' for combining multiple interfaces ([1b32f23](https://github.com/kumarharsh/graphql-for-vscode/commit/1b32f23))
+
 <a name="1.10.2"></a>
 ## [1.10.2](https://github.com/kumarharsh/graphql-for-vscode/compare/v1.10.1...v1.10.2) (2018-05-02)
 
