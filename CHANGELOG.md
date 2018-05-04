@@ -1,3 +1,11 @@
+<a name="1.11.0"></a>
+# [1.11.0](https://github.com/kumarharsh/graphql-for-vscode/compare/v1.10.3...v1.11.0) (2018-05-04)
+
+
+### Features
+
+* **syntax:** add support for auto-closing pairs & surrounding pairs ([6934c67](https://github.com/kumarharsh/graphql-for-vscode/commit/6934c67))
+
 <a name="1.10.3"></a>
 ## [1.10.3](https://github.com/kumarharsh/graphql-for-vscode/compare/v1.10.2...v1.10.3) (2018-05-04)
 
