@@ -160,7 +160,7 @@
   },
   "dependencies": {
     "semver": "5.5.0",
-    "vscode-languageclient": "^3.4.5",
+    "vscode-languageclient": "^4.1.4",
     "vscode-languageserver": "^3.4.3",
     "vscode-uri": "^1.0.1"
   },
