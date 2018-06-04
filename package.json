@@ -130,6 +130,16 @@
         ],
         "scopeName": "text.gherkin.feature.graphql",
         "path": "./syntaxes/graphql.feature.json"
+      },
+      {
+        "scopeName": "markdown.graphql.codeblock",
+        "path": "./syntaxes/graphql.markdown.codeblock.json",
+        "injectTo": [
+          "text.html.markdown"
+        ],
+        "embeddedLanguages": {
+          "meta.embedded.block.graphql": "GraphQL"
+        }
       }
     ],
     "snippets": [
