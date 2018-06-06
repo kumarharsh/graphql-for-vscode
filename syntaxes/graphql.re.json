@@ -1,0 +1,20 @@
+{
+  "fileTypes": [
+    "re",
+    "ml"
+  ],
+  "injectionSelector": "L:source -string -comment",
+  "patterns": [
+    {
+      "contentName": "meta.embedded.block.graphql",
+      "begin": "({)(gql)(\\|)",
+      "end": "(\\|)(\\2)(})",
+      "patterns": [
+        {
+          "include": "source.graphql"
+        }
+      ]
+    }
+  ],
+  "scopeName": "inline.graphql.re"
+}
