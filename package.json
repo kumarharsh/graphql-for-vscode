@@ -109,6 +109,17 @@
       },
       {
         "injectTo": [
+          "source.reason",
+          "source.ocaml"
+        ],
+        "scopeName": "inline.graphql.re",
+        "path": "./syntaxes/graphql.re.json",
+        "embeddedLanguages": {
+          "meta.embedded.block.graphql": "graphql"
+        }
+      },
+      {
+        "injectTo": [
           "source.ruby"
         ],
         "scopeName": "inline.graphql.rb",
