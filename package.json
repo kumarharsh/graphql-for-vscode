@@ -116,17 +116,6 @@
       },
       {
         "injectTo": [
-          "source.reason",
-          "source.ocaml"
-        ],
-        "scopeName": "inline.graphql.re",
-        "path": "./syntaxes/graphql.re.json",
-        "embeddedLanguages": {
-          "meta.embedded.block.graphql": "graphql"
-        }
-      },
-      {
-        "injectTo": [
           "source.ruby"
         ],
         "scopeName": "inline.graphql.rb",
@@ -143,13 +132,24 @@
         "path": "./syntaxes/graphql.feature.json"
       },
       {
-        "scopeName": "markdown.graphql.codeblock",
-        "path": "./syntaxes/graphql.markdown.codeblock.json",
         "injectTo": [
           "text.html.markdown"
         ],
+        "scopeName": "markdown.graphql.codeblock",
+        "path": "./syntaxes/graphql.markdown.codeblock.json",
         "embeddedLanguages": {
-          "meta.embedded.block.graphql": "GraphQL"
+          "meta.embedded.block.graphql": "graphql"
+        }
+      },
+      {
+        "injectTo": [
+          "source.reason",
+          "source.ocaml"
+        ],
+        "scopeName": "inline.graphql.re",
+        "path": "./syntaxes/graphql.re.json",
+        "embeddedLanguages": {
+          "meta.embedded.block.graphql": "graphql"
         }
       }
     ],

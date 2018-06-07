@@ -35,6 +35,7 @@ VSCode extension for GraphQL schema authoring & consumption.
   + Ruby
   + Cucumber
   + ReasonML/OCaml
+  + Markdown fenced code-blocks
   + (Submit a PR to support your language!)
 
 * **Snippets**: Some commonly used snippets are provided which help while writing mutations and queries, such as defining types, interfaces and input types.
