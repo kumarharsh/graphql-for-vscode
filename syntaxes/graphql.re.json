@@ -1,8 +1,5 @@
 {
-  "fileTypes": [
-    "re",
-    "ml"
-  ],
+  "fileTypes": ["re", "ml"],
   "injectionSelector": "L:source -string -comment",
   "patterns": [
     {
@@ -14,6 +11,24 @@
           "include": "source.graphql"
         }
       ]
+    },
+    {
+      "contentName": "meta.embedded.block.graphql",
+      "begin": "(\\[%graphql)s*$",
+      "end": "(?<=])",
+      "patterns": [
+        {
+          "begin": "^\\s*({\\|)$",
+          "end": "^\\s*(\\|})",
+          "patterns": [{ "include": "source.graphql" }]
+        }
+      ]
+    },
+    {
+      "contentName": "meta.embedded.block.graphql",
+      "begin": "(\\[%graphql {\\|)",
+      "end": "(\\|}( )?])",
+      "patterns": [{ "include": "source.graphql" }]
     }
   ],
   "scopeName": "inline.graphql.re"
