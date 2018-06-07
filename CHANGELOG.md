@@ -1,3 +1,12 @@
+<a name="1.12.0"></a>
+# [1.12.0](https://github.com/kumarharsh/graphql-for-vscode/compare/v1.11.0...v1.12.0) (2018-06-07)
+
+
+### Features
+
+* **syntax:** add highlighting for markdown fenced codeblocks ([96904e5](https://github.com/kumarharsh/graphql-for-vscode/commit/96904e5))
+* **syntax:** add support for reason ([26b6bd1](https://github.com/kumarharsh/graphql-for-vscode/commit/26b6bd1))
+
 <a name="1.11.0"></a>
 # [1.11.0](https://github.com/kumarharsh/graphql-for-vscode/compare/v1.10.3...v1.11.0) (2018-05-04)
 
