@@ -9,7 +9,6 @@ import {
   languages,
   TextDocument,
   commands,
-  Disposable,
   ThemeColor,
 } from 'vscode';
 

@@ -1,22 +1,15 @@
 'use strict';
 
-import * as path from 'path';
 import {
-  commands,
   ExtensionContext,
-  StatusBarAlignment,
-  TextEditor,
   window,
-  TextDocument,
   workspace as Workspace,
   WorkspaceFolder,
 } from 'vscode';
 import {
   LanguageClient,
   LanguageClientOptions,
-  NotificationType,
   ServerOptions,
-  State as ClientState,
   TransportKind,
 } from 'vscode-languageclient';
 
