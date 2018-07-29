@@ -1,3 +1,11 @@
+<a name="1.12.1"></a>
+## [1.12.1](https://github.com/kumarharsh/graphql-for-vscode/compare/v1.12.0...v1.12.1) (2018-07-29)
+
+
+### Bug Fixes
+
+* **syntax:** fix blockstring description syntax, add some sample files ([d836051](https://github.com/kumarharsh/graphql-for-vscode/commit/d836051))
+
 <a name="1.12.0"></a>
 # [1.12.0](https://github.com/kumarharsh/graphql-for-vscode/compare/v1.11.0...v1.12.0) (2018-06-07)
 
