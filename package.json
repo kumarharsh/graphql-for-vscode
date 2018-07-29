@@ -52,14 +52,14 @@
       "properties": {
         "graphqlForVSCode.gqlPath": {
           "type": "string",
-          "description": "An absolute path to @playlyfe/gql module.",
-          "default": "${workspaceRoot}",
+          "description": "Path to @playlyfe/gql module. (relative path is resolved wrt workspace folder)",
+          "default": ".",
           "scope": "resource"
         },
         "graphqlForVSCode.configDir": {
           "type": "string",
-          "description": "An absolute path to directory containing config file.",
-          "default": "${workspaceRoot}",
+          "description": "Path to directory containing config file. (relative path is resolved wrt workspace folder)",
+          "default": ".",
           "scope": "resource"
         },
         "graphqlForVSCode.watchman": {

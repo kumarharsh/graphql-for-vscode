@@ -12,6 +12,7 @@ import {
   ServerOptions,
   TransportKind,
 } from 'vscode-languageclient';
+import * as sysPath from 'path';
 
 import ClientStatusBarItem from './ClientStatusBarItem';
 import { findConfigFile as findGQLConfigFile } from '@playlyfe/gql-language-server';
@@ -166,5 +167,10 @@ function createClientForWorkspace(folder: WorkspaceFolder): null | Client {
 }
 
 function resolvePath(path: string, folder: WorkspaceFolder): string {
-  return path.replace('${workspaceRoot}', folder.uri.fsPath);
+  if (sysPath.isAbsolute(path)) {
+    return path;
+  }
+
+  // resolve with respect to workspace root
+  return sysPath.join(folder.uri.fsPath, path);
 }
