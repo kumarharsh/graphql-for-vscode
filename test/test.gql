@@ -1,0 +1,45 @@
+schema {
+  query: RootSchemaQuery
+  mutation: RootSchemaMutation
+}
+
+"""Test comment."""
+enum TestEnum {
+  CREATED
+}
+
+"""
+This is a description
+"""
+type Viewer {
+  """blockstring description 1"""
+  id: String!
+  """blockstring description 2
+  """
+  name: String!
+  """
+  blockstring description 2"""
+  description: String
+  """
+  blockstring description 3
+  """
+  image: String
+  "simple description"
+  count: Int
+}
+
+type Query {
+  id: String
+  viewer: Viewer
+}
+
+query {
+  posts(
+    first: 1,
+    text: "hi"
+    contains: """once
+      upon
+      a time""") {
+        id
+  }
+}

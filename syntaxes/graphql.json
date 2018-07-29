@@ -202,31 +202,27 @@
     },
     "graphql-description-singleline": {
       "comment": "In new graphql spec 0.12.0, the description have to be specified as doc-strings or single-line text in double quotes",
-      "name": "graphql.description",
+      "name": "graphql.description.SINGLELINE",
       "match": "^\\s*(\"(?:\"\")?)([^\"].*)(\"(?:\"\")?)$",
       "captures": {
-        "1": { "name": "comment.quoted.double.graphql.begin" },
-        "2": { "name": "comment.description.graphql" },
-        "3": { "name": "comment.quoted.double.graphql.end" }
+        "1": { "name": "punctuation.definition.string.graphql.begin" },
+        "2": { "name": "string.description.graphql" },
+        "3": { "name": "punctuation.definition.string.graphql.end" }
       }
     },
     "graphql-description-docstring": {
       "comment": "In new graphql spec 0.12.0, the description have to be specified as doc-strings or single-line text in double quotes",
-      "name": "graphql.description",
-      "begin": "(\"\"\")(?:$|(.*))",
+      "name": "string.block.description.graphql.DOCSTRING",
+      "begin": "(\"\"\")(?:((?!\"\"\").)*|\\Z)",
       "beginCaptures": {
-        "1": { "name": "comment.quoted.double.graphql.begin" },
-        "2": { "name": "comment.block.description.graphql" }
+        "1": { "name": "punctuation.definition.string.graphql.begin" }
       },
-      "end": "^\\s*(\"\"\")$",
+      "end": "(\"\"\")$",
       "endCaptures": {
-        "1": { "name": "comment.quoted.double.graphql.end" }
+        "1": { "name": "punctuation.definition.string.graphql.end" }
       },
       "patterns": [
-        {
-          "name": "comment.block.description.graphql",
-          "match": "^\\s*.*$"
-        }
+        { "include": "#graphql-string-content" }
       ]
     },
     "graphql-variable-definitions": {
@@ -511,11 +507,11 @@
       "end": "\\s*+(?:((\"))|(\n))",
       "beginCaptures": {
         "1": { "name": "string.quoted.double.graphql" },
-        "2": { "name": "punctuation.definition.string.begin.graphql" }
+        "2": { "name": "punctuation.definition.string.graphql.begin" }
       },
       "endCaptures": {
         "1": { "name": "string.quoted.double.graphql" },
-        "2": { "name": "punctuation.definition.string.end.graphql" },
+        "2": { "name": "punctuation.definition.string.graphql.end" },
         "3": { "name": "invalid.illegal.newline.graphql" }
       },
       "patterns": [
@@ -571,10 +567,10 @@
     "graphql-value":{
       "patterns": [
         { "include":  "#graphql-comment" },
-        { "include":  "#graphql-description-docstring" },
         { "include":  "#graphql-variable-name" },
         { "include":  "#graphql-float-value" },
         { "include":  "#graphql-string-value" },
+        { "include":  "#graphql-description-docstring" },
         { "include":  "#graphql-boolean-value" },
         { "include":  "#graphql-null-value" },
         { "include":  "#graphql-enum-value" },
