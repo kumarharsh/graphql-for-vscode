@@ -13,7 +13,7 @@
 
 <hr>
 
-VSCode extension for GraphQL schema authoring & consumption.
+VSCode extension for GraphQL schema authoring & consumption. It also works with graphql flavours of Relay-Classic, Relay-Modern, and Apollo framework.
 
 ![A preview of the extension](https://cdn.rawgit.com/kumarharsh/graphql-for-vscode/master/images/preview.png)
 
@@ -41,9 +41,10 @@ VSCode extension for GraphQL schema authoring & consumption.
 ## Setting it Up
 If you only need syntax highlighting for gql and embedded queries, then just install this plugin and you're done!
 
-To get the more IDE-like features such as autocomplete, Go to Definition, etc, read on.
+To get the IDE-like features such as autocomplete, Go to Definition, etc, read on.
 
-0. The configuration for the v2 is simpler and falls back to sane defaults. These are the new config options, with their significance described below.
+1. Set up a `.gqlconfig` at the root of your repository. If you have more complex usecases, [see this](@todo).
+2. The configuration for the v2 is simpler and falls back to sane defaults. These are the new config options, with their significance described below.
 
 ```js
 // should the plugin auto-download the gql library
@@ -64,31 +65,28 @@ To get the more IDE-like features such as autocomplete, Go to Definition, etc, r
 "graphqlForVSCode.loglevel": "info",
 ```
 
-1. This extension relies on the [@playlyfe/gql](https://npmjs.org/package/@playlyfe/gql) library. With version 2.0 of the extension, this library is set to auto-download to your home path so you don't have to worry about setting more things up.
+3. This extension relies on the [@playlyfe/gql](https://npmjs.org/package/@playlyfe/gql) library. With version 2.0 of this extension, this library is set to auto-download to your home path so you don't have to worry about setting more things up anymore.
 
-2. This extension uses a watcher service to watch all your gql schema and query files, so that you can get live autocomplete, linting, etc. The extension now defaults to using [watchman](https://facebook.github.io/watchman/docs/install.html) *if it is already in your path*, otherwise it falls back on a node-based watcher.
+4. This extension uses a watcher service to watch all your gql schema and query files, so that you can get live autocomplete, linting, etc. The extension now defaults to using [watchman](https://facebook.github.io/watchman/docs/install.html) *if it is already in your path*, otherwise it falls back on a node-based watcher.
 > Note: If you want to use watchman on Windows, get the latest build mentioned in [this issue](https://github.com/facebook/watchman/issues/19) and add the location of `watchman.exe` to your environment path.
 
-3. Create a .gqlconfig file in your project root (required by the `@playlyfe/gql` package).
+5. Create a .gqlconfig file in your project root (required by the `@playlyfe/gql` package).
 To see the full configuration, check out the [GQL](https://github.com/Mayank1791989/gql) project's docs.
 > Note: The gqlconfig file is consumed by the GQL library. With the v3.0.0 release of the GQL library, the format of the .gqlconfig file has changed. Refer to the GQL library page for details.
 
-> Note: This extension transparently converts v2-style .gqlconfig file to the v3-style. If you face any troubles with the config, open an issue with the GQL repo.
-
-## Future Plans
-* Tests: Figure out tests.
+> Note to users of @playlyfe/gql v2: This extension transparently converts v2-style .gqlconfig file to the v3-style. If you face any troubles with the config, open an issue with the GQL repo [here](https://github.com/Mayank1791989/gql/issues/new).
 
 ## Contributing
 * If you have a suggestion or a problem, please open an issue.
-  + [syntax highlighting issue](https://github.com/kumarharsh/graphql-for-vscode/issues)
-  + [language server issues](https://github.com/Mayank1791989/gql/issues)
+  + [syntax highlighting](https://github.com/kumarharsh/graphql-for-vscode/issues)
+  + [language server](https://github.com/Mayank1791989/gql/issues)
 * If you'd like to improve the extension:
   + If you've made any improvements to the extension, send a Pull Request!
   + The instructions to run and debug the client are [here](#hacking)
 
 ## Hacking
 
-The main extension code is in the `src` directory. On making changes to the code,
+The client extension code is in the `src` directory. On making changes to the code,
 press <kbd>F5</kbd> to launch the *Extension Development Host* instance of vscode. Whenever you make a change, press *Reload* to reload the EDH instance.
 
 The language-server part of this extension has been moved to the [GQL Language Server](https://github.com/Mayank1791989/gql-language-server) library.
