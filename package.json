@@ -27,7 +27,7 @@
     }
   ],
   "categories": [
-    "Languages",
+    "Programming Languages",
     "Linters",
     "Snippets"
   ],
@@ -169,28 +169,27 @@
     "watch-server": "tsc -watch -p src/server",
     "watch": "tsc -watch -p src/client",
     "dev": "yarn clean && yarn compile-server && yarn watch",
-    "package": "vsce package",
-    "commitmsg": "commitlint -e $GIT_PARAMS"
+    "package": "vsce package"
   },
   "devDependencies": {
-    "@commitlint/cli": "^6.0.2",
-    "@commitlint/config-conventional": "^6.0.2",
-    "@semantic-release/changelog": "^2.0.1",
-    "@semantic-release/git": "^4.0.2",
+    "@commitlint/cli": "^7.2.0",
+    "@commitlint/config-conventional": "^7.1.2",
+    "@semantic-release/changelog": "^3.0.1",
+    "@semantic-release/git": "^7.0.5",
     "@types/node": "^9.3.0",
-    "husky": "^0.14.3",
+    "husky": "^1.1.1",
     "rimraf": "^2.6.2",
-    "semantic-release": "^15.1.8",
-    "semantic-release-vsce": "^2.0.0",
-    "tslint": "^5.9.1",
-    "typescript": "^2.5.3",
-    "vscode": "^1.1.6"
+    "semantic-release": "^15.8.0",
+    "semantic-release-vsce": "^2.1.2",
+    "tslint": "^5.11.0",
+    "typescript": "^3.1.1",
+    "vscode": "^1.1.21"
   },
   "dependencies": {
-    "semver": "5.5.0",
+    "semver": "5.5.1",
     "vscode-languageclient": "^3.4.5",
     "vscode-languageserver": "^3.4.3",
-    "vscode-uri": "^1.0.1"
+    "vscode-uri": "^1.0.6"
   },
   "galleryBanner": {
     "color": "#2e2348",
@@ -200,5 +199,10 @@
     "extends": [
       "@commitlint/config-conventional"
     ]
+  },
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
   }
 }
