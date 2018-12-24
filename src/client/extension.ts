@@ -34,12 +34,12 @@ const statusBarText = 'GQL';
 const statusBarUIElements = {
   [Status.init]: {
     icon: 'sync',
-    color: 'white',
+    color: 'yellow',
     tooltip: 'Graphql language server is initializing',
   },
   [Status.ok]: {
     icon: 'plug',
-    color: 'while',
+    color: 'white',
     tooltip: 'Graphql language server is running',
   },
   [Status.error]: {
@@ -129,17 +129,16 @@ function initializeStatusBar(context, client) {
       serverRunning = true;
     } else {
       extensionStatus = Status.error;
-      client.info('The graphql server has stopped running');
+      client.info('The graphql server has stopped');
       serverRunning = false;
     }
     updateStatusBar(window.activeTextEditor);
   });
-  updateStatusBar(window.activeTextEditor);
-
   window.onDidChangeActiveTextEditor((editor: TextEditor) => {
     // update the status if the server is running
     updateStatusBar(editor);
   });
+  updateStatusBar(window.activeTextEditor);
 }
 
 function updateStatusBar(editor: TextEditor) {
