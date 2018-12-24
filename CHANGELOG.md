@@ -1,3 +1,19 @@
+# [1.13.0](https://github.com/kumarharsh/graphql-for-vscode/compare/v1.12.1...v1.13.0) (2018-12-24)
+
+
+### Bug Fixes
+
+* **status-bar:** fix colours for different states ([525985d](https://github.com/kumarharsh/graphql-for-vscode/commit/525985d))
+* **syntax:** highlight directives on interfaces. Closes [#112](https://github.com/kumarharsh/graphql-for-vscode/issues/112) ([df16a1c](https://github.com/kumarharsh/graphql-for-vscode/commit/df16a1c))
+* **status-bar:** show status-bar item for more languages ([d11c6da](https://github.com/kumarharsh/graphql-for-vscode/commit/d11c6da))
+* **ux:** show statusbar item even when output panel is focussed ([94faecf](https://github.com/kumarharsh/graphql-for-vscode/commit/94faecf))
+* **ux:** stop focussing output panel when clicking statusbar item ([c8b73f4](https://github.com/kumarharsh/graphql-for-vscode/commit/c8b73f4))
+
+
+### Features
+
+* **syntax:** add support for graphql_ppx in reason ([8d275f5](https://github.com/kumarharsh/graphql-for-vscode/commit/8d275f5))
+
 <a name="1.12.1"></a>
 ## [1.12.1](https://github.com/kumarharsh/graphql-for-vscode/compare/v1.12.0...v1.12.1) (2018-07-29)
 
