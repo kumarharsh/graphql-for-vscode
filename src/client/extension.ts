@@ -57,6 +57,11 @@ const statusBarActivationLanguageIds = [
   'javascriptreact',
   'typescript',
   'typescriptreact',
+  'vue',
+  'feature',
+  'ruby',
+  'ocaml',
+  'reason',
 ];
 
 export function activate(context: ExtensionContext) {
