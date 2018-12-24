@@ -1,3 +1,10 @@
+## [1.13.1](https://github.com/kumarharsh/graphql-for-vscode/compare/v1.13.0...v1.13.1) (2018-12-24)
+
+
+### Bug Fixes
+
+* **release:** fix release config ([a59253c](https://github.com/kumarharsh/graphql-for-vscode/commit/a59253c))
+
 # [1.13.0](https://github.com/kumarharsh/graphql-for-vscode/compare/v1.12.1...v1.13.0) (2018-12-24)
 
 
