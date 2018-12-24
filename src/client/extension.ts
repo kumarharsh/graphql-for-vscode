@@ -65,17 +65,22 @@ const statusBarActivationLanguageIds = [
 ];
 
 export function activate(context: ExtensionContext) {
-
   // The server is implemented in node
-  const serverModule = context.asAbsolutePath(path.join('out', 'server', 'server.js'));
+  const serverModule = context.asAbsolutePath(
+    path.join('out', 'server', 'server.js'),
+  );
   // The debug options for the server
   const debugOptions = { execArgv: ['--nolazy', '--debug=6004'] };
 
   // If the extension is launched in debug mode then the debug server options are used
   // Otherwise the run options are used
   const serverOptions: ServerOptions = {
-    run : { module: serverModule, transport: TransportKind.ipc },
-    debug: { module: serverModule, transport: TransportKind.ipc, options: debugOptions },
+    run: { module: serverModule, transport: TransportKind.ipc },
+    debug: {
+      module: serverModule,
+      transport: TransportKind.ipc,
+      options: debugOptions,
+    },
   };
 
   // Options to control the language client
@@ -84,12 +89,16 @@ export function activate(context: ExtensionContext) {
     initializationOptions: () => {
       const configuration = workspace.getConfiguration(extName);
       return {
-        nodePath: configuration ? configuration.get('nodePath', undefined) : undefined,
+        nodePath: configuration
+          ? configuration.get('nodePath', undefined)
+          : undefined,
         debug: configuration ? configuration.get('debug', false) : false,
       };
     },
-    initializationFailedHandler: (error) => {
-      window.showErrorMessage("VSCode for Graphql couldn't start. See output channel for more details.");
+    initializationFailedHandler: error => {
+      window.showErrorMessage(
+        "VSCode for Graphql couldn't start. See output channel for more details.",
+      );
       client.error('Server initialization failed:', error.message);
       client.outputChannel.show(true);
       return false;
@@ -97,13 +106,19 @@ export function activate(context: ExtensionContext) {
   };
 
   // Create the language client and start the client.
-  const client = new LanguageClient('Graphql For VSCode', serverOptions, clientOptions);
+  const client = new LanguageClient(
+    'Graphql For VSCode',
+    serverOptions,
+    clientOptions,
+  );
 
   // Push the disposable to the context's subscriptions so that the
   // client can be deactivated on extension deactivation
   context.subscriptions.push(
     client.start(),
-    commands.registerCommand('graphqlForVSCode.showOutputChannel', () => { client.outputChannel.show(true); }),
+    commands.registerCommand('graphqlForVSCode.showOutputChannel', () => {
+      client.outputChannel.show(true);
+    }),
     statusBarItem,
   );
 
@@ -112,23 +127,25 @@ export function activate(context: ExtensionContext) {
   });
 }
 
-const serverInitialized = new NotificationType(commonNotifications.serverInitialized);
+const serverInitialized = new NotificationType(
+  commonNotifications.serverInitialized,
+);
 const serverExited = new NotificationType(commonNotifications.serverExited);
 
 function initializeStatusBar(context, client) {
   extensionStatus = Status.init;
-  client.onNotification(serverInitialized, (params) => {
+  client.onNotification(serverInitialized, params => {
     extensionStatus = Status.ok;
     serverRunning = true;
     updateStatusBar(window.activeTextEditor);
   });
-  client.onNotification(serverExited, (params) => {
+  client.onNotification(serverExited, params => {
     extensionStatus = Status.error;
     serverRunning = false;
     updateStatusBar(window.activeTextEditor);
   });
 
-  client.onDidChangeState((event) => {
+  client.onDidChangeState(event => {
     if (event.newState === ClientState.Running) {
       extensionStatus = Status.ok;
       serverRunning = true;
@@ -154,7 +171,12 @@ function updateStatusBar(editor: TextEditor) {
   statusBarItem.command = 'graphqlForVSCode.showOutputChannel';
   statusBarItem.color = statusUI.color;
 
-  if (editor && statusBarActivationLanguageIds.indexOf(editor.document.languageId) > -1 || editor.document.uri.scheme === 'output') {
+  if (
+    (editor &&
+      statusBarActivationLanguageIds.indexOf(editor.document.languageId) >
+        -1) ||
+    editor.document.uri.scheme === 'output'
+  ) {
     statusBarItem.show();
   } else {
     statusBarItem.hide();
