@@ -103,7 +103,7 @@ export function activate(context: ExtensionContext) {
   // client can be deactivated on extension deactivation
   context.subscriptions.push(
     client.start(),
-    commands.registerCommand('graphqlForVSCode.showOutputChannel', () => { client.outputChannel.show(); }),
+    commands.registerCommand('graphqlForVSCode.showOutputChannel', () => { client.outputChannel.show(true); }),
     statusBarItem,
   );
 
