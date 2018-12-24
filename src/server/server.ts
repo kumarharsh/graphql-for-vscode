@@ -11,7 +11,7 @@ import {
   DidOpenTextDocumentNotification, Hover,
   HoverRequest, IConnection, InitializeResult,
   IPCMessageReader, IPCMessageWriter,
-  Location, NotificationType,
+  Location, NotificationType0,
   ReferencesRequest,
 
   ResponseError,
@@ -45,8 +45,8 @@ const documents: TextDocuments = new TextDocuments();
 documents.listen(connection);
 
 // Define server notifications to be sent to the client
-const serverInitialized = new NotificationType(commonNotifications.serverInitialized);
-const serverExited = new NotificationType(commonNotifications.serverExited);
+const serverInitialized = new NotificationType0(commonNotifications.serverInitialized);
+const serverExited = new NotificationType0(commonNotifications.serverExited);
 
 // After the server has started the client sends an initilize request. The server receives
 // in the passed params the rootPath of the workspace plus the client capabilites.
