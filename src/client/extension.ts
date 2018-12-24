@@ -154,7 +154,7 @@ function updateStatusBar(editor: TextEditor) {
   statusBarItem.command = 'graphqlForVSCode.showOutputChannel';
   statusBarItem.color = statusUI.color;
 
-  if (editor && statusBarActivationLanguageIds.indexOf(editor.document.languageId) > -1) {
+  if (editor && statusBarActivationLanguageIds.indexOf(editor.document.languageId) > -1 || editor.document.uri.scheme === 'output') {
     statusBarItem.show();
   } else {
     statusBarItem.hide();
