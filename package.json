@@ -189,12 +189,12 @@
     "tslint-config-prettier": "^1.17.0",
     "tslint-plugin-prettier": "^2.0.1",
     "typescript": "^3.1.1",
-    "vscode": "^1.1.26"
+    "vscode": "1.1.6"
   },
   "dependencies": {
     "semver": "^5.6.0",
-    "vscode-languageclient": "^5.2.1",
-    "vscode-languageserver": "^5.2.1",
+    "vscode-languageclient": "^3.4.5",
+    "vscode-languageserver": "^3.4.3",
     "vscode-uri": "^1.0.6"
   },
   "galleryBanner": {
