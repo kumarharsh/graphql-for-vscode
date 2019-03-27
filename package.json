@@ -192,7 +192,7 @@
     "vscode": "1.1.6"
   },
   "dependencies": {
-    "semver": "^5.6.0",
+    "semver": "^6.0.0",
     "vscode-languageclient": "^3.4.5",
     "vscode-languageserver": "^3.4.3",
     "vscode-uri": "^1.0.6"
