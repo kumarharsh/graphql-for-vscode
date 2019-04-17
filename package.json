@@ -9,10 +9,11 @@
     "url": "https://github.com/kumarharsh"
   },
   "keywords": [
-    "vscode",
-    "visual studio code",
     "graphql",
-    "linter"
+    "linter",
+    "ide",
+    "autocomplete",
+    "language server"
   ],
   "publisher": "kumar-harsh",
   "engines": {
