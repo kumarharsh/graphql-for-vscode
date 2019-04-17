@@ -58,6 +58,8 @@ const statusBarActivationLanguageIds = [
   'typescript',
   'typescriptreact',
   'vue',
+  'go',
+  'markdown',
   'feature',
   'ruby',
   'ocaml',
