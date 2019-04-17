@@ -223,5 +223,18 @@
     "ignore": [
       "*.d.ts"
     ]
+  },
+  "greenkeeper": {
+    "ignore": [
+      "vscode",
+      "semantic-release",
+      "@semantic-release/git",
+      "@semantic-release/changelog",
+      "@semantic-release/commit-analyzer",
+      "@semantic-release/release-notes-generator",
+      "@commitlint/config-conventional",
+      "@commitlint/cli",
+      "@types/node"
+    ]
   }
 }
