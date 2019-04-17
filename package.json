@@ -17,7 +17,7 @@
   ],
   "publisher": "kumar-harsh",
   "engines": {
-    "vscode": "^1.17.0"
+    "vscode": "^1.30.2"
   },
   "license": "MIT",
   "contributors": [
@@ -162,15 +162,15 @@
     ]
   },
   "scripts": {
-    "vscode:prepublish": "yarn clean && yarn compile-server && yarn compile",
+    "vscode:prepublish": "yarn install && yarn clean && yarn compile-server && yarn compile",
     "postinstall": "node ./node_modules/vscode/bin/install",
     "clean": "rimraf out",
-    "compile-server": "tsc -p src/server",
-    "compile": "tsc -p src/client",
+    "compile-server": "yarn install && tsc -p src/server",
+    "compile": "yarn install && tsc -p src/client",
     "watch-server": "tsc -watch -p src/server",
     "watch": "tsc -watch -p src/client",
     "dev": "yarn clean && yarn compile-server && yarn watch",
-    "package": "vsce package"
+    "package": "yarn install && vsce package"
   },
   "devDependencies": {
     "@commitlint/cli": "^7.2.1",
@@ -190,12 +190,12 @@
     "tslint-config-prettier": "^1.17.0",
     "tslint-plugin-prettier": "^2.0.1",
     "typescript": "^3.1.1",
-    "vscode": "1.1.6"
+    "vscode": "1.1.33"
   },
   "dependencies": {
-    "semver": "^5.6.0",
-    "vscode-languageclient": "^3.4.5",
-    "vscode-languageserver": "^3.4.3",
+    "semver": "^6.0.0",
+    "vscode-languageclient": "^5.2.1",
+    "vscode-languageserver": "^5.2.1",
     "vscode-uri": "^1.0.6"
   },
   "galleryBanner": {
