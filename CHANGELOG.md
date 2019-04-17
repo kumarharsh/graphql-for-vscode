@@ -1,3 +1,13 @@
+## [1.13.1](https://github.com/kumarharsh/graphql-for-vscode/compare/v1.13.0...v1.13.1) (2019-04-17)
+
+
+### Bug Fixes
+
+* **client:** fix crash when editor is undefined ([6f73919](https://github.com/kumarharsh/graphql-for-vscode/commit/6f73919))
+* **client:** remove unneeded debug options ([f1a453d](https://github.com/kumarharsh/graphql-for-vscode/commit/f1a453d))
+* **client:** show status item for more languages ([a68c775](https://github.com/kumarharsh/graphql-for-vscode/commit/a68c775))
+* **client:** upgrade some dependencies ([fc9b58b](https://github.com/kumarharsh/graphql-for-vscode/commit/fc9b58b))
+
 # [1.13.0](https://github.com/kumarharsh/graphql-for-vscode/compare/v1.12.1...v1.13.0) (2018-12-24)
 
 
