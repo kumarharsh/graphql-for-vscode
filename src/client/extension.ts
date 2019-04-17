@@ -51,7 +51,7 @@ const statusBarUIElements = {
 const statusBarItem = window.createStatusBarItem(StatusBarAlignment.Right, 0);
 let extensionStatus: Status = Status.ok;
 let serverRunning: boolean = false;
-const statusBarActivationLanguageIds = [
+const activationLangIds = [
   'graphql',
   'javascript',
   'javascriptreact',
@@ -174,10 +174,9 @@ function updateStatusBar(editor: TextEditor) {
   statusBarItem.color = statusUI.color;
 
   if (
-    (editor &&
-      statusBarActivationLanguageIds.indexOf(editor.document.languageId) >
-        -1) ||
-    editor.document.uri.scheme === 'output'
+    editor &&
+    (activationLangIds.indexOf(editor.document.languageId) > -1 ||
+      editor.document.uri.scheme === 'output')
   ) {
     statusBarItem.show();
   } else {
