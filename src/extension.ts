@@ -111,7 +111,7 @@ function createClientForWorkspace(folder: WorkspaceFolder): null | Client {
       module: GQL_LANGUAGE_SERVER_CLI_PATH,
       transport: TransportKind.ipc,
       options: {
-        execArgv: ['--nolazy', '--debug=6004'],
+        execArgv: ['--nolazy', '--inspect=6004'],
       },
       args: gqlLanguageServerCliOptions,
     },
