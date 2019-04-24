@@ -180,7 +180,7 @@
     "@semantic-release/git": "^7.0.6",
     "@semantic-release/release-notes-generator": "^7.1.4",
     "@types/node": "^9.3.0",
-    "husky": "^1.2.1",
+    "husky": "^2.0.0",
     "lint-staged": "^8.1.0",
     "prettier": "^1.15.3",
     "rimraf": "^2.6.2",
