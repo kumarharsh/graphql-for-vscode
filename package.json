@@ -196,7 +196,7 @@
     "semver": "^6.0.0",
     "vscode-languageclient": "^5.2.1",
     "vscode-languageserver": "^5.2.1",
-    "vscode-uri": "^1.0.6"
+    "vscode-uri": "^2.0.0"
   },
   "galleryBanner": {
     "color": "#2e2348",
