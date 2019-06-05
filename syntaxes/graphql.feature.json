@@ -4,6 +4,7 @@
   "injectionSelector": "L:text -comment",
   "patterns": [
     {
+      "contentName": "meta.embedded.block.graphql",
       "begin": "graphql request\\s*$",
       "end": "(?<=\"\"\")",
       "patterns": [
@@ -23,6 +24,7 @@
       ]
     },
     {
+      "contentName": "meta.embedded.block.graphql",
       "begin": "^\\s*(\"\"\")\\s*(#graphql)\\s*$",
       "beginCaptures": {
         "1": { "name": "string.quoted.double.graphql.begin" },

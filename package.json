@@ -130,7 +130,10 @@
           "text.gherkin.feature"
         ],
         "scopeName": "text.gherkin.feature.graphql",
-        "path": "./syntaxes/graphql.feature.json"
+        "path": "./syntaxes/graphql.feature.json",
+        "embeddedLanguages": {
+          "meta.embedded.block.graphql": "graphql"
+        }
       },
       {
         "injectTo": [
