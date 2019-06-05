@@ -1,3 +1,10 @@
+## [1.13.2](https://github.com/kumarharsh/graphql-for-vscode/compare/v1.13.1...v1.13.2) (2019-06-05)
+
+
+### Bug Fixes
+
+* **syntax:** designate graphql blocks in feature files ([836149a](https://github.com/kumarharsh/graphql-for-vscode/commit/836149a))
+
 ## [1.13.1](https://github.com/kumarharsh/graphql-for-vscode/compare/v1.13.0...v1.13.1) (2019-04-17)
 
 
