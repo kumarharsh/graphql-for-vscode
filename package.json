@@ -183,7 +183,7 @@
     "@semantic-release/git": "^7.0.6",
     "@semantic-release/release-notes-generator": "^7.1.4",
     "@types/node": "^9.3.0",
-    "husky": "^1.2.1",
+    "husky": "^2.4.0",
     "lint-staged": "^8.1.0",
     "prettier": "^1.15.3",
     "rimraf": "^2.6.2",
@@ -199,7 +199,7 @@
     "semver": "^6.0.0",
     "vscode-languageclient": "^5.2.1",
     "vscode-languageserver": "^5.2.1",
-    "vscode-uri": "^1.0.6"
+    "vscode-uri": "^2.0.1"
   },
   "galleryBanner": {
     "color": "#2e2348",

@@ -6,7 +6,7 @@ import {
   Position,
   Range,
 } from 'vscode-languageserver';
-import Uri from 'vscode-uri';
+import { URI } from 'vscode-uri';
 
 export function resolveModule(moduleName, nodePath, tracer) {
   return Files.resolve(moduleName, nodePath, nodePath, tracer).then(
@@ -75,7 +75,7 @@ export function mapSeverity(severity): DiagnosticSeverity {
 }
 
 export function filePathToURI(filePath: string): string {
-  return Uri.file(filePath).toString();
+  return URI.file(filePath).toString();
 }
 
 export function uriToFilePath(uri: string): string {
