@@ -93,6 +93,12 @@
           "GraphQL"
         ],
         "configuration": "./syntaxes/language-configuration.json"
+      },
+      {
+        "id": "json5",
+        "extensions": [
+          ".gqlconfig"
+        ]
       }
     ],
     "grammars": [
