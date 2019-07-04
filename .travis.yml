@@ -18,11 +18,11 @@ jobs:
   include:
     - stage: release
       language: node_js
-      node_js: '8'
+      node_js: '10'
       script: yarn semantic-release
     - stage: integrate
       language: node_js
-      node_js: '8'
+      node_js: '10'
       script: yarn package
 notifications:
   email: false
