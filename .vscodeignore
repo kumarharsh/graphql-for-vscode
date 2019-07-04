@@ -8,3 +8,5 @@ src/**
 tsconfig.json
 typings.json
 extras
+scripts
+tslint.json
