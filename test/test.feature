@@ -17,3 +17,9 @@ Scenario: Logs a user into the system using username
 			}
 		}
 		"""
+		Then I expect the response json
+		"""
+		{
+			"a": "Kumar Harsh"
+		}
+		"""
