@@ -1,3 +1,11 @@
+# [1.14.0](https://github.com/kumarharsh/graphql-for-vscode/compare/v1.13.2...v1.14.0) (2019-07-04)
+
+
+### Features
+
+* add json5 syntax highlighting to gqlconfig ([5f0826b](https://github.com/kumarharsh/graphql-for-vscode/commit/5f0826b))
+* add multi-root workspaces support Closes [#33](https://github.com/kumarharsh/graphql-for-vscode/issues/33) ([af8fe1d](https://github.com/kumarharsh/graphql-for-vscode/commit/af8fe1d))
+
 ## [1.13.2](https://github.com/kumarharsh/graphql-for-vscode/compare/v1.13.1...v1.13.2) (2019-06-05)
 
 
