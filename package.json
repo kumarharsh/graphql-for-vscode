@@ -217,6 +217,7 @@
     "clean": "rimraf out",
     "compile": "yarn install && tsc -p src",
     "watch": "tsc -watch -p src",
+    "lint": "tslint -p src",
     "dev": "yarn clean && yarn watch",
     "package": "yarn install && vsce package"
   },

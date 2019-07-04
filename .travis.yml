@@ -9,13 +9,17 @@ script:
   - /bin/bash scripts/lint-commits.sh
 after_script: greenkeeper-lockfile-upload
 stages:
-  - test
+  - name: test
   - name: release
     if: branch = master AND type = push AND fork = false
   - name: integrate
     if: branch =~ /^greenkeeper-.*$/ AND type = pull_request AND fork = false
 jobs:
   include:
+    - stage: test
+      language: node_js
+      node_js: '10'
+      script: yarn lint
     - stage: release
       language: node_js
       node_js: '10'
