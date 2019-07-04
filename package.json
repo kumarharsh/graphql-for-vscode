@@ -215,28 +215,28 @@
     "package": "yarn install && vsce package"
   },
   "devDependencies": {
-    "@commitlint/cli": "^8.0.0",
-    "@commitlint/config-conventional": "^8.0.0",
-    "@semantic-release/changelog": "^3.0.4",
-    "@semantic-release/commit-analyzer": "^6.1.0",
-    "@semantic-release/git": "^7.0.12",
-    "@semantic-release/release-notes-generator": "^7.1.4",
-    "@types/node": "^12.0.4",
-    "husky": "^2.4.0",
-    "lint-staged": "^8.1.0",
-    "prettier": "^1.15.3",
-    "rimraf": "^2.6.2",
-    "semantic-release": "^15.13.12",
-    "semantic-release-vsce": "^2.2.8",
-    "tslint": "^5.12.0",
-    "tslint-config-prettier": "^1.17.0",
-    "tslint-plugin-prettier": "^2.0.1",
-    "typescript": "^3.5.1",
-    "vscode": "^1.1.34"
+    "@commitlint/cli": "8.0.0",
+    "@commitlint/config-conventional": "8.0.0",
+    "@semantic-release/changelog": "3.0.4",
+    "@semantic-release/commit-analyzer": "6.2.0",
+    "@semantic-release/git": "7.0.16",
+    "@semantic-release/release-notes-generator": "7.2.1",
+    "@types/node": "10.14.12",
+    "husky": "3.0.0",
+    "lint-staged": "8.1.0",
+    "prettier": "1.18.2",
+    "rimraf": "2.6.3",
+    "semantic-release": "15.13.18",
+    "semantic-release-vsce": "2.2.8",
+    "tslint": "5.18.0",
+    "tslint-config-prettier": "1.18.0",
+    "tslint-plugin-prettier": "2.0.1",
+    "typescript": "3.5.2",
+    "vscode": "1.1.35"
   },
   "dependencies": {
     "@playlyfe/gql-language-server": "0.1.0",
-    "vscode-languageclient": "^5.2.1"
+    "vscode-languageclient": "5.2.1"
   },
   "galleryBanner": {
     "color": "#2e2348",
