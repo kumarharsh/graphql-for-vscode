@@ -165,14 +165,12 @@
     ]
   },
   "scripts": {
-    "vscode:prepublish": "yarn install && yarn clean && yarn compile-server && yarn compile",
+    "vscode:prepublish": "yarn install && yarn clean && yarn compile",
     "postinstall": "node ./node_modules/vscode/bin/install",
     "clean": "rimraf out",
-    "compile-server": "yarn install && tsc -p src/server",
-    "compile": "yarn install && tsc -p src/client",
-    "watch-server": "tsc -watch -p src/server",
+    "compile": "yarn install && tsc -p src/server && tsc -p src/client",
     "watch": "tsc -watch -p src/client",
-    "dev": "yarn clean && yarn compile-server && yarn watch",
+    "dev": "yarn clean && tsc -p src/server && yarn watch",
     "package": "yarn install && vsce package"
   },
   "devDependencies": {
