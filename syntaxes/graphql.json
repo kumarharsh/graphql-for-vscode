@@ -567,17 +567,17 @@
     },
     "graphql-value":{
       "patterns": [
-        { "include":  "#graphql-comment" },
-        { "include":  "#graphql-variable-name" },
-        { "include":  "#graphql-float-value" },
-        { "include":  "#graphql-string-value" },
-        { "include":  "#graphql-description-docstring" },
-        { "include":  "#graphql-boolean-value" },
-        { "include":  "#graphql-null-value" },
-        { "include":  "#graphql-enum-value" },
-        { "include":  "#graphql-list-value" },
-        { "include":  "#graphql-object-value" },
-        { "include":  "#literal-quasi-embedded" }
+        { "include": "#graphql-comment" },
+        { "include": "#graphql-variable-name" },
+        { "include": "#graphql-float-value" },
+        { "include": "#graphql-string-value" },
+        { "include": "#graphql-description-docstring" },
+        { "include": "#graphql-boolean-value" },
+        { "include": "#graphql-null-value" },
+        { "include": "#graphql-enum-value" },
+        { "include": "#graphql-list-value" },
+        { "include": "#graphql-object-value" },
+        { "include": "#literal-quasi-embedded" }
       ]
     },
     "graphql-list-value": {
@@ -593,7 +593,7 @@
             "1": { "name": "meta.brace.square.graphql" }
           },
           "patterns": [
-            { "include":  "#graphql-value" }
+            { "include": "#graphql-value" }
           ]
         }
       ]
@@ -611,8 +611,8 @@
             "1": { "name": "meta.brace.curly.graphql" }
           },
           "patterns": [
-            { "include":  "#graphql-object-field" },
-            { "include":  "#graphql-value" }
+            { "include": "#graphql-object-field" },
+            { "include": "#graphql-value" }
           ]
         }
       ]
