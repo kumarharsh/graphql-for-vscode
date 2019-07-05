@@ -4,7 +4,7 @@
   "patterns": [
     {
       "contentName": "meta.embedded.block.graphql",
-      "begin": "(?=(?><<[-~](['\"]?)((?:[_\\w]+_|)GRAPHQL)\\b\\1))",
+      "begin": "(?><<[-~](['\"`]?)((?:[_\\w]+_|)GRAPHQL)\\b\\1)",
       "beginCaptures": {
         "0": {
           "name": "punctuation.definition.string.begin.ruby"
