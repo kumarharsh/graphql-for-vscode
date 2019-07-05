@@ -1,3 +1,10 @@
+## [1.14.1](https://github.com/kumarharsh/graphql-for-vscode/compare/v1.14.0...v1.14.1) (2019-07-05)
+
+
+### Bug Fixes
+
+* **syntax:** support interpolations in ruby ([34bb681](https://github.com/kumarharsh/graphql-for-vscode/commit/34bb681))
+
 # [1.14.0](https://github.com/kumarharsh/graphql-for-vscode/compare/v1.13.2...v1.14.0) (2019-07-04)
 
 
