@@ -3,9 +3,9 @@
 import {
   commands,
   languages,
+  RelativePattern,
   StatusBarAlignment,
   StatusBarItem,
-  TextDocument,
   TextEditor,
   ThemeColor,
   window,
@@ -104,7 +104,7 @@ export default class ClientStatusBarItem {
   private _updateVisibility = (textEditor: TextEditor) => {
     let hide = true;
 
-    if (textEditor && this._checkDocumentInsideWorkspace(textEditor.document)) {
+    if (textEditor) {
       if (this._client.initializeResult) {
         // if client is initialized then show only for file extensions
         // defined in .gqlconfig
@@ -112,7 +112,13 @@ export default class ClientStatusBarItem {
         // instead of extensions.
         const extensions = this._client.initializeResult.fileExtensions;
         const score = languages.match(
-          { scheme: 'file', pattern: `**/*.{${extensions.join(',')}}` },
+          {
+            scheme: 'file',
+            pattern: new RelativePattern(
+              workspace.getWorkspaceFolder(textEditor.document.uri),
+              `**/*.{${extensions.join(',')}}`,
+            ),
+          },
           textEditor.document,
         );
         hide = score === 0;
@@ -125,15 +131,6 @@ export default class ClientStatusBarItem {
 
     hide ? this._hide() : this._show();
   };
-
-  private _checkDocumentInsideWorkspace(document: TextDocument): boolean {
-    const folder = workspace.getWorkspaceFolder(document.uri);
-    return folder && folder.uri.toString() === this._getWorkspace();
-  }
-
-  private _getWorkspace(): string {
-    return this._client.clientOptions.workspaceFolder.uri.toString();
-  }
 
   private _show() {
     this._item.show();
