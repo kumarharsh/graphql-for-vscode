@@ -130,6 +130,9 @@ function createClientForWorkspace(folder: WorkspaceFolder): null | IClient {
     },
     outputChannel,
     workspaceFolder: folder,
+    initializationOptions: {
+      relativePattern: true,
+    },
   };
 
   // Create the language client and start the client.
