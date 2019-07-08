@@ -1,3 +1,10 @@
+## [1.14.2](https://github.com/kumarharsh/graphql-for-vscode/compare/v1.14.1...v1.14.2) (2019-07-08)
+
+
+### Performance Improvements
+
+* **workspaces:** only send workspace documents req to server ([22c331b](https://github.com/kumarharsh/graphql-for-vscode/commit/22c331b))
+
 ## [1.14.1](https://github.com/kumarharsh/graphql-for-vscode/compare/v1.14.0...v1.14.1) (2019-07-05)
 
 
