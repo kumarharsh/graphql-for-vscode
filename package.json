@@ -242,7 +242,7 @@
     "vscode": "1.1.35"
   },
   "dependencies": {
-    "@playlyfe/gql-language-server": "0.1.0",
+    "@playlyfe/gql-language-server": "0.2.0",
     "vscode-languageclient": "5.2.1"
   },
   "galleryBanner": {
