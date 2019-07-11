@@ -238,7 +238,7 @@
     "tslint": "5.18.0",
     "tslint-config-prettier": "1.18.0",
     "tslint-plugin-prettier": "2.0.1",
-    "typescript": "3.5.2",
+    "typescript": "3.5.3",
     "vscode": "1.1.35"
   },
   "dependencies": {
