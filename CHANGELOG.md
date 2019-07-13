@@ -1,3 +1,15 @@
+# [1.15.0](https://github.com/kumarharsh/graphql-for-vscode/compare/v1.14.2...v1.15.0) (2019-07-13)
+
+
+### Bug Fixes
+
+* handle null cases and enable typescript strict mode ([3cfb535](https://github.com/kumarharsh/graphql-for-vscode/commit/3cfb535))
+
+
+### Features
+
+* **server:** add custom node runtime support ([19ccf02](https://github.com/kumarharsh/graphql-for-vscode/commit/19ccf02))
+
 ## [1.14.2](https://github.com/kumarharsh/graphql-for-vscode/compare/v1.14.1...v1.14.2) (2019-07-08)
 
 
