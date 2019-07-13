@@ -105,17 +105,12 @@ VSCode extension for GraphQL schema authoring & consumption.
 * If you have a suggestion or a problem, please open an issue.
 * If you'd like to improve the extension:
   + If you've made any improvements to the extension, send a Pull Request!
-  + The instructions to run the server are [here](#server)
-  + The instructions to run and debug the client are [here](#hacking)
+  + The instructions to run and debug the plugin are [here](#hacking)
 
 ## Hacking
 
-#### Client
-If you're making changes to the client, then run `npm run watch` inside this directory,
+If you're making changes to the plugin, then run `yarn dev` inside this directory,
 then just press <kbd>F5</kbd> to launch the *Extension Development Host* instance of vscode. Whenever you make a change, press *Reload* to reload the EDH instance.
-
-#### Server
-If you're making changes to the server, then run `npm run watch-server` from the root directory. Then, run the client in debug mode. If you make any change in the server code, you need to reload the *Extension Development Host* instance of vscode.
 
 ## Major Contributors
 * [Mayank Agarwal](https://github.com/Mayank1791989) - added autocomplete, goto definition, schema validation support
