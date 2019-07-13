@@ -64,6 +64,15 @@
           "description": "A path used for resolving the @playlyfe/gql module. (default: workspaceFolder)",
           "default": "."
         },
+        "graphqlForVSCode.runtime": {
+          "scope": "resource",
+          "type": [
+            "string",
+            "null"
+          ],
+          "default": null,
+          "description": "The location of the node binary to run gql-language-server under. (default: uses vscode bundled node)"
+        },
         "graphqlForVSCode.loglevel": {
           "scope": "resource",
           "type": "string",
@@ -230,7 +239,6 @@
     "@semantic-release/release-notes-generator": "7.2.1",
     "@types/node": "10.14.12",
     "husky": "3.0.0",
-    "lint-staged": "8.1.0",
     "prettier": "1.18.2",
     "rimraf": "2.6.3",
     "semantic-release": "15.13.18",
@@ -238,11 +246,11 @@
     "tslint": "5.18.0",
     "tslint-config-prettier": "1.18.0",
     "tslint-plugin-prettier": "2.0.1",
-    "typescript": "3.5.2",
+    "typescript": "3.5.3",
     "vscode": "1.1.35"
   },
   "dependencies": {
-    "@playlyfe/gql-language-server": "0.2.0",
+    "@playlyfe/gql-language-server": "0.3.0",
     "vscode-languageclient": "5.2.1"
   },
   "galleryBanner": {
@@ -257,18 +265,7 @@
   "husky": {
     "hooks": {
       "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
-      "pre-commit": "lint-staged"
+      "pre-commit": "yarn lint"
     }
-  },
-  "lint-staged": {
-    "linters": {
-      "*.ts": [
-        "tslint",
-        "git add"
-      ]
-    },
-    "ignore": [
-      "*.d.ts"
-    ]
   }
 }

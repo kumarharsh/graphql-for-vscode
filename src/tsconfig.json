@@ -5,6 +5,8 @@
     "moduleResolution": "node",
     "lib": [ "es6" ],
     "outDir": "../out",
-    "sourceMap": true
+    "sourceMap": true,
+    "noImplicitAny": true,
+    "strictNullChecks": true
   }
 }

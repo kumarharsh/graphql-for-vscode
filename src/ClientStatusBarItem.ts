@@ -69,8 +69,6 @@ export default class ClientStatusBarItem {
     this._disposables.forEach(item => {
       item.dispose();
     });
-    this._item = null;
-    this._client = null;
   }
 
   private _registerStatusChangeListeners() {
@@ -101,11 +99,15 @@ export default class ClientStatusBarItem {
     return disposable;
   }
 
-  private _updateVisibility = (textEditor: TextEditor) => {
+  private _updateVisibility = (textEditor: TextEditor | undefined) => {
     let hide = true;
 
     if (textEditor) {
-      if (this._client.initializeResult) {
+      const workspaceFolder = workspace.getWorkspaceFolder(
+        textEditor.document.uri,
+      );
+
+      if (this._client.initializeResult && workspaceFolder) {
         // if client is initialized then show only for file extensions
         // defined in .gqlconfig
         // @TODO: if possible, match against patterns defined in .gqlconfig
@@ -115,7 +117,7 @@ export default class ClientStatusBarItem {
           {
             scheme: 'file',
             pattern: new RelativePattern(
-              workspace.getWorkspaceFolder(textEditor.document.uri),
+              workspaceFolder,
               `**/*.{${extensions.join(',')}}`,
             ),
           },

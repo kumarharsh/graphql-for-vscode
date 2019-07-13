@@ -39,14 +39,16 @@ export function activate(context: ExtensionContext) {
 export function deactivate(): Thenable<void> {
   const promises: Array<Thenable<void>> = [];
   clients.forEach(client => {
-    promises.push(client.dispose());
+    if (client) {
+      promises.push(client.dispose());
+    }
   });
   return Promise.all(promises).then(() => undefined);
 }
 
 function createClientForWorkspaces() {
   const workspaceFolders = Workspace.workspaceFolders || [];
-  const workspaceFoldersIndex = {};
+  const workspaceFoldersIndex: { [key: string]: boolean } = {};
 
   workspaceFolders.forEach(folder => {
     const key = folder.uri.toString();
@@ -77,6 +79,7 @@ function createClientForWorkspace(folder: WorkspaceFolder): null | IClient {
   const outputChannel = window.createOutputChannel(`GraphQL - ${folder.name}`);
   // TODO: make it configurable
   const gqlconfigDir = resolvePath('.', folder);
+  const runtime = config.get<string | undefined>('runtime', undefined);
 
   // check can activate gql plugin
   // if config found in folder then activate
@@ -102,11 +105,13 @@ function createClientForWorkspace(folder: WorkspaceFolder): null | IClient {
   // Otherwise the run options are used
   const serverOptions: ServerOptions = {
     run: {
+      runtime,
       module: GQL_LANGUAGE_SERVER_CLI_PATH,
       transport: TransportKind.ipc,
       args: gqlLanguageServerCliOptions,
     },
     debug: {
+      runtime,
       module: GQL_LANGUAGE_SERVER_CLI_PATH,
       transport: TransportKind.ipc,
       args: gqlLanguageServerCliOptions,
