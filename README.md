@@ -25,8 +25,8 @@ VSCode extension for GraphQL schema authoring & consumption.
 * **Autocomplete**: Uses the [@playlyfe/gql](https://npmjs.org/package/@playlyfe/gql) library to read your whole graphql schema definitions and provide you with autocomplete support while writing & editing your `.gql` files.
 
   ![Autocomplete](https://cdn.rawgit.com/kumarharsh/graphql-for-vscode/master/images/autocomplete.gif)
-* **Schema Validation**: The plugin also validates your schema, so that you catch errors early.
-* **Linting**: This plugin uses a similar method as used by the [Codemirror graphql](https://github.com/graphql/codemirror-graphql) project for linting.
+* **Schema Validation**: The extension also validates your schema, so that you catch errors early.
+* **Linting**: This extension uses a similar method as used by the [Codemirror graphql](https://github.com/graphql/codemirror-graphql) project for linting.
 * **Great Syntax Highlighting**: Now, your graphql queries, mutations and gql files will look as beautiful as the rest of your code with an awesome syntax highlighter. It works not just with your .gql/.graphql schema files, but also within your code - supports syntax highlighting within:
   + Javascript
   + Typescript
@@ -40,7 +40,7 @@ VSCode extension for GraphQL schema authoring & consumption.
 * **Snippets**: Some commonly used snippets are provided which help while writing mutations and queries, such as defining types, interfaces and input types.
 
 ## Setting it Up
-1. Ensure that you have the [@playlyfe/gql](https://npmjs.org/package/@playlyfe/gql) library (v2.x) installed and available to this plugin. If you've installed the library in a folder other than the workspace root, then add the path to the node_modules directory as a setting:
+1. Ensure that you have the [@playlyfe/gql](https://npmjs.org/package/@playlyfe/gql) library (v2.x) installed and available to this extension. If you've installed the library in a folder other than the workspace root, then add the path to the node_modules directory as a setting:
     ```json
     {
       "graphqlForVSCode.nodePath": "ui/node_modules"
@@ -105,11 +105,11 @@ VSCode extension for GraphQL schema authoring & consumption.
 * If you have a suggestion or a problem, please open an issue.
 * If you'd like to improve the extension:
   + If you've made any improvements to the extension, send a Pull Request!
-  + The instructions to run and debug the plugin are [here](#hacking)
+  + The instructions to run and debug the extension are [here](#hacking)
 
 ## Hacking
 
-If you're making changes to the plugin, then run `yarn dev` inside this directory,
+If you're making changes to the extension, then run `yarn dev` inside this directory,
 then just press <kbd>F5</kbd> to launch the *Extension Development Host* instance of vscode. Whenever you make a change, press *Reload* to reload the EDH instance.
 
 ## Major Contributors
