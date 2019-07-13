@@ -3,17 +3,14 @@ cache: yarn
 before_install:
   - git fetch --unshallow
   - yarn global add vsce
-  - yarn global add greenkeeper-lockfile@1
-before_script: greenkeeper-lockfile-update
 script:
   - /bin/bash scripts/lint-commits.sh
-after_script: greenkeeper-lockfile-upload
 stages:
   - name: test
   - name: release
     if: branch = master AND type = push AND fork = false
   - name: integrate
-    if: branch =~ /^greenkeeper-.*$/ AND type = pull_request AND fork = false
+    if: branch = master AND type = push AND fork = false
 jobs:
   include:
     - stage: test
