@@ -1,5 +1,0 @@
-{
-  "globalDependencies": {
-    "graphql": "registry:dt/graphql#0.8.2+20161220195540"
-  }
-}
