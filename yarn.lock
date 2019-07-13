@@ -243,10 +243,10 @@
     universal-user-agent "^2.0.0"
     url-template "^2.0.8"
 
-"@playlyfe/gql-language-server@0.2.0":
-  version "0.2.0"
-  resolved "https://registry.yarnpkg.com/@playlyfe/gql-language-server/-/gql-language-server-0.2.0.tgz#27516cd253a66fa63ea0e0fe679efd5284a3ad34"
-  integrity sha512-Jk2U2bVzVkdv7aOYUn++39LUw/cQRAJEUht4lQLAV3gwxuDb0nkllrxhbGXmLFeyz54v6GcLLIPZAk4AOymntw==
+"@playlyfe/gql-language-server@0.3.0":
+  version "0.3.0"
+  resolved "https://registry.yarnpkg.com/@playlyfe/gql-language-server/-/gql-language-server-0.3.0.tgz#55fcdd179e002ee88cff3ae362e273f70fa27e73"
+  integrity sha512-SCvo3ino5s1MRyIbqrXWhAgDpatyfZGwySWoWh73HH58+gB20OxrJCgQq34eXFR05eRE5uXV9HdcEsTAOJFEVA==
   dependencies:
     "@babel/polyfill" "7.4.4"
     "@babel/runtime" "7.4.5"

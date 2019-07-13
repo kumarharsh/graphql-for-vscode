@@ -64,6 +64,15 @@
           "description": "A path used for resolving the @playlyfe/gql module. (default: workspaceFolder)",
           "default": "."
         },
+        "graphqlForVSCode.runtime": {
+          "scope": "resource",
+          "type": [
+            "string",
+            "null"
+          ],
+          "default": null,
+          "description": "The location of the node binary to run gql-language-server under. (default: uses vscode bundled node)"
+        },
         "graphqlForVSCode.loglevel": {
           "scope": "resource",
           "type": "string",
@@ -241,7 +250,7 @@
     "vscode": "1.1.35"
   },
   "dependencies": {
-    "@playlyfe/gql-language-server": "0.2.0",
+    "@playlyfe/gql-language-server": "0.3.0",
     "vscode-languageclient": "5.2.1"
   },
   "galleryBanner": {
