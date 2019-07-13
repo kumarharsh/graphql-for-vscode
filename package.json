@@ -230,7 +230,6 @@
     "@semantic-release/release-notes-generator": "7.2.1",
     "@types/node": "10.14.12",
     "husky": "3.0.0",
-    "lint-staged": "8.1.0",
     "prettier": "1.18.2",
     "rimraf": "2.6.3",
     "semantic-release": "15.13.18",
@@ -257,18 +256,7 @@
   "husky": {
     "hooks": {
       "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
-      "pre-commit": "lint-staged"
+      "pre-commit": "yarn lint"
     }
-  },
-  "lint-staged": {
-    "linters": {
-      "*.ts": [
-        "tslint",
-        "git add"
-      ]
-    },
-    "ignore": [
-      "*.d.ts"
-    ]
   }
 }
