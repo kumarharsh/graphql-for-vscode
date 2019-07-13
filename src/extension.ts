@@ -39,14 +39,16 @@ export function activate(context: ExtensionContext) {
 export function deactivate(): Thenable<void> {
   const promises: Array<Thenable<void>> = [];
   clients.forEach(client => {
-    promises.push(client.dispose());
+    if (client) {
+      promises.push(client.dispose());
+    }
   });
   return Promise.all(promises).then(() => undefined);
 }
 
 function createClientForWorkspaces() {
   const workspaceFolders = Workspace.workspaceFolders || [];
-  const workspaceFoldersIndex = {};
+  const workspaceFoldersIndex: { [key: string]: boolean } = {};
 
   workspaceFolders.forEach(folder => {
     const key = folder.uri.toString();
