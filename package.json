@@ -231,7 +231,7 @@
     "package": "yarn install && vsce package"
   },
   "devDependencies": {
-    "@commitlint/cli": "8.0.0",
+    "@commitlint/cli": "8.1.0",
     "@commitlint/config-conventional": "8.0.0",
     "@semantic-release/changelog": "3.0.4",
     "@semantic-release/commit-analyzer": "6.2.0",
