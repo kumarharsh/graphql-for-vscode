@@ -247,7 +247,7 @@
     "tslint-config-prettier": "1.18.0",
     "tslint-plugin-prettier": "2.0.1",
     "typescript": "3.5.3",
-    "vscode": "1.1.35"
+    "vscode": "1.1.36"
   },
   "dependencies": {
     "@playlyfe/gql-language-server": "0.3.0",
