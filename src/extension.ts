@@ -16,6 +16,7 @@ import {
 
 import { findConfigFile as findGQLConfigFile } from '@playlyfe/gql-language-server';
 import ClientStatusBarItem from './ClientStatusBarItem';
+import { isExtensionRunningLocally } from './utils';
 
 const EXT_NAME = 'graphqlForVSCode';
 const GQL_LANGUAGE_SERVER_CLI_PATH = require.resolve(
@@ -31,9 +32,11 @@ interface IClient {
 const clients: Map<string, IClient | null> = new Map();
 
 export function activate(context: ExtensionContext) {
-  createClientForWorkspaces();
+  createClientForWorkspaces(context);
   // update clients when workspaceFolderChanges
-  Workspace.onDidChangeWorkspaceFolders(createClientForWorkspaces);
+  Workspace.onDidChangeWorkspaceFolders(() => {
+    createClientForWorkspaces(context);
+  });
 }
 
 export function deactivate(): Thenable<void> {
@@ -46,14 +49,14 @@ export function deactivate(): Thenable<void> {
   return Promise.all(promises).then(() => undefined);
 }
 
-function createClientForWorkspaces() {
+function createClientForWorkspaces(context: ExtensionContext) {
   const workspaceFolders = Workspace.workspaceFolders || [];
   const workspaceFoldersIndex: { [key: string]: boolean } = {};
 
   workspaceFolders.forEach(folder => {
     const key = folder.uri.toString();
     if (!clients.has(key)) {
-      const client = createClientForWorkspace(folder);
+      const client = createClientForWorkspace(folder, context);
       // console.log('adding client', key, client);
       clients.set(key, client);
     }
@@ -73,7 +76,10 @@ function createClientForWorkspaces() {
   });
 }
 
-function createClientForWorkspace(folder: WorkspaceFolder): null | IClient {
+function createClientForWorkspace(
+  folder: WorkspaceFolder,
+  context: ExtensionContext,
+): null | IClient {
   // per workspacefolder settings
   const config = Workspace.getConfiguration(EXT_NAME, folder.uri);
   const outputChannel = window.createOutputChannel(`GraphQL - ${folder.name}`);
@@ -121,6 +127,12 @@ function createClientForWorkspace(folder: WorkspaceFolder): null | IClient {
     },
   };
 
+  // TEMP_FIX: relativePattern is not working when extension is
+  // running using vscode-remote with `local os = windows`
+  // NOTE: relativePattern is used only for optimization so it will
+  // not change the extension behaviour
+  const canUseRelativePattern = isExtensionRunningLocally(context);
+
   // Options to control the language client
   const clientOptions: LanguageClientOptions = {
     diagnosticCollectionName: 'graphql',
@@ -136,7 +148,7 @@ function createClientForWorkspace(folder: WorkspaceFolder): null | IClient {
     outputChannel,
     workspaceFolder: folder,
     initializationOptions: {
-      relativePattern: true,
+      relativePattern: canUseRelativePattern,
     },
   };
 
@@ -148,7 +160,7 @@ function createClientForWorkspace(folder: WorkspaceFolder): null | IClient {
     clientOptions,
   );
 
-  const statusBarItem = new ClientStatusBarItem(client);
+  const statusBarItem = new ClientStatusBarItem(client, canUseRelativePattern);
 
   const subscriptions = [
     client.start(),
