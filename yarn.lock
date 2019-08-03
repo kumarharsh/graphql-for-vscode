@@ -18,18 +18,10 @@
     esutils "^2.0.2"
     js-tokens "^4.0.0"
 
-"@babel/polyfill@7.4.4":
-  version "7.4.4"
-  resolved "https://registry.yarnpkg.com/@babel/polyfill/-/polyfill-7.4.4.tgz#78801cf3dbe657844eeabf31c1cae3828051e893"
-  integrity sha512-WlthFLfhQQhh+A2Gn5NSFl0Huxz36x86Jn+E9OW7ibK8edKPq+KLy4apM1yDpQ8kJOVi1OVjpP4vSDLdrI04dg==
-  dependencies:
-    core-js "^2.6.5"
-    regenerator-runtime "^0.13.2"
-
-"@babel/runtime@7.4.5":
-  version "7.4.5"
-  resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.4.5.tgz#582bb531f5f9dc67d2fcb682979894f75e253f12"
-  integrity sha512-TuI4qpWZP6lGOGIuGWtp9sPluqYICmbk8T/1vpSysqJxRPkudh/ofFWyqdcMsDf2s7KvDL4/YHgKyvcS3g9CJQ==
+"@babel/runtime@7.5.4":
+  version "7.5.4"
+  resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.5.4.tgz#cb7d1ad7c6d65676e66b47186577930465b5271b"
+  integrity sha512-Na84uwyImZZc3FKf4aUF1tysApzwf3p2yuFBIyBfbzT5glzKTdvYI4KVW4kcgjrzoGUjC7w3YyCHcJKaRxsr2Q==
   dependencies:
     regenerator-runtime "^0.13.2"
 
@@ -243,13 +235,12 @@
     universal-user-agent "^2.0.0"
     url-template "^2.0.8"
 
-"@playlyfe/gql-language-server@0.3.0":
-  version "0.3.0"
-  resolved "https://registry.yarnpkg.com/@playlyfe/gql-language-server/-/gql-language-server-0.3.0.tgz#55fcdd179e002ee88cff3ae362e273f70fa27e73"
-  integrity sha512-SCvo3ino5s1MRyIbqrXWhAgDpatyfZGwySWoWh73HH58+gB20OxrJCgQq34eXFR05eRE5uXV9HdcEsTAOJFEVA==
+"@playlyfe/gql-language-server@0.3.1":
+  version "0.3.1"
+  resolved "https://registry.yarnpkg.com/@playlyfe/gql-language-server/-/gql-language-server-0.3.1.tgz#8b4b6db4c4cc052851734ec790485fd4f99a398c"
+  integrity sha512-UHz8gsv/27fsoKW//gpvTuW+5fbgBT7fnA96faI1kHpfP2fTAJ/FDQ2N1hohHXb8G69fV61x2/OxFfaxSCGLDg==
   dependencies:
-    "@babel/polyfill" "7.4.4"
-    "@babel/runtime" "7.4.5"
+    "@babel/runtime" "7.5.4"
     event-kit "2.5.3"
     find-config "1.0.0"
     fs-extra "8.1.0"
@@ -260,9 +251,9 @@
     semver "6.2.0"
     vscode-jsonrpc "4.0.0"
     vscode-languageserver "5.3.0-next.8"
-    vscode-uri "2.0.2"
+    vscode-uri "2.0.3"
     yargs "13.2.4"
-    yarn "1.16.0"
+    yarn "1.17.3"
 
 "@semantic-release/changelog@3.0.4":
   version "3.0.4"
@@ -1132,7 +1123,7 @@ copy-concurrently@^1.0.0:
     rimraf "^2.5.4"
     run-queue "^1.0.0"
 
-core-js@^2.4.0, core-js@^2.5.0, core-js@^2.6.5:
+core-js@^2.4.0, core-js@^2.5.0:
   version "2.6.9"
   resolved "https://registry.yarnpkg.com/core-js/-/core-js-2.6.9.tgz#6b4b214620c834152e179323727fc19741b084f2"
   integrity sha512-HOpZf6eXmnl7la+cUdMnLvUxKNqLUzJvgIziQ0DiF3JwSImNphIqdGqzj6hIKyX04MmV0poclQ7+wjWvxQyR2A==
@@ -5220,10 +5211,10 @@ vscode-textbuffer@^1.0.0:
   resolved "https://registry.yarnpkg.com/vscode-textbuffer/-/vscode-textbuffer-1.0.0.tgz#1faee638c8e0e4131c8d5c353993a1874acda086"
   integrity sha512-zPaHo4urgpwsm+PrJWfNakolRpryNja18SUip/qIIsfhuEqEIPEXMxHOlFPjvDC4JgTaimkncNW7UMXRJTY6ow==
 
-vscode-uri@2.0.2:
-  version "2.0.2"
-  resolved "https://registry.yarnpkg.com/vscode-uri/-/vscode-uri-2.0.2.tgz#cbc7982525e1cd102d2da6515e6f103650cb507c"
-  integrity sha512-VebpIxm9tG0fG2sBOhnsSPzDYuNUPP1UQW4K3mwthlca4e4f3d6HKq3HkITC2OPFomOaB7pHTSjcpdFWjfYTzg==
+vscode-uri@2.0.3:
+  version "2.0.3"
+  resolved "https://registry.yarnpkg.com/vscode-uri/-/vscode-uri-2.0.3.tgz#25e5f37f552fbee3cec7e5f80cef8469cefc6543"
+  integrity sha512-4D3DI3F4uRy09WNtDGD93H9q034OHImxiIcSq664Hq1Y1AScehlP3qqZyTkX/RWxeu0MRMHGkrxYqm2qlDF/aw==
 
 vscode-uri@^1.0.6:
   version "1.0.8"
@@ -5413,10 +5404,10 @@ yargs@^11.0.0:
     y18n "^3.2.1"
     yargs-parser "^9.0.2"
 
-yarn@1.16.0:
-  version "1.16.0"
-  resolved "https://registry.yarnpkg.com/yarn/-/yarn-1.16.0.tgz#5701b58ac555ff91f7b889b7d791b3dc86f8f999"
-  integrity sha512-cfemyGlnWKA1zopUUgebTPf8C4WkPIZ+TJmklwcEAJ4u6oWPtJeAzrsamaGGh/+b1XWe8W51yzAImC4AWbWR1g==
+yarn@1.17.3:
+  version "1.17.3"
+  resolved "https://registry.yarnpkg.com/yarn/-/yarn-1.17.3.tgz#60e0b77d079eb78e753bb616f7592b51b6a9adce"
+  integrity sha512-CgA8o7nRZaQvmeF/WBx2FC7f9W/0X59T2IaLYqgMo6637wfp5mMEsM3YXoJtKUspnpmDJKl/gGFhnqS+sON7hA==
 
 yauzl@^2.3.1:
   version "2.10.0"
