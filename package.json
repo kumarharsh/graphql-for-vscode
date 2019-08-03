@@ -222,7 +222,6 @@
   },
   "scripts": {
     "vscode:prepublish": "yarn install && yarn clean && yarn compile",
-    "postinstall": "node ./node_modules/vscode/bin/install",
     "clean": "rimraf out",
     "compile": "yarn install && tsc -p src",
     "watch": "tsc -watch -p src",
@@ -238,6 +237,7 @@
     "@semantic-release/git": "7.0.16",
     "@semantic-release/release-notes-generator": "7.2.1",
     "@types/node": "10.14.14",
+    "@types/vscode": "1.30.0",
     "husky": "3.0.2",
     "prettier": "1.18.2",
     "rimraf": "2.6.3",
@@ -246,8 +246,7 @@
     "tslint": "5.18.0",
     "tslint-config-prettier": "1.18.0",
     "tslint-plugin-prettier": "2.0.1",
-    "typescript": "3.5.3",
-    "vscode": "1.1.35"
+    "typescript": "3.5.3"
   },
   "dependencies": {
     "@playlyfe/gql-language-server": "0.3.1",
