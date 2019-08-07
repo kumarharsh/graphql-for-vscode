@@ -1,3 +1,10 @@
+## [1.15.1](https://github.com/kumarharsh/graphql-for-vscode/compare/v1.15.0...v1.15.1) (2019-08-07)
+
+
+### Bug Fixes
+
+* **windows:** fix plugin not working with remote extn pack ([7fd0579](https://github.com/kumarharsh/graphql-for-vscode/commit/7fd0579))
+
 # [1.15.0](https://github.com/kumarharsh/graphql-for-vscode/compare/v1.14.2...v1.15.0) (2019-07-13)
 
 
