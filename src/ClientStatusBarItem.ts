@@ -48,10 +48,12 @@ export default class ClientStatusBarItem {
   private _item: StatusBarItem;
   private _client: LanguageClient;
   private _disposables: Array<{ dispose: () => any }> = [];
+  private _canUseRelativePattern: boolean;
 
-  constructor(client: LanguageClient) {
+  constructor(client: LanguageClient, canUseRelativePattern: boolean) {
     this._item = window.createStatusBarItem(StatusBarAlignment.Right, 0);
     this._client = client;
+    this._canUseRelativePattern = canUseRelativePattern;
 
     this._disposables.push(this._item);
     this._disposables.push(this._addOnClickToShowOutputChannel());
@@ -113,16 +115,17 @@ export default class ClientStatusBarItem {
         // @TODO: if possible, match against patterns defined in .gqlconfig
         // instead of extensions.
         const extensions = this._client.initializeResult.fileExtensions;
+        const pattern = `**/*.{${extensions.join(',')}}`;
         const score = languages.match(
           {
             scheme: 'file',
-            pattern: new RelativePattern(
-              workspaceFolder,
-              `**/*.{${extensions.join(',')}}`,
-            ),
+            pattern: this._canUseRelativePattern
+              ? new RelativePattern(workspaceFolder, pattern)
+              : pattern,
           },
           textEditor.document,
         );
+
         hide = score === 0;
       } else {
         // while server is initializing show status bar item
