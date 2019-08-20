@@ -104,6 +104,37 @@ VSCode extension for GraphQL schema authoring & consumption.
 
     Again, refer to [GQL](https://github.com/Mayank1791989/gql) docs for details about configuring your .gqlconfig.
 
+
+## Using remote schemas
+
+If you are using a schema that is not in your client's project, you'll need to download it so it's available for `@playlyfe/gql`. 
+Indeed you need to reference these schemas in your `.gqlconfig`.
+
+One way to do this is to use the [graphql-cli](https://github.com/graphql-cli/graphql-cli) commands:
+
+```
+// package.json
+{
+  ...
+  "scripts": {
+    "gql:fetch-schema": "graphql get-schema --project prod",
+  }
+  ...
+}
+```
+
+You also need a `.graphqlconfig.yml` configuration file so that graphql-cli knows what is `--project prod` in your command:
+
+```
+// .graphqlconfig.yml
+projects:
+  prod:
+    schemaPath: schema/schema.graphql
+    extensions:
+      endpoints:
+        default: https://prod.my-graphql-api.com/graphql
+```
+
 ## Future Plans
 * Tests: Figure out tests.
 
