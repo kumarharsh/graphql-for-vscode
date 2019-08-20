@@ -135,6 +135,13 @@ projects:
         default: https://prod.my-graphql-api.com/graphql
 ```
 
+You will need to download this schema each time there is a new update in your api:
+
+```
+// download schema
+yarn gql:fetch-schema
+```
+
 ## Future Plans
 * Tests: Figure out tests.
 
