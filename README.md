@@ -74,7 +74,6 @@ VSCode extension for GraphQL schema authoring & consumption.
       },
       query: {
         files: [ /* define file paths which you'd like the gql parser to watch and give autocomplete suggestions for */
-          files: [
             {
               match: ['src/**/*.ts', 'src/**/*.tsx'], // match multiple extensions
               parser: ['EmbeddedQueryParser', { startTag: 'gql`', endTag: '`' }], // parse any query inside gql template literal
@@ -82,7 +81,7 @@ VSCode extension for GraphQL schema authoring & consumption.
           ],
           {
             match: 'ui/src/**/*.js', // for js
-            parser: ['EmbeddedQueryParser', { startTag: 'Relay\\.QL`', endTag: '`' }], // match Relay syntax
+            parser: ['EmbeddedQueryParser', { startTag: 'Relay\\.QL`', endTag: '`' }], // parse Relay syntax
             isRelay: true,
           },
           {
