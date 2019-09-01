@@ -40,6 +40,7 @@ VSCode extension for GraphQL schema authoring & consumption.
 * **Snippets**: Some commonly used snippets are provided which help while writing mutations and queries, such as defining types, interfaces and input types.
 
 ## Setting it Up
+
 1. Ensure that you have the [@playlyfe/gql](https://npmjs.org/package/@playlyfe/gql) library (v2.x) installed and available to this extension. If you've installed the library in a folder other than the workspace root, then add the path to the node_modules directory as a setting:
     ```json
     {
@@ -74,11 +75,10 @@ VSCode extension for GraphQL schema authoring & consumption.
       },
       query: {
         files: [ /* define file paths which you'd like the gql parser to watch and give autocomplete suggestions for */
-            {
-              match: ['src/**/*.ts', 'src/**/*.tsx'], // match multiple extensions
-              parser: ['EmbeddedQueryParser', { startTag: 'gql`', endTag: '`' }], // parse any query inside gql template literal
-            },
-          ],
+          {
+            match: ['src/**/*.ts', 'src/**/*.tsx'], // match multiple extensions
+            parser: ['EmbeddedQueryParser', { startTag: 'gql`', endTag: '`' }], // parse any query inside gql template literal
+          },
           {
             match: 'ui/src/**/*.js', // for js
             parser: ['EmbeddedQueryParser', { startTag: 'Relay\\.QL`', endTag: '`' }], // parse Relay syntax
@@ -101,31 +101,28 @@ VSCode extension for GraphQL schema authoring & consumption.
     }
     ```
 
-    Again, refer to [GQL](https://github.com/Mayank1791989/gql) docs for details about configuring your .gqlconfig.
+    Again, refer to [GQL](https://github.com/Mayank1791989/gql) docs for details about configuring your `.gqlconfig` file.
 
 
-## Using remote schemas
+### Using remote schemas
 
-If you are using a schema that is not in your client's project, you'll need to download it so it's available for `@playlyfe/gql`. 
-Indeed you need to reference these schemas in your `.gqlconfig`.
+If you are using a schema that is not in your client's project, you'll need to download it so it's available for `@playlyfe/gql`.
+After downloading, you need to reference these schemas in your `.gqlconfig`.
 
-One way to do this is to use the [graphql-cli](https://github.com/graphql-cli/graphql-cli) commands:
+_One way_ to do this is to use [graphql-cli](https://github.com/graphql-cli/graphql-cli):
 
-```
-// package.json
+```json
 {
-  ...
   "scripts": {
-    "gql:fetch-schema": "graphql get-schema --project prod",
-  }
-  ...
+    "gql:fetch-schema": "graphql get-schema --project prod"
+  } 
 }
 ```
 
-You also need a `.graphqlconfig.yml` configuration file so that graphql-cli knows what is `--project prod` in your command:
+You will also need a `.graphqlconfig.yml` configuration file so that `graphql-cli` knows where to download the schema from (specified by the `--project prod` argument to the command):
 
-```
-// .graphqlconfig.yml
+```yaml
+# .graphqlconfig.yml
 projects:
   prod:
     schemaPath: schema/schema.graphql
@@ -134,10 +131,10 @@ projects:
         default: https://prod.my-graphql-api.com/graphql
 ```
 
-You will need to download this schema each time there is a new update in your api:
+Thereafter, you can fetch changes to the graphql schema by running the command:
 
-```
-// download schema
+```bash
+# download schema
 yarn gql:fetch-schema
 ```
 
