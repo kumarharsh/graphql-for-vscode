@@ -128,7 +128,7 @@
       "begin": "\\s*([_A-Za-z][_0-9A-Za-z]*)(?=\\s*\\(|:)",
       "end": "(?=\\s*(([_A-Za-z][_0-9A-Za-z]*)\\s*(\\(|:)|(})))|\\s*(,)",
       "beginCaptures": {
-        "1": { "name": "variable.graphql" }
+        "1": { "name": "variable.other.graphql" }
       },
       "endCaptures": {
         "5": { "name": "punctuation.comma.graphql" }
@@ -396,7 +396,7 @@
         {
           "match": "\\s*([_A-Za-z][_0-9A-Za-z]*)",
           "captures": {
-            "1": { "name": "variable.graphql" }
+            "1": { "name": "variable.other.graphql.field" }
           }
         },
         { "include": "#graphql-arguments" },
@@ -481,7 +481,7 @@
     "graphql-variable-name": {
       "match": "\\s*(\\$[_A-Za-z][_0-9A-Za-z]*)",
       "captures": {
-        "1": { "name": "variable.graphql" }
+        "1": { "name": "variable.other.graphql" }
       }
     },
     "graphql-float-value": {
