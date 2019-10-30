@@ -1,0 +1,32 @@
+name: CI
+
+on: [push, pull_request]
+
+jobs:
+  prerelease:
+    name: "Setup & Lint"
+    runs-on: ubuntu-latest
+    steps:
+    - name: Setup Node
+      uses: actions/setup-node@v1
+      with:
+        node-version: '12.x'
+    - name: Install vsce
+      uses: Borales/actions-yarn@v2.0.1
+      with:
+        cmd: global add vsce
+    - name: Lint & Test Code
+      uses: Borales/actions-yarn@v2.0.1
+      with:
+        cmd: node -e "console.log('linting...')" # lint
+  release:
+    name: "Release"
+    runs-on: ubuntu-latest
+    needs: [prerelease]
+    if: github.event_name == "push" && github.ref == "try/gha-master"
+    steps:
+    - name: Cut a Release
+      uses: Borales/actions-yarn@v2.0.1
+      with:
+        cmd: node -e "console.log('releasing...')" # semantic-release
+
