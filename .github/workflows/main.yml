@@ -19,9 +19,9 @@ jobs:
     - name: Lint & Test Code
       uses: Borales/actions-yarn@v2.0.1
       with:
-        cmd: node -e "console.log('linting...')" # lint
+        cmd: lint
     - name: Cut a Release
       uses: Borales/actions-yarn@v2.0.1
       with:
-        cmd: node -e "console.log('releasing...')" # semantic-release
+        cmd: semantic-release
 
