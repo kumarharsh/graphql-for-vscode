@@ -1,3 +1,10 @@
+## [1.15.2](https://github.com/kumarharsh/graphql-for-vscode/compare/v1.15.1...v1.15.2) (2019-10-31)
+
+
+### Bug Fixes
+
+* **syntax:** highlight 'subscription' operation ([c0dd623](https://github.com/kumarharsh/graphql-for-vscode/commit/c0dd623))
+
 ## [1.15.1](https://github.com/kumarharsh/graphql-for-vscode/compare/v1.15.0...v1.15.1) (2019-08-07)
 
 
