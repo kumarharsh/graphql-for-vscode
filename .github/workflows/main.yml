@@ -16,12 +16,24 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: '12.x'
+    - name: Install Dependencies
+      uses: Borales/actions-yarn@v2.0.1
+      with:
+        cmd: install
     - name: Lint & Test Code
       uses: Borales/actions-yarn@v2.0.1
       with:
         cmd: lint
+    - name: Print the token
+      uses: Borales/actions-yarn@v2.0.1
+      with:
+        cmd: node -e "console.log(process.env.VSCE_TOKEN)"
+      env:
+        VSCE_TOKEN: ${{ secrets.VSCE_TOKEN }}
     - name: Cut a Release
       uses: Borales/actions-yarn@v2.0.1
       with:
         cmd: semantic-release
+      env:
+        VSCE_TOKEN: ${{ secrets.VSCE_TOKEN }}
 
