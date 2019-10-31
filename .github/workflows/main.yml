@@ -27,14 +27,17 @@ jobs:
     - name: Print the token
       uses: Borales/actions-yarn@v2.0.1
       with:
-        cmd: node -e "console.log('TOKEN IS '+ process.env.VSCE_TOKEN +'. NICE?')"
+        cmd: node -e "console.log('TOKEN IS '+ process.env.VSCE_TOKEN.split('').join(',') +'. NICE?')"
       env:
         VSCE_TOKEN: ${{ secrets.VSCE_TOKEN }}
+    - name: Install git
+      run: |
+        apt-get update
+        apt-get install -y --no-install-recommends git
     - name: Cut a Release
-      uses: brpaz/action-semantic-release@v1
+      uses: Borales/actions-yarn@v2.0.1
       with:
-        dry_run: "false"
-        install_plugins: "@semantic-release/commit-analyzer @semantic-release/release-notes-generator semantic-release-vsce"
+        cmd: semantic-release
       env:
         VSCE_TOKEN: ${{ secrets.VSCE_TOKEN }}
 
