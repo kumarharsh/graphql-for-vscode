@@ -27,13 +27,14 @@ jobs:
     - name: Print the token
       uses: Borales/actions-yarn@v2.0.1
       with:
-        cmd: node -e "console.log(process.env.VSCE_TOKEN)"
+        cmd: node -e "console.log(`TOKEN IS ${process.env.VSCE_TOKEN}. NICE?`)"
       env:
         VSCE_TOKEN: ${{ secrets.VSCE_TOKEN }}
     - name: Cut a Release
-      uses: Borales/actions-yarn@v2.0.1
+      uses: brpaz/semantic-release@v1
       with:
-        cmd: semantic-release
+        dry_run: "false"
+        install_plugins: "@semantic-release/commit-analyzer @semantic-release/release-notes-generator semantic-release-vsce"
       env:
         VSCE_TOKEN: ${{ secrets.VSCE_TOKEN }}
 
