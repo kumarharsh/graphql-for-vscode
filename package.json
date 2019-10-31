@@ -241,7 +241,7 @@
     "husky": "3.0.2",
     "prettier": "1.18.2",
     "rimraf": "2.6.3",
-    "semantic-release": "15.13.19",
+    "semantic-release": "15.13.28",
     "semantic-release-vsce": "2.2.8",
     "tslint": "5.18.0",
     "tslint-config-prettier": "1.18.0",
