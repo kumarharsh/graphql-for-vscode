@@ -265,10 +265,10 @@
     fs-extra "^8.0.0"
     lodash "^4.17.4"
 
-"@semantic-release/commit-analyzer@6.2.0", "@semantic-release/commit-analyzer@^6.1.0":
-  version "6.2.0"
-  resolved "https://registry.yarnpkg.com/@semantic-release/commit-analyzer/-/commit-analyzer-6.2.0.tgz#5cd25ce67ba9ba5b46e47457505e63629e186695"
-  integrity sha512-oUtPydYcbtJsEY6WCPi4wynTgRecK5zCkKaGmHi+9Xl7d6jGf7LomnJCg++6dNF1tyavrbGMSdXTCPH6Dx9LbA==
+"@semantic-release/commit-analyzer@6.3.2", "@semantic-release/commit-analyzer@^6.1.0":
+  version "6.3.2"
+  resolved "https://registry.yarnpkg.com/@semantic-release/commit-analyzer/-/commit-analyzer-6.3.2.tgz#f30d621ede11d4060fe6b9d689559ff6ff7df7de"
+  integrity sha512-TezpOODuMcdDuGcGsI2QRqkH3sT7ffhsxid9J8OyspXDe8E4tshekJESJ6Pq8jTrggluKd3tCK26Vsyu6SkeSg==
   dependencies:
     conventional-changelog-angular "^5.0.0"
     conventional-commits-filter "^2.0.0"
