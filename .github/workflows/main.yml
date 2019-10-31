@@ -31,7 +31,7 @@ jobs:
       env:
         VSCE_TOKEN: ${{ secrets.VSCE_TOKEN }}
     - name: Cut a Release
-      uses: brpaz/semantic-release@v1
+      uses: brpaz/action-semantic-release@v1
       with:
         dry_run: "false"
         install_plugins: "@semantic-release/commit-analyzer @semantic-release/release-notes-generator semantic-release-vsce"
