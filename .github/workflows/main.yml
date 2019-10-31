@@ -32,8 +32,8 @@ jobs:
         VSCE_TOKEN: ${{ secrets.VSCE_TOKEN }}
     - name: Install git
       run: |
-        apt-get update
-        apt-get install -y --no-install-recommends git
+        sudo apt-get update
+        sudo apt-get install -y --no-install-recommends git
     - name: Cut a Release
       uses: Borales/actions-yarn@v2.0.1
       with:
