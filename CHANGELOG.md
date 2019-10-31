@@ -1,3 +1,5 @@
+## [1.15.3](https://github.com/kumarharsh/graphql-for-vscode/compare/v1.15.2...v1.15.3) (2019-10-31)
+
 ## [1.15.2](https://github.com/kumarharsh/graphql-for-vscode/compare/v1.15.1...v1.15.2) (2019-10-31)
 
 
