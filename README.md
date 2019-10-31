@@ -1,3 +1,5 @@
+# TEST
+
 <h1 align="center"><img src="https://cdn.rawgit.com/kumarharsh/graphql-for-vscode/master/images/logo.png" alt="Logo" height="128" /></h1>
 <h2 align="center">Graphql For VSCode</h2>
 <div align="center">
