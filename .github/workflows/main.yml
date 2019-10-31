@@ -35,7 +35,7 @@ jobs:
         sudo apt-get update
         sudo apt-get install -y --no-install-recommends git
     - name: Cut a Release
-      run: npm run semantic-release
+      run: npx semantic-release
       env:
         VSCE_TOKEN: ${{ secrets.VSCE_TOKEN }}
 
