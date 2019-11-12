@@ -14,10 +14,6 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: '12.x'
-    - name: Install Yarn
-      run: |
-        curl -o- -L https://yarnpkg.com/install.sh | bash
-        export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
     - name: Install Dependencies
       run: yarn install
     - name: Lint & Test Code
