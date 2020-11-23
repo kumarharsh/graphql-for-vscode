@@ -211,6 +211,16 @@
         "embeddedLanguages": {
           "meta.embedded.block.graphql": "graphql"
         }
+      },
+      {
+        "injectTo": [
+          "source.rescript"
+        ],
+        "scopeName": "inline.graphql.res",
+        "path": "./syntaxes/graphql.res.json",
+        "embeddedLanguages": {
+          "meta.embedded.block.graphql": "graphql"
+        }
       }
     ],
     "snippets": [
